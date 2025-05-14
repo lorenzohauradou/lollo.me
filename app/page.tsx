@@ -8,6 +8,8 @@ import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import LogoMarquee from "@/components/logo-marquee"
 
+import { Analytics } from "@vercel/analytics/next"
+
 export const metadata: Metadata = {
   title: "Lollo.me | Freelance & Digital Entrepreneur",
   description:
@@ -25,6 +27,7 @@ export default function Home() {
       <Subscription />
       <Contact />
       <Footer />
+      <Analytics />
     </main>
   )
 }
