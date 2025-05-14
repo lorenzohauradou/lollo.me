@@ -19,6 +19,16 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "AscoltaPDF",
+      description: "Software as a Service per convertire i documenti PDF in audio",
+      image: "/ascoltapdf.png",
+      tags: ["SaaS","Next.js", "Stripe", "Shadcn", "AI"],
+      link: "https://ascoltapdf.com",
+      github: "https://github.com/lorenzooradu/ascoltapdf",
+      status: "Running",
+      statusEmoji: "🟢",
+    },
+    {
       title: "OsFlumen",
       description: "Sito web per la vendita di olio extravergine d'oliva",
       image: "/OsFlumen1.png",
