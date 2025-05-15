@@ -66,7 +66,7 @@ export default function Navbar() {
               className="flex items-center"
             >
               <Image
-                src="/logo.png"
+                src="/logo.webp"
                 alt="Logo lollo.me"
                 width={32}
                 height={32}

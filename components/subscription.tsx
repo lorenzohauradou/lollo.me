@@ -64,59 +64,59 @@ export default function Subscription() {
         </div>
 
         <div ref={ref} className="max-w-5xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Partner Digitale */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="bg-white rounded-xl border border-border p-2 subtle-shadow"
-            >
-              <Card className="border-0 shadow-none h-full">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <CardTitle className="text-2xl">Partner Digitale</CardTitle>
-                      <CardDescription className="mt-1.5">Supporto tecnico e strategico continuo</CardDescription>
-                    </div>
-                    <Badge variant="outline" className="text-xs px-2 py-0">
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  className="bg-white rounded-xl border border-border p-2 subtle-shadow"
+                >
+                  <Card className="border-0 shadow-none h-full">
+                    <CardHeader>
+                      <div className="flex items-center justify-between">
+                        <div>
+                          <CardTitle className="text-2xl">Partner Digitale</CardTitle>
+                          <CardDescription className="mt-1.5">Supporto tecnico e strategico continuo</CardDescription>
+                        </div>
+                        <Badge variant="outline" className="text-xs px-2 py-0">
                       BASE
-                    </Badge>
-                  </div>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="text-3xl font-bold">
-                    €1.500<span className="text-lg font-normal text-muted-foreground">/mese</span>
-                  </div>
-                  <div className="space-y-2">
-                    {partnerFeatures.map((feature, index) => (
-                      <div key={index} className="flex items-start">
-                        <Check className="h-5 w-5 text-accent-blue mr-2 mt-0.5 flex-shrink-0" />
-                        <span className="text-sm">{feature}</span>
+                        </Badge>
                       </div>
-                    ))}
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button size="lg" className="w-full group bg-accent-blue hover:bg-accent-blue/90">
-                    Inizia ora
-                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
-                </CardFooter>
-              </Card>
-            </motion.div>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <div className="text-3xl font-bold">
+                        €1.500<span className="text-lg font-normal text-muted-foreground">/mese</span>
+                      </div>
+                      <div className="space-y-2">
+                    {partnerFeatures.map((feature, index) => (
+                          <div key={index} className="flex items-start">
+                            <Check className="h-5 w-5 text-accent-blue mr-2 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm">{feature}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                    <CardFooter>
+                      <Button size="lg" className="w-full group bg-accent-blue hover:bg-accent-blue/90">
+                        Inizia ora
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Button>
+                    </CardFooter>
+                  </Card>
+                </motion.div>
 
             {/* Digital Agency as a Service */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.4 }}
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.4 }}
               className="bg-white rounded-xl border border-border p-2 subtle-shadow"
             >
               <Card className="border-0 shadow-none h-full">
                 <CardHeader>
                   <div className="flex items-center justify-between">
-                    <div>
+                        <div>
                       <CardTitle className="text-2xl">Digital Agency as a Service</CardTitle>
                       <CardDescription className="mt-1.5">Tech & Growth embedded nel tuo team</CardDescription>
                     </div>
@@ -139,14 +139,14 @@ export default function Subscription() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button size="lg" className="w-full group bg-[#ff7849] hover:bg-[#ff7849]/90 text-white">
+                    <Button size="lg" className="w-full group bg-[#ff7849] hover:bg-[#ff7849]/90 text-white">
                     Inizia ora
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                    </Button>
                 </CardFooter>
               </Card>
-            </motion.div>
-          </div>
+              </motion.div>
+                  </div>
 
           <div className="mt-12 text-center text-sm text-muted-foreground">
             <p>

@@ -21,7 +21,7 @@ export default function Projects() {
     {
       title: "AscoltaPDF",
       description: "Software as a Service per convertire i documenti PDF in audio",
-      image: "/ascoltapdf.png",
+      image: "/ascoltapdf.webp",
       tags: ["SaaS","Next.js", "Stripe", "Shadcn", "AI"],
       link: "https://ascoltapdf.com",
       github: "https://github.com/lorenzooradu/ascoltapdf",
@@ -31,7 +31,7 @@ export default function Projects() {
     {
       title: "OsFlumen",
       description: "Sito web per la vendita di olio extravergine d'oliva",
-      image: "/OsFlumen1.png",
+      image: "/OsFlumen1.webp",
       tags: ["SaaS", "Stripe", "React"],
       link: "https://osflumen.com",
       github: "https://github.com/lorenzooradu/osflumen",
@@ -41,7 +41,7 @@ export default function Projects() {
     {
       title: "Appuntoai",
       description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
-      image: "/appuntoai.png",
+      image: "/appuntoai.webp",
       tags: ["SaaS","Next.js", "Stripe", "Shadcn", "AI"],
       link: "https://appuntoai.com",
       github: "https://github.com/lorenzooradu/appuntoai-dashboard",
@@ -51,7 +51,7 @@ export default function Projects() {
     {
       title: "Ali2bay",
       description: "Piattaforma per automatizzare il processo di vendita e pubblicazione prodotti su eBay",
-      image: "/ali2bay.png",
+      image: "/ali2bay.webp",
       tags: ["Next.js", "API", "SaaS"],
       link: "https://ali2bay.com",
       github: "https://github.com/lorenzooradu/ali2bay",
@@ -61,7 +61,7 @@ export default function Projects() {
     {
       title: "MagicBoxRoma",
       description: "Sito web per azienda di imballaggio e spedizione",
-      image: "/magicboxroma.png",
+      image: "/magicboxroma.webp",
       tags: ["Next.js", "Stripe", "Shadcn"],
       link: "https://magicboxroma.it",
       github: "https://github.com/lorenzooradu/magicboxroma",
@@ -79,8 +79,8 @@ export default function Projects() {
 
   return (
     <section id="projects" className="py-20 relative overflow-hidden bg-white">
-      <div className="absolute inset-0 dot-pattern"></div>
-      <div className="noise-bg" />
+      {/* <div className="absolute inset-0 dot-pattern"></div> */}
+      {/* <div className="noise-bg" /> */}
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <Badge className="mb-4" variant="outline">
