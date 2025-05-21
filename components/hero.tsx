@@ -71,9 +71,11 @@ export default function Hero() {
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
-            <Button size="lg" variant="outline" className="border-border hover:bg-secondary">
-              Scopri i miei servizi
-            </Button>
+            <a href="#services">
+              <Button size="lg" variant="outline" className="border-border hover:bg-secondary">
+                Scopri i miei servizi
+              </Button>
+            </a>
           </motion.div>
         </div>
 
