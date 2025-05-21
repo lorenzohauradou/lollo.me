@@ -13,11 +13,12 @@ export default function About() {
 
   const skills = [
     "Sviluppo Web (Next.js, React)",
-    "Automazioni e Integrazioni",
+    "Automazioni e Integrazioni (API, Webhooks)",
     "UI/UX Design",
     "Consulenza Strategica",
-    "Ottimizzazione Performance",
+    "Ottimizzazione Performance e SEO",
     "Soluzioni Personalizzate",
+    "Sviluppo Software"
   ]
 
   return (
