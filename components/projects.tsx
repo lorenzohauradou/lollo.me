@@ -62,7 +62,7 @@ export default function Projects() {
       title: "MagicBoxRoma",
       description: "Sito web per azienda di imballaggio e spedizione",
       image: "/magicboxroma.webp",
-      tags: ["Next.js", "Tailwind", "Shadcn"],
+      tags: ["Next.js", "Tailwind", "Shadcn", "Resend"],
       link: "https://magicboxroma.it",
       github: "https://github.com/lorenzooradu/magicboxroma",
       status: "Shipped",
