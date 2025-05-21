@@ -11,7 +11,7 @@ import LogoMarquee from "@/components/logo-marquee"
 import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
-  title: "Lollo.me | Freelance & Digital Entrepreneur",
+  title: "Lollo.me | Sviluppo web, automazioni, consulenza e soluzioni digitali su misura",
   description:
     "Trasformo idee in prodotti digitali concreti: siti web, landing page, automazioni e strumenti personalizzati.",
 }
