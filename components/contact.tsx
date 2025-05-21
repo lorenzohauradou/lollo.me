@@ -59,29 +59,30 @@ export default function Contact() {
             initial={{ opacity: 0, x: -50 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.3 }}
+            className="lg:text-left text-center"
           >
             <h3 className="text-2xl font-bold mb-6 gradient-text">Contattami</h3>
-            <p className="text-white/70 mb-8">
+            <p className="text-white/70 mb-8 lg:mx-0 mx-auto max-w-md">
               Compila il modulo o contattami direttamente via email. Sono sempre disponibile per discutere nuovi
               progetti, idee creative o opportunità di collaborazione.
             </p>
 
-            <div className="space-y-6">
-              <div className="flex items-start">
+            <div className="space-y-6 flex flex-col items-center lg:items-start">
+              <div className="flex items-start max-w-md w-full">
                 <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center mr-4 flex-shrink-0">
                   <Mail className="h-6 w-6 text-accent-blue" />
                 </div>
-                <div>
+                <div className="text-left">
                   <h4 className="text-lg font-semibold mb-1">Email</h4>
                   <p className="text-white/70">lorenzooradu@gmail.com</p>
                 </div>
               </div>
 
-              <div className="flex items-start">
+              <div className="flex items-start max-w-md w-full">
                 <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center mr-4 flex-shrink-0">
                   <MessageSquare className="h-6 w-6 text-accent-blue" />
                 </div>
-                <div>
+                <div className="text-left">
                   <h4 className="text-lg font-semibold mb-1">Social</h4>
                   <div className="space-y-2 mt-2">
                     <a
@@ -125,7 +126,7 @@ export default function Contact() {
               </div>
             </div>
 
-            <div className="mt-12 p-6 bg-white/5 rounded-lg border border-white/10">
+            <div className="mt-12 p-6 bg-white/5 rounded-lg border border-white/10 lg:mx-0 mx-auto max-w-md">
               <h4 className="text-lg font-semibold mb-4">Orari di disponibilità</h4>
               <div className="space-y-2">
                 <div className="flex justify-between">

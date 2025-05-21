@@ -42,7 +42,7 @@ export default function Projects() {
       title: "Appuntoai",
       description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
       image: "/appuntoai.webp",
-      tags: ["SaaS","Next.js", "Stripe", "Shadcn", "AI", "Python", "FastAPI", "PostgreSQL"],
+      tags: ["SaaS","Next.js", "Stripe", "Shadcn", "Python"],
       link: "https://appuntoai.com",
       github: "https://github.com/lorenzooradu/appuntoai-dashboard",
       status: "Running",

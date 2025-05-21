@@ -44,9 +44,9 @@ export default function Subscription() {
 
   return (
     <section id="subscription" className="py-20 relative bg-[#f5f5f5]">
-      <div className="absolute inset-0 grid-pattern opacity-70"></div>
-      <div className="noise-bg"></div>
-      <div className="container mx-auto px-4">
+      <div className="absolute inset-0 grid-pattern opacity-70 z-[-1]"></div>
+      <div className="noise-bg z-[-1]"></div>
+      <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
           <Badge className="mb-4" variant="outline">
             PRICING
@@ -103,19 +103,6 @@ export default function Subscription() {
                         ))}
                       </div>
                     </CardContent>
-                    <CardFooter>
-                      <a
-                        href="https://wa.me/3394464650"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full"
-                      >
-                        <Button size="lg" className="w-full group bg-accent-blue hover:bg-accent-blue/90">
-                          Inizia ora
-                          <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </a>
-                    </CardFooter>
                   </Card>
                 </motion.div>
 
@@ -152,17 +139,16 @@ export default function Subscription() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                      <a
-                        href="https://wa.me/3394464650"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full"
-                      >
-                        <Button size="lg" className="w-full group bg-[#ff7849] hover:bg-[#ff7849]/90 text-white">
+                      <Button size="lg" className="w-full group bg-[#ff7849] hover:bg-[#ff7849]/90 text-white" asChild>
+                        <a
+                          href="https://wa.me/3394464650"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           Inizia ora
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                      </a>
+                        </a>
+                      </Button>
                     </CardFooter>
                   </Card>
                 </motion.div>

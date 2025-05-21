@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import Link from "next/link"
 import { Github, Instagram, Linkedin, Twitter } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
+import Image from "next/image"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -30,23 +31,32 @@ export default function Footer() {
       <div className="noise-bg opacity-10"></div>
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          <div className="lg:col-span-2">
-            <Link href="/">
+          <div className="lg:col-span-2 md:text-left text-center">
+            <Link href="/" className="inline-flex items-center justify-center md:justify-start">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="text-2xl font-bold font-heading mb-4"
+                className="flex items-center text-2xl font-bold font-heading mb-4"
               >
-                <span className="gradient-text">lollo</span>
-                <span className="text-white">.me</span>
+                <Image
+                  src="/logo.webp"
+                  alt="Logo lollo.me"
+                  width={32}
+                  height={32}
+                  className="mr-2"
+                />
+                <div>
+                  <span className="gradient-text">lollo</span>
+                  <span className="text-white">.me</span>
+                </div>
               </motion.div>
             </Link>
-            <p className="text-white/70 mb-6 max-w-md">
+            <p className="text-white/70 mb-6 max-w-md mx-auto md:mx-0">
               Aiuto startup, professionisti e aziende a trasformare le loro idee in
               prodotti digitali concreti.
             </p>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               {socialLinks.map((link, index) => (
                 <motion.a
                   key={index}
@@ -64,7 +74,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div>
+          <div className="md:text-left text-center">
             <h3 className="text-lg font-bold mb-4 text-white">Link Rapidi</h3>
             <ul className="space-y-2">
               {footerLinks.slice(0, 4).map((link, index) => (
@@ -82,7 +92,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div>
+          <div className="md:text-left text-center">
             <h3 className="text-lg font-bold mb-4 text-white">Informazioni</h3>
             <ul className="space-y-2">
               {footerLinks.slice(4).map((link, index) => (
@@ -103,7 +113,7 @@ export default function Footer() {
 
         <Separator className="bg-white/10 my-6" />
 
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
           <p className="text-white/50 text-sm mb-4 md:mb-0">© {currentYear} lollo.me. Tutti i diritti riservati.</p>
           <p className="text-white/50 text-sm">
             Designed & Developed by <span className="font-bold">Lorenzo Hauradou</span>
