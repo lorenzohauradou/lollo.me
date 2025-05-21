@@ -7,7 +7,7 @@ import { motion, useInView } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageSquare, Send } from "lucide-react"
+import { Mail, MessageSquare, Send, Instagram, Twitter, Linkedin, Github } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -73,7 +73,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-1">Email</h4>
-                  <p className="text-white/70">hello@lollo.me</p>
+                  <p className="text-white/70">lorenzooradu@gmail.com</p>
                 </div>
               </div>
 
@@ -83,7 +83,44 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold mb-1">Social</h4>
-                  <p className="text-white/70">@lollo.me su tutti i social</p>
+                  <div className="space-y-2 mt-2">
+                    <a
+                      href="https://instagram.com/lorenzooradu"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
+                    >
+                      <Instagram className="h-5 w-5 group-hover:text-accent-pink transition-colors duration-200" />
+                      <span>lorenzooradu</span>
+                    </a>
+                    <a
+                      href="https://twitter.com/TECHLOLLO"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
+                    >
+                      <Twitter className="h-5 w-5 group-hover:text-accent-blue transition-colors duration-200" />
+                      <span>TECHLOLLO</span>
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/lorenzohauradou"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
+                    >
+                      <Linkedin className="h-5 w-5 group-hover:text-accent-linkedin transition-colors duration-200" /> 
+                      <span>lorenzohauradou</span>
+                    </a>
+                    <a
+                      href="https://github.com/lorenzohauradou"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
+                    >
+                      <Github className="h-5 w-5 group-hover:text-gray-400 transition-colors duration-200" />
+                      <span>lorenzohauradou</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

@@ -94,7 +94,13 @@ export default function Navbar() {
                 </motion.div>
               ))}
               <motion.div variants={itemVariants}>
-                <Button className="bg-[#2563eb] hover:bg-[#2563eb]/90">Parliamo</Button>
+                <a
+                  href="https://wa.me/3394464650"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button className="bg-[#2563eb] hover:bg-[#2563eb]/90">Parliamo</Button>
+                </a>
               </motion.div>
             </motion.nav>
           ) : (
@@ -133,9 +139,16 @@ export default function Navbar() {
                     {link.label}
                   </Link>
                 ))}
-                <Button onClick={toggleMenu} className="w-full bg-[#2563eb] hover:bg-[#2563eb]/90">
-                  Parliamo
-                </Button>
+                <a
+                  href="https://wa.me/3394464650"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={toggleMenu}
+                >
+                  <Button className="w-full bg-[#2563eb] hover:bg-[#2563eb]/90">
+                    Parliamo
+                  </Button>
+                </a>
               </nav>
             </div>
           </motion.div>

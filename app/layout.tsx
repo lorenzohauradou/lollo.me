@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Lorenzo Hauradou", url: "https://lollo.me" }],
   creator: "Lorenzo Hauradou",
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    icon: "/lollo.ico",
+    shortcut: "/lollo.ico",
+    apple: "/lollo.ico",
   },
   openGraph: {
     title: "Lorenzo Hauradou – Freelance & Digital Partner",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "lollo.me",
     images: [
       {
-        url: "/og-image.png",
+        url: "/lollo.ico",
         width: 1200,
         height: 630,
         alt: "Lorenzo Hauradou – Freelance & Digital Partner",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     description:
       "Sviluppo web, automazioni, consulenza e soluzioni digitali su misura per startup, professionisti e aziende.",
     creator: "@lollo_me",
-    images: ["/og-image.png"],
+    images: ["/lollo.ico"],
   },
   manifest: "/site.webmanifest",
 }

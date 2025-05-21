@@ -9,10 +9,10 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com/lollo" },
-    { icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com/lollo" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com/in/lollo" },
-    { icon: <Github className="h-5 w-5" />, href: "https://github.com/lollo" },
+    { icon: <Twitter className="h-5 w-5" />, href: "https://twitter.com/TECHLOLLO" },
+    { icon: <Instagram className="h-5 w-5" />, href: "https://instagram.com/lorenzooradu" },
+    { icon: <Linkedin className="h-5 w-5" />, href: "https://linkedin.com/in/lorenzohauradou" },
+    { icon: <Github className="h-5 w-5" />, href: "https://github.com/lorenzohauradou" },
   ]
 
   const footerLinks = [
@@ -106,7 +106,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-white/50 text-sm mb-4 md:mb-0">© {currentYear} lollo.me. Tutti i diritti riservati.</p>
           <p className="text-white/50 text-sm">
-            Designed & Developed with <span className="text-accent-blue">❤️</span>
+            Designed & Developed by <span className="font-bold">Lorenzo Hauradou</span>
           </p>
         </div>
       </div>
