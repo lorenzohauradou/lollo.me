@@ -24,7 +24,7 @@ export default function Projects() {
       image: "/ascoltapdf.webp",
       tags: ["SaaS","Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://ascoltapdf.com",
-      github: "https://github.com/lorenzooradu/ascoltapdf",
+      github: "https://github.com/lorenzohauradou/ascoltaPDF",
       status: "Running",
       statusEmoji: "🟢",
     },
@@ -34,7 +34,7 @@ export default function Projects() {
       image: "/OsFlumen1.webp",
       tags: ["React", "Tailwind"],
       link: "https://osflumen.com",
-      github: "https://github.com/lorenzooradu/osflumen",
+      github: "https://github.com/lorenzohauradou/osflumen",
       status: "Shipped",
       statusEmoji: "🚀",
     },
@@ -44,7 +44,7 @@ export default function Projects() {
       image: "/appuntoai.webp",
       tags: ["SaaS","Next.js", "Stripe", "Shadcn", "Python"],
       link: "https://appuntoai.com",
-      github: "https://github.com/lorenzooradu/appuntoai-dashboard",
+      github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
       status: "Running",
       statusEmoji: "🟢",
     },
@@ -54,7 +54,7 @@ export default function Projects() {
       image: "/ali2bay.webp",
       tags: ["Next.js", "API", "SaaS", "Python", "Flask"],
       link: "https://ali2bay.com",
-      github: "https://github.com/lorenzooradu/ali2bay",
+      github: "https://github.com/lorenzohauradou/ali2bay",
       status: "Dead",
       statusEmoji: "💀",
     },
@@ -64,7 +64,7 @@ export default function Projects() {
       image: "/magicboxroma.webp",
       tags: ["Next.js", "Tailwind", "Shadcn", "Resend"],
       link: "https://magicboxroma.it",
-      github: "https://github.com/lorenzooradu/magicboxroma",
+      github: "https://github.com/lorenzohauradou/magicboxroma",
       status: "Shipped",
       statusEmoji: "🚀",
     },
@@ -179,8 +179,8 @@ export default function Projects() {
           className="flex justify-center mt-16"
         >
           <Button size="lg" variant="outline" className="group">
-            <span>Visualizza tutti i progetti</span>
-            <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <Github className="h-4 w-4" />
+            <a href="https://github.com/lorenzohauradou" target="_blank" rel="noopener noreferrer">Visualizza tutti i progetti</a>
           </Button>
         </motion.div>
       </div>
