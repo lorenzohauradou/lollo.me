@@ -19,10 +19,20 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Fatturato AI",
+      description: "SaaS per la gestione dei progetti lavorativi e del fatturato da freelance",
+      image: "/FatturatoAI.png",
+      tags: ["SaaS", "Next.js", "Stripe", "Shadcn", "Python", "FastAPI"],
+      link: "https://fatturatoai.vercel.app/home",
+      github: "https://github.com/lorenzohauradou/fatturatoai",
+      status: "Running",
+      statusEmoji: "🟢",
+    },
+    {
       title: "AscoltaPDF",
       description: "Software as a Service per convertire i documenti PDF in audio",
       image: "/ascoltapdf.webp",
-      tags: ["SaaS","Next.js", "Shadcn", "Python", "FastAPI"],
+      tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://ascoltapdf.com",
       github: "https://github.com/lorenzohauradou/ascoltaPDF",
       status: "Running",
@@ -42,7 +52,7 @@ export default function Projects() {
       title: "Appuntoai",
       description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
       image: "/appuntoai.webp",
-      tags: ["SaaS","Next.js", "Stripe", "Shadcn", "Python"],
+      tags: ["SaaS", "Next.js", "Stripe", "Shadcn", "Python"],
       link: "https://appuntoai.com",
       github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
       status: "Running",
@@ -138,8 +148,8 @@ export default function Projects() {
                         {project.title}
                       </CardTitle>
                       {project.status && (
-                        <Badge 
-                          variant={project.status === "Dead" ? "destructive" : project.status === "In Sviluppo" ? "outline" : "secondary"} 
+                        <Badge
+                          variant={project.status === "Dead" ? "destructive" : project.status === "In Sviluppo" ? "outline" : "secondary"}
                           className="ml-2 text-xs whitespace-nowrap"
                         >
                           {project.statusEmoji && <span className="mr-1">{project.statusEmoji}</span>}
