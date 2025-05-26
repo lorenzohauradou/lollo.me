@@ -35,7 +35,7 @@ export default function Projects() {
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://ascoltapdf.com",
       github: "https://github.com/lorenzohauradou/ascoltaPDF",
-      status: "Running",
+      status: "Free Tool",
       statusEmoji: "🟢",
     },
     {
