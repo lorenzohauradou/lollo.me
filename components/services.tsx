@@ -101,7 +101,7 @@ export default function Services() {
           <line x1="12" x2="12" y1="22" y2="12" />
         </svg>
       ),
-      title: "Integrazione Sistemi",
+      title: "Integrazioni API",
       description:
         "Connessione e integrazione di diversi sistemi e piattaforme per creare un ecosistema digitale coerente.",
     },
