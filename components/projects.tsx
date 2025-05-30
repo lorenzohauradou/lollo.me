@@ -19,24 +19,14 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Fatturato AI",
-      description: "SaaS per la gestione dei progetti lavorativi e del fatturato da freelance",
-      image: "/FatturatoAI.png",
-      tags: ["SaaS", "Next.js", "Stripe", "Shadcn", "Python", "FastAPI"],
-      link: "https://fatturatoai.vercel.app/home",
-      github: "https://github.com/lorenzohauradou/fatturatoai",
-      status: "Running",
-      statusEmoji: "🟢",
-    },
-    {
       title: "AscoltaPDF",
-      description: "Software as a Service per convertire i documenti PDF in audio",
+      description: "Tool gratuito per convertire i documenti PDF in audio",
       image: "/ascoltapdf.webp",
-      tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
+      tags: ["Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://ascoltapdf.com",
       github: "https://github.com/lorenzohauradou/ascoltaPDF",
       status: "Free Tool",
-      statusEmoji: "🟢",
+      statusEmoji: "🆓",
     },
     {
       title: "OsFlumen",
