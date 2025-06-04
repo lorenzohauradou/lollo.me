@@ -19,6 +19,16 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "ADS MAKER AI",
+      description: "Tool per creare annunci pubblicitari per Social Media",
+      image: "/ADSMAKER.png",
+      tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
+      link: "https://adsmakerai.vercel.app/",
+      github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
+      status: "Running",
+      statusEmoji: "🟢",
+    },
+    {
       title: "AscoltaPDF",
       description: "Tool gratuito per convertire i documenti PDF in audio",
       image: "/ascoltapdf.webp",
@@ -52,7 +62,7 @@ export default function Projects() {
       title: "Ali2bay",
       description: "Piattaforma per automatizzare il processo di vendita e pubblicazione prodotti su eBay",
       image: "/ali2bay.webp",
-      tags: ["Next.js", "API", "SaaS", "Python", "Flask"],
+      tags: ["Next.js", "API", "Bot", "Python", "Flask"],
       link: "https://ali2bay.com",
       github: "https://github.com/lorenzohauradou/ali2bay",
       status: "Dead",
