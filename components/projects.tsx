@@ -19,7 +19,7 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "ADS MAKER AI",
+      title: "FAST ADS AI",
       description: "Tool per creare annunci pubblicitari per Social Media",
       image: "/ADSMAKER.png",
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
