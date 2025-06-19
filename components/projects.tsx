@@ -23,7 +23,7 @@ export default function Projects() {
       description: "Tool per creare annunci pubblicitari per Social Media",
       image: "/ADSMAKER.png",
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
-      link: "https://adsmakerai.vercel.app/",
+      link: "https://fastadsai.com",
       github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
       status: "Running",
       statusEmoji: "🟢",
