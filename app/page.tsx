@@ -3,7 +3,7 @@ import Hero from "@/components/hero"
 import Services from "@/components/services"
 import About from "@/components/about"
 import Projects from "@/components/projects"
-import Subscription from "@/components/subscription"
+//import Subscription from "@/components/subscription"
 import Contact from "@/components/contact"
 import Footer from "@/components/footer"
 import LogoMarquee from "@/components/logo-marquee"
@@ -24,7 +24,7 @@ export default function Home() {
       <Services />
       <About />
       <Projects />
-      <Subscription />
+      {/* <Subscription /> */}
       <Contact />
       <Footer />
       <Analytics />
