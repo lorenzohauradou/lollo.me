@@ -19,6 +19,16 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Past Reels",
+      description: "Create Cinematic historical reels for social media",
+      image: "/pastreelslanding.png",
+      tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
+      link: "https://pastreels.com",
+      github: "https://github.com/lorenzohauradou",
+      status: "Running",
+      statusEmoji: "🟢",
+    },
+    {
       title: "FAST ADS AI",
       description: "Tool per creare annunci pubblicitari per Social Media",
       image: "/ADSMAKER.png",
