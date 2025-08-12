@@ -23,7 +23,7 @@ export default function Projects() {
       description: "Linkedin AI Agent to make you show up everyday",
       image: "/vibescaling_landing.png",
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
-      link: "https://vibescaling.com",
+      link: "https://vibescaling.app",
       github: "https://github.com/lorenzohauradou",
       status: "Running",
       statusEmoji: "🚴",
