@@ -19,6 +19,16 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Vibe Scaling",
+      description: "Linkedin AI Agent to make you show up everyday",
+      image: "/vibescaling_landing.png",
+      tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
+      link: "https://vibescaling.com",
+      github: "https://github.com/lorenzohauradou",
+      status: "Running",
+      statusEmoji: "🚴",
+    },
+    {
       title: "Past Reels",
       description: "Create Cinematic historical reels for social media",
       image: "/pastreelslanding.png",
@@ -35,8 +45,8 @@ export default function Projects() {
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://fastadsai.com",
       github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
-      status: "Running",
-      statusEmoji: "🟢",
+      status: "Paused",
+      statusEmoji: "🚧",
     },
     {
       title: "AscoltaPDF",
