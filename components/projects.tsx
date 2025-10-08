@@ -19,6 +19,14 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Snap Screen",
+      description: "Tool per creare demo di prodotti SaaS",
+      image: "/snapscreen.png",
+      tags: ["SaaS", "Next.js", "Remotion", "Python", "FastAPI"],
+      link: "https://snapscreen.app",
+      github: "https://github.com/lorenzohauradou",
+    },
+    {
       title: "Vibe Scaling",
       description: "Linkedin AI Agent to make you show up everyday",
       image: "/vibescaling_landing.png",
@@ -27,6 +35,26 @@ export default function Projects() {
       github: "https://github.com/lorenzohauradou",
       status: "Running",
       statusEmoji: "🚴",
+    },
+    {
+      title: "Appuntoai",
+      description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
+      image: "/appuntoai.webp",
+      tags: ["SaaS", "Next.js", "Stripe", "Shadcn", "Python"],
+      link: "https://appuntoai.com",
+      github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
+      status: "Running",
+      statusEmoji: "🚴",
+    },
+    {
+      title: "Vittori Consulting",
+      description: "Sito web per marketing consulting",
+      image: "/vittori.png",
+      tags: ["Next.js", "Tailwind"],
+      link: "https://vittoriconsulting.it",
+      github: "https://github.com/lorenzohauradou/vittoriconsulting",
+      status: "Shipped",
+      statusEmoji: "🚀",
     },
     {
       title: "Past Reels",
@@ -49,16 +77,6 @@ export default function Projects() {
       statusEmoji: "🚧",
     },
     {
-      title: "AscoltaPDF",
-      description: "Tool gratuito per convertire i documenti PDF in audio",
-      image: "/ascoltapdf.webp",
-      tags: ["Next.js", "Shadcn", "Python", "FastAPI"],
-      link: "https://ascoltapdf.com",
-      github: "https://github.com/lorenzohauradou/ascoltaPDF",
-      status: "Free Tool",
-      statusEmoji: "🆓",
-    },
-    {
       title: "OsFlumen",
       description: "Sito web vetrina per azienda di olio extravergine d'oliva",
       image: "/OsFlumen1.webp",
@@ -67,16 +85,6 @@ export default function Projects() {
       github: "https://github.com/lorenzohauradou/osflumen",
       status: "Shipped",
       statusEmoji: "🚀",
-    },
-    {
-      title: "Appuntoai",
-      description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
-      image: "/appuntoai.webp",
-      tags: ["SaaS", "Next.js", "Stripe", "Shadcn", "Python"],
-      link: "https://appuntoai.com",
-      github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
-      status: "Running",
-      statusEmoji: "🟢",
     },
     {
       title: "Ali2bay",
