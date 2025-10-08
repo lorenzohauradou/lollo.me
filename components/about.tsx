@@ -74,8 +74,6 @@ export default function About() {
             </p>
             <p className="text-lg text-muted-foreground mb-8">
               Il mio approccio è pratico e orientato al business — lavoro solo su soluzioni che generano impatto reale.
-              Oltre ai classici progetti su misura, offro anche un modello di collaborazione in abbonamento per chi ha
-              bisogno di un partner digitale continuo.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
