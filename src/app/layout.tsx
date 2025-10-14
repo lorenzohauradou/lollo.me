@@ -63,9 +63,9 @@ export const metadata: Metadata = {
     description: "Sviluppo web, automazioni AI e consulenza digitale",
     images: [
       {
-        url: "https://lollo.me/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "https://lollo.me/logo.webp",
+        width: 512,
+        height: 512,
         alt: "Lorenzo Hauradou - Freelance Developer",
       },
     ],
@@ -76,12 +76,9 @@ export const metadata: Metadata = {
     creator: "@TECHLOLLO",
     title: "Lorenzo Hauradou | Freelance Developer & Digital Partner",
     description: "Freelance developer specializzato in sviluppo web moderno, automazioni AI e consulenza digitale. Trasformo idee in prodotti digitali per startup e aziende in tutta Italia.",
-    images: ["https://lollo.me/og-image.jpg"],
+    images: ["https://lollo.me/logo.webp"],
   },
   manifest: "/site.webmanifest",
-  verification: {
-    google: "your-google-verification-code",
-  },
 }
 
 export const viewport: Viewport = {
