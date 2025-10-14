@@ -114,7 +114,7 @@ export default function Footer() {
         <Separator className="bg-white/10 my-6" />
 
         <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-          <p className="text-white/50 text-sm mb-4 md:mb-0">© {currentYear} lollo.me. Tutti i diritti riservati. - P.IVA 02463360566</p>
+          <p className="text-white/50 text-sm mb-4 md:mb-0">© {currentYear} lollo.me. Tutti i diritti riservati.</p>
           <p className="text-white/50 text-sm">
             Designed & Developed by <span className="font-bold">Lorenzo Hauradou</span>
           </p>
