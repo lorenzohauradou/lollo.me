@@ -60,7 +60,6 @@ export default function Cursor() {
       backgroundColor: "#9333EA",
       height: 64,
       width: 64,
-      mixBlendMode: "difference",
     },
     click: {
       x: mousePosition.x - 16,
@@ -80,6 +79,9 @@ export default function Cursor() {
       variants={variants}
       animate={cursorVariant}
       transition={{ type: "spring", stiffness: 500, damping: 28 }}
+      style={{
+        mixBlendMode: cursorVariant === "hover" ? "difference" : "normal",
+      }}
     />
   )
 }
