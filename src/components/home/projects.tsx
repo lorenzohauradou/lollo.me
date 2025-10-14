@@ -33,8 +33,6 @@ export default function Projects() {
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://vibescaling.app",
       github: "https://github.com/lorenzohauradou",
-      status: "Running",
-      statusEmoji: "🚴",
     },
     {
       title: "Appuntoai",
@@ -63,8 +61,6 @@ export default function Projects() {
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://pastreels.com",
       github: "https://github.com/lorenzohauradou",
-      status: "Running",
-      statusEmoji: "🟢",
     },
     {
       title: "FAST ADS AI",
@@ -73,8 +69,8 @@ export default function Projects() {
       tags: ["SaaS", "Next.js", "Shadcn", "Python", "FastAPI"],
       link: "https://fastadsai.com",
       github: "https://github.com/lorenzohauradou/appuntoai-dashboard",
-      status: "Paused",
-      statusEmoji: "🚧",
+      status: "Dead",
+      statusEmoji: "💀",
     },
     {
       title: "OsFlumen",
