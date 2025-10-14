@@ -1,14 +1,13 @@
 import type { Metadata } from "next"
-import Hero from "@/src/components/page/hero"
-import Services from "@/src/components/page/services"
-import About from "@/src/components/page/about"
-import Projects from "@/src/components/page/projects"
-//import Subscription from "@/components/subscription"
-import Contact from "@/src/components/page/contact"
-import Footer from "@/src/components/page/footer"
+import Navbar from "@/src/components/home/navbar"
+import Cursor from "@/src/components/cursor"
+import Hero from "@/src/components/home/hero"
+import About from "@/src/components/home/about"
+import Projects from "@/src/components/home/projects"
+import Contact from "@/src/components/home/contact"
+import Footer from "@/src/components/home/footer"
 import LogoMarquee from "@/src/components/ui/logo-marquee"
-
-import { Analytics } from "@vercel/analytics/next"
+import { Toaster } from "@/src/components/ui/sonner"
 
 export const metadata: Metadata = {
   title: "Lollo.me | Sviluppo web, automazioni, consulenza e soluzioni digitali su misura",
@@ -18,16 +17,18 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main className="min-h-screen relative overflow-x-hidden">
-      <Hero />
-      <LogoMarquee />
-      <Services />
-      <About />
-      <Projects />
-      {/* <Subscription /> */}
-      <Contact />
-      <Footer />
-      <Analytics />
-    </main>
+    <>
+      <Cursor />
+      <Navbar />
+      <main className="min-h-screen relative overflow-x-hidden">
+        <Hero />
+        <LogoMarquee />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </main>
+      <Toaster />
+    </>
   )
 }

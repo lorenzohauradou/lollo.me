@@ -25,10 +25,8 @@ export default function Navbar() {
   const toggleMenu = () => setIsOpen(!isOpen)
 
   const navLinks = [
-    { href: "#services", label: "Servizi" },
     { href: "#about", label: "Chi sono" },
     { href: "#projects", label: "Progetti" },
-    { href: "#subscription", label: "Abbonamento" },
     { href: "#contact", label: "Contatti" },
   ]
 

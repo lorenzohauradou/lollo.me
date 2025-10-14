@@ -1,0 +1,49 @@
+# Lorenzo Hauradou - Freelance Developer & Digital Partner
+
+## Chi sono
+Lorenzo Hauradou, freelance developer specializzato in sviluppo web moderno, automazioni AI e consulenza digitale. Aiuto startup, professionisti e aziende a trasformare le loro idee in prodotti digitali concreti.
+
+## Servizi principali
+
+### Sviluppo Web
+Siti web, landing page e applicazioni web personalizzate con tecnologie moderne come Next.js, React e Tailwind CSS.
+
+### Automazioni AI
+Integrazione di intelligenza artificiale, automazioni workflow e ottimizzazione processi aziendali.
+
+### Consulenza Digitale
+Strategie digitali, ottimizzazione conversioni e consulenza tecnologica per startup e aziende.
+
+## Tecnologie
+- Next.js & React
+- TypeScript
+- Tailwind CSS
+- Node.js
+- AI Integration (OpenAI, Claude, Gemini)
+- API Development
+- Database Design
+
+## Progetti
+Portfolio di progetti realizzati per startup e aziende in diversi settori: e-commerce, SaaS, landing page, applicazioni web custom.
+
+## Contatti
+- Email: lorenzooradu@gmail.com
+- WhatsApp: +39 339 446 4650
+- Website: https://lollo.me
+- Instagram: @lorenzooradu
+- Twitter: @TECHLOLLO
+- LinkedIn: lorenzohauradou
+- GitHub: lorenzohauradou
+
+## Disponibilità
+- Lunedì - Venerdì: 9:00 - 18:00
+- Sabato: 10:00 - 14:00
+- Domenica: Chiuso
+
+## P.IVA
+02463360566
+
+---
+
+> Trasformo idee in prodotti digitali concreti. Contattami per discutere del tuo progetto.
+
