@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import Navbar from "@/src/components/home/navbar"
-import Cursor from "@/src/components/cursor"
+import Cursor from "@/src/components/ui/cursor"
 import Hero from "@/src/components/home/hero"
 import About from "@/src/components/home/about"
 import Projects from "@/src/components/home/projects"
