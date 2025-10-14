@@ -11,23 +11,59 @@ import { Mail, MessageSquare, Send, Instagram, Twitter, Linkedin, Github } from 
 import { Badge } from "@/components/ui/badge"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { toast } from "sonner"
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [projectType, setProjectType] = useState("")
+  const [budget, setBudget] = useState("")
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500))
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      projectType,
+      budget,
+      message: formData.get('message'),
+    }
 
-    setIsSubmitting(false)
-    // Here you would normally handle the form submission
-    alert("Grazie per il tuo messaggio! Ti risponderò al più presto.")
-    ;(e.target as HTMLFormElement).reset()
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      if (response.ok) {
+        toast.success("Messaggio inviato con successo!", {
+          description: "Ti risponderò entro 24 ore. Controlla anche lo spam.",
+          duration: 5000,
+        })
+          ; (e.target as HTMLFormElement).reset()
+        setProjectType("")
+        setBudget("")
+      } else {
+        toast.error("Errore nell'invio del messaggio", {
+          description: "Si è verificato un problema. Riprova o contattami via email.",
+          duration: 5000,
+        })
+      }
+    } catch (error) {
+      toast.error("Errore di connessione", {
+        description: "Controlla la tua connessione internet e riprova.",
+        duration: 5000,
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -109,7 +145,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
                     >
-                      <Linkedin className="h-5 w-5 group-hover:text-accent-linkedin transition-colors duration-200" /> 
+                      <Linkedin className="h-5 w-5 group-hover:text-accent-linkedin transition-colors duration-200" />
                       <span>lorenzohauradou</span>
                     </a>
                     <a
@@ -162,6 +198,7 @@ export default function Contact() {
                     <Label htmlFor="name">Nome</Label>
                     <Input
                       id="name"
+                      name="name"
                       type="text"
                       placeholder="Il tuo nome"
                       required
@@ -172,6 +209,7 @@ export default function Contact() {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="La tua email"
                       required
@@ -188,7 +226,7 @@ export default function Contact() {
               >
                 <div className="space-y-2">
                   <Label htmlFor="subject">Tipo di progetto</Label>
-                  <Select>
+                  <Select value={projectType} onValueChange={setProjectType}>
                     <SelectTrigger className="bg-white/5 border-white/10 focus:ring-accent-blue/20 text-white">
                       <SelectValue placeholder="Seleziona il tipo di progetto" />
                     </SelectTrigger>
@@ -211,7 +249,7 @@ export default function Contact() {
               >
                 <div className="space-y-2">
                   <Label htmlFor="budget">Budget indicativo</Label>
-                  <Select>
+                  <Select value={budget} onValueChange={setBudget}>
                     <SelectTrigger className="bg-white/5 border-white/10 focus:ring-accent-blue/20 text-white">
                       <SelectValue placeholder="Seleziona il budget" />
                     </SelectTrigger>
@@ -234,6 +272,7 @@ export default function Contact() {
                   <Label htmlFor="message">Messaggio</Label>
                   <Textarea
                     id="message"
+                    name="message"
                     placeholder="Descrivi il tuo progetto"
                     rows={5}
                     required

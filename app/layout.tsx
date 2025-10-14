@@ -4,6 +4,7 @@ import "./globals.css"
 import Navbar from "@/components/navbar"
 import { ThemeProvider } from "@/components/theme-provider"
 import Cursor from "@/components/cursor"
+import { Toaster } from "@/components/ui/sonner"
 import type { Metadata, Viewport } from 'next'
 
 export const metadata: Metadata = {
@@ -81,6 +82,7 @@ export default function RootLayout({
           <Cursor />
           <Navbar />
           {children}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
