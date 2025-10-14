@@ -54,7 +54,7 @@ export default function About() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="absolute -bottom-6 -right-6 bg-white border border-border rounded-lg p-4 shadow-md"
               >
-                <div className="text-4xl font-bold gradient-text">3+</div>
+                <div className="text-4xl font-bold gradient-text">4+</div>
                 <div className="text-sm text-muted-foreground">Anni di esperienza</div>
               </motion.div>
             </div>
