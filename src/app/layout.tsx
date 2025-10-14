@@ -116,7 +116,8 @@ export default function RootLayout({
       "Next.js",
       "React",
       "AI Automation",
-      "Digital Consulting"
+      "Digital Consulting",
+      "SEO"
     ],
     "offers": {
       "@type": "Offer",
