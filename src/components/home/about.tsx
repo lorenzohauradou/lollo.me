@@ -69,7 +69,7 @@ export default function About() {
               Ciao, sono <span className="gradient-text">Lorenzo</span>
             </h2>
             <p className="text-lg text-muted-foreground mb-4 italic">
-              I was born in Guadeloupe 99' during the dry season 🌴
+              I was born in Guadeloupe 99' during the wet season 🌴
             </p>
             <p className="text-lg text-muted-foreground mb-4">
               A 20 anni ho iniziato ad appassionarmi allo sviluppo web/software e al business
