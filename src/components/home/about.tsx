@@ -80,7 +80,7 @@ export default function About() {
             </p>
             <p className="text-lg text-muted-foreground mb-6">
               Aiuto startup, professionisti e aziende a trasformare le loro idee in prodotti digitali concreti —
-              lavoro solo su progetti che risolvono problemi reali e che fanno la differenza
+              lavoro solo su progetti che risolvono problemi reali e ad alto impatto
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
