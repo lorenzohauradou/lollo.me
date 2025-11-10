@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, Fragment } from "react"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
@@ -11,16 +11,31 @@ import Image from "next/image"
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const isMobile = useMobile()
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY < 10) {
+        setIsVisible(true)
+        setScrolled(false)
+      } else {
+        setScrolled(true)
+        if (currentScrollY > lastScrollY) {
+          setIsVisible(false)
+        } else {
+          setIsVisible(true)
+        }
+      }
+      setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  }, [lastScrollY])
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
@@ -51,7 +66,7 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
-        }`}
+        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -70,8 +85,8 @@ export default function Navbar() {
                 className="mr-2"
               />
               <div className="text-2xl font-bold font-heading">
-                <span className="gradient-text">lollo</span>
-                <span>.me</span>
+                <span className="gradient-text">lorenzo</span>
+                <span>.hauradou</span>
               </div>
             </motion.div>
           </Link>
@@ -81,14 +96,19 @@ export default function Navbar() {
               variants={navVariants}
               initial="hidden"
               animate="visible"
-              className="flex items-center space-x-8"
+              className="flex items-center space-x-4 ml-auto"
             >
-              {navLinks.map((link) => (
-                <motion.div key={link.href} variants={itemVariants}>
-                  <Link href={link.href} className="text-foreground/80 hover:text-accent-blue transition-colors">
-                    {link.label}
-                  </Link>
-                </motion.div>
+              {navLinks.map((link, index) => (
+                <Fragment key={link.href}>
+                  <motion.div variants={itemVariants}>
+                    <Link href={link.href} className="text-foreground/80 hover:text-accent-blue transition-colors text-sm font-medium">
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                  {index < navLinks.length - 1 && (
+                    <span className="text-gray-300 text-sm">/</span>
+                  )}
+                </Fragment>
               ))}
               <motion.div variants={itemVariants}>
                 <a
