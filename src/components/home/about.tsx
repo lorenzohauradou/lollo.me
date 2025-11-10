@@ -12,13 +12,13 @@ export default function About() {
   const isInView = useInView(ref, { once: true, amount: 0.2 })
 
   const skills = [
-    "Sviluppo Web (Next.js, React, Python)",
+    "Sviluppo Web (Next.js, React)",
     "Automazioni e Integrazioni (API, Webhooks)",
     "UI/UX Design",
     "Consulenza Strategica",
     "Ottimizzazione Performance e SEO",
     "Soluzioni Personalizzate",
-    "Sviluppo Software"
+    "Sviluppo Software (Python)"
   ]
 
   return (
