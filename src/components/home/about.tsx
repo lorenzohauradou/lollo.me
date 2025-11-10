@@ -66,14 +66,21 @@ export default function About() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading tracking-tight">
-              Chi <span className="gradient-text">Sono</span>
+              Ciao, sono <span className="gradient-text">Lorenzo</span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Sono un freelancer con una forte passione per lo sviluppo web e software. Aiuto
-              startup, professionisti e aziende a trasformare le loro idee in prodotti digitali concreti.
+            <p className="text-lg text-muted-foreground mb-4 italic">
+              I was born in Guadeloupe during the dry season 🌴
             </p>
-            <p className="text-lg text-muted-foreground mb-8">
-              Il mio approccio è pratico e orientato al business — lavoro solo su soluzioni che generano impatto reale.
+            <p className="text-lg text-muted-foreground mb-4">
+              A 20 anni ho iniziato ad appassionarmi allo sviluppo web/software e al business
+            </p>
+            <p className="text-lg text-muted-foreground mb-4">
+              "Serial App Builder" -
+              Passo ore davanti al computer a costruire cose, risolvere problemi e imparare cose nuove
+            </p>
+            <p className="text-lg text-muted-foreground mb-6">
+              Aiuto startup, professionisti e aziende a trasformare le loro idee in prodotti digitali concreti —
+              lavoro solo su progetti che hanno senso e che possono fare la differenza.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
