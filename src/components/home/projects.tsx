@@ -19,6 +19,15 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Central SEO",
+      description: "AI-powered content creation platform for agencies to manage multi-tenant WordPress sites with brand-specific voice and human-in-the-loop workflow",
+      image: "/centralseo1.png",
+      tags: ["SaaS", "Next.js", "AI", "WordPress", "SEO"],
+      link: "https://centralseo.app",
+      status: "Running",
+      statusEmoji: "🚴",
+    },
+    {
       title: "Snap Screen",
       description: "Tool per creare demo di prodotti SaaS",
       image: "/snapscreen.png",
