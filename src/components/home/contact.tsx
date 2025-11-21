@@ -161,24 +161,6 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-
-            <div className="mt-12 p-6 bg-white/5 rounded-lg border border-white/10 lg:mx-0 mx-auto max-w-md">
-              <h4 className="text-lg font-semibold mb-4">Orari di disponibilità</h4>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-white/70">Lunedì - Venerdì</span>
-                  <span>9:00 - 18:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white/70">Sabato</span>
-                  <span>10:00 - 14:00</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-white/70">Domenica</span>
-                  <span>Chiuso</span>
-                </div>
-              </div>
-            </div>
           </motion.div>
 
           <motion.div
