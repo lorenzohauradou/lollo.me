@@ -72,15 +72,11 @@ export default function About() {
               I was born in Guadeloupe 99' during the wet season 🌴
             </p>
             <p className="text-lg text-muted-foreground mb-4">
-              A 20 anni ho iniziato ad appassionarmi allo sviluppo web/software e al business
-            </p>
-            <p className="text-lg text-muted-foreground mb-4">
-              "Serial App Builder" -
-              Passo ore davanti al computer a costruire cose, risolvere problemi e imparare cose nuove
+              Passo ore davanti al computer a costruire cose, risolvere problemi e imparare cose nuove.
             </p>
             <p className="text-lg text-muted-foreground mb-6">
               Aiuto startup, professionisti e aziende a trasformare le loro idee in prodotti digitali concreti —
-              lavoro solo su progetti che risolvono problemi reali e ad alto impatto
+              lavoro solo su progetti che risolvono problemi reali e ad alto impatto.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
