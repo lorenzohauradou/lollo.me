@@ -60,8 +60,7 @@ export default function Projects() {
       image: "/waibe1.png",
       tags: ["Next.js", "Python"],
       link: "https://waibe.app",
-      status: "Running",
-      statusEmoji: "🚴",
+      status: "Free"
     },
     {
       title: "OsFlumen",
