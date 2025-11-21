@@ -22,7 +22,7 @@ export default function Projects() {
       title: "Central SEO",
       description: "AI-powered content creation platform for agencies to manage multi-tenant WordPress sites with brand-specific voice and human-in-the-loop workflow",
       image: "/centralseo1.png",
-      tags: ["SaaS", "Next.js", "AI", "WordPress", "SEO"],
+      tags: ["SaaS", "Next.js", "AI", "SEO"],
       link: "https://centralseo.app",
       status: "Running",
       statusEmoji: "🚴",
