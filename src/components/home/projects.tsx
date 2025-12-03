@@ -29,7 +29,7 @@ export default function Projects() {
     },
     {
       title: "Vittori Consulting",
-      description: "Sito web per marketing consulting",
+      description: "Vittori Consulting Agency",
       image: "/vittori.png",
       tags: ["Next.js", "Tailwind"],
       link: "https://vittoriconsulting.it",
