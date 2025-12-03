@@ -52,7 +52,7 @@ export default function Hero() {
             className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto"
           >
             Aiuto startup, professionisti e aziende a creare siti web, landing page, automazioni e strumenti
-            personalizzati con un approccio pratico e orientato al business.
+            personalizzati con un approccio pratico e orientato al business
           </motion.p>
 
           <motion.div

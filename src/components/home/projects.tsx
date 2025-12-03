@@ -20,7 +20,7 @@ export default function Projects() {
   const projects = [
     {
       title: "Appuntoai",
-      description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
+      description: "Trasforma ore di lezione audio/video in Trascrizioni, Mappe Concettuali, Slides e Quiz in pochi secondi",
       image: "/appuntoai.webp",
       tags: ["SaaS", "Next.js", "Stripe", "Shadcn", "Python"],
       link: "https://appuntoai.com",
@@ -29,7 +29,7 @@ export default function Projects() {
     },
     {
       title: "Vittori Consulting",
-      description: "Vittori Consulting Agency",
+      description: "Vittori Consulting marketing agency",
       image: "/vittori.png",
       tags: ["Next.js", "Tailwind"],
       link: "https://vittoriconsulting.it",
@@ -47,7 +47,7 @@ export default function Projects() {
     },
     {
       title: "OsFlumen",
-      description: "Sito web vetrina per azienda di olio extravergine d'oliva",
+      description: "olio extravergine d'oliva",
       image: "/OsFlumen1.webp",
       tags: ["React", "Tailwind"],
       link: "https://osflumen.com",
