@@ -19,23 +19,6 @@ export default function Projects() {
 
   const projects = [
     {
-      title: "Central SEO",
-      description: "AI-powered content creation platform for agencies to manage multi-tenant WordPress sites with brand-specific voice and human-in-the-loop workflow",
-      image: "/centralseo1.png",
-      tags: ["SaaS", "Next.js", "AI", "SEO"],
-      link: "https://centralseo.app",
-      status: "Running",
-      statusEmoji: "🚴",
-    },
-    {
-      title: "Snap Screen",
-      description: "Tool per creare demo di prodotti SaaS",
-      image: "/snapscreen.png",
-      tags: ["SaaS", "Next.js", "Remotion", "Python", "FastAPI"],
-      link: "https://snapscreen.app",
-      github: "https://github.com/lorenzohauradou",
-    },
-    {
       title: "Appuntoai",
       description: "Software as a Service per estrarre solo i punti cruciali da un video/audio lezione o meeting",
       image: "/appuntoai.webp",
