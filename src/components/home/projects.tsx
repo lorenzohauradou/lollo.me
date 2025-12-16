@@ -21,7 +21,7 @@ export default function Projects() {
     {
       title: "Swipe Carousel",
       description: "Take your competitor's carousels and transform them into your unique brand style using AI",
-      image: "/flash-cards.png",
+      image: "/flash-card.png",
       tags: ["SaaS", "Next.js", "Stripe", "Python"],
       link: "https://swipecarousel.com",
       status: "Running",
