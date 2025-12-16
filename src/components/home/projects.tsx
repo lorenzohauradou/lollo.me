@@ -19,6 +19,15 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "Swipe Carousel",
+      description: "Take your competitor's carousels and transform them into your unique brand style using AI",
+      image: "/flash-cards.png",
+      tags: ["SaaS", "Next.js", "Stripe", "Python"],
+      link: "https://swipecarousel.com",
+      status: "Running",
+      statusEmoji: "🚴",
+    },
+    {
       title: "Appuntoai",
       description: "Trasforma ore di lezione audio/video in Trascrizioni, Mappe Concettuali, Slides e Quiz in pochi secondi",
       image: "/appuntoai.webp",
