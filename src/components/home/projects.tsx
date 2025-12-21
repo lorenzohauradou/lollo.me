@@ -33,7 +33,7 @@ export default function Projects() {
     {
       title: "Vittori Consulting",
       description: "Marketing agency website with modern design and smooth animations",
-      media: { type: "image" as const, src: "/vittori.png" },
+      media: { type: "image" as const, src: "/vittori.webp" },
       tags: ["Next.js", "Tailwind", "Framer Motion"],
       link: "https://vittoriconsulting.it",
       github: "https://github.com/lorenzohauradou/vittoriconsulting",
@@ -43,7 +43,7 @@ export default function Projects() {
     {
       title: "Waibe",
       description: "Transform your selfies into time-traveling trips through history",
-      media: { type: "image" as const, src: "/waibe1.png" },
+      media: { type: "image" as const, src: "/waibe1.webp" },
       tags: ["Next.js", "Python", "AI"],
       link: "https://waibe.app",
       status: "Free",

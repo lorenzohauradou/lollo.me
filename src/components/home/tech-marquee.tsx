@@ -102,7 +102,7 @@ const technologies = [
     },
     {
         name: "Gemini", icon: (
-            <Image src="/gemini.png" alt="Gemini" width={20} height={20} className="w-5 h-5 object-contain brightness-0 opacity-25 dark:brightness-0 dark:invert" />
+            <Image src="/gemini.webp" alt="Gemini" width={20} height={20} className="w-5 h-5 object-contain brightness-0 opacity-25 dark:brightness-0 dark:invert" />
         )
     },
     {

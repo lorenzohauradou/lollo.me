@@ -26,8 +26,8 @@ export default function Header() {
                             className="relative w-16 h-16"
                         >
                             <Image
-                                src="/emoji1.png"
-                                alt="Lorenzo"
+                                src="/emoji1.webp"
+                                alt="Lorenzo Hauradou"
                                 fill
                                 className="object-cover"
                                 priority

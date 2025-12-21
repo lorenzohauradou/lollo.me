@@ -36,8 +36,8 @@ export default function About() {
                 className="relative w-10 h-10 rounded-full overflow-hidden"
               >
                 <Image
-                  src="/emoji1.png"
-                  alt="Lorenzo"
+                  src="/emoji1.webp"
+                  alt="Lorenzo Hauradou"
                   fill
                   className="object-cover"
                 />
