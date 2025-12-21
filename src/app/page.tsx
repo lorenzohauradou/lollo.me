@@ -7,6 +7,7 @@ import Projects from "@/src/components/home/projects"
 import Contact from "@/src/components/home/contact"
 import Footer from "@/src/components/home/footer"
 import { Toaster } from "@/src/components/ui/sonner"
+import WhatsAppButton from "@/src/components/ui/whatsapp-button"
 
 export const metadata: Metadata = {
   title: "Lorenzo Hauradou | Developer & Founder",
@@ -27,6 +28,7 @@ export default function Home() {
       </main>
       <Footer />
       <Toaster />
+      <WhatsAppButton />
     </>
   )
 }
