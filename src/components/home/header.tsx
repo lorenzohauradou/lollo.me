@@ -6,7 +6,7 @@ import Image from "next/image"
 
 export default function Header() {
     return (
-        <section className="min-h-[80vh] flex flex-col justify-center pt-20 relative overflow-hidden">
+        <section className="min-h-[80vh] flex flex-col justify-center pt-28 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-amber-50/50 via-transparent to-rose-50/30 dark:from-transparent dark:to-transparent" />
             <div className="absolute top-20 right-20 w-72 h-72 bg-gradient-to-br from-orange-200/20 to-pink-200/20 rounded-full blur-3xl dark:opacity-0" />
             <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-blue-100/20 to-purple-100/20 rounded-full blur-3xl dark:opacity-0" />

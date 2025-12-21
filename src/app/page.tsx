@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Navbar from "@/src/components/home/navbar"
+import TechMarquee from "@/src/components/home/tech-marquee"
 import Header from "@/src/components/home/header"
 import About from "@/src/components/home/about"
 import Projects from "@/src/components/home/projects"
@@ -17,7 +18,8 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <TechMarquee />
+      <main className="min-h-screen pt-8">
         <Header />
         <Projects />
         <About />
