@@ -191,6 +191,16 @@ body {
   background: hsl(var(--muted-foreground) / 0.4);
 }
 
+/* Hide scrollbar for horizontal scroll containers */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Status badge glow */
 .status-live {
   box-shadow: 0 0 8px hsl(142 76% 36% / 0.25);
