@@ -13,16 +13,16 @@ export default function Projects() {
   const projects = [
     {
       title: "Appuntoai",
-      description: "Turn hours of audio/video lectures into transcripts, mind maps, slides and quizzes in seconds.",
+      description: "Turn hours of audio/video lectures into transcripts, mind maps, quizzes and AI oral interview",
       media: { type: "image" as const, src: "/appuntoai.webp" },
-      tags: ["SaaS", "Next.js", "Python", "AI"],
+      tags: ["SaaS", "Next.js", "Python", "Live Kit", "Groq"],
       link: "https://appuntoai.com",
       status: "Running",
       statusEmoji: "🚴",
     },
     {
       title: "Swipe Carousel",
-      description: "Transform competitor carousels into your unique brand style using AI.",
+      description: "Transform competitor carousels into your unique brand style using AI",
       media: { type: "video" as const, src: "/swipe.mov" },
       tags: ["SaaS", "Next.js", "Python", "AI"],
       link: "https://swipecarousel.com",
@@ -31,7 +31,7 @@ export default function Projects() {
     },
     {
       title: "Waibe",
-      description: "Transform your selfies into time-traveling trips through history.",
+      description: "Transform your selfies into time-traveling trips through history",
       media: { type: "image" as const, src: "/waibe1.png" },
       tags: ["Next.js", "Python", "AI"],
       link: "https://waibe.app",
@@ -39,9 +39,9 @@ export default function Projects() {
     },
     {
       title: "Vittori Consulting",
-      description: "Marketing agency website with modern design and smooth animations.",
+      description: "Marketing agency website with modern design and smooth animations",
       media: { type: "image" as const, src: "/vittori.png" },
-      tags: ["Next.js", "Tailwind"],
+      tags: ["Next.js", "Tailwind", "Framer Motion"],
       link: "https://vittoriconsulting.it",
       github: "https://github.com/lorenzohauradou/vittoriconsulting",
       status: "Shipped",
@@ -49,7 +49,7 @@ export default function Projects() {
     },
     {
       title: "OsFlumen",
-      description: "E-commerce for premium extra virgin olive oil from Italy.",
+      description: "Website for olive oil from Italy",
       media: { type: "image" as const, src: "/OsFlumen1.webp" },
       tags: ["React", "Tailwind"],
       link: "https://osflumen.com",
@@ -59,9 +59,9 @@ export default function Projects() {
     },
     {
       title: "MagicBox Roma",
-      description: "Packaging and shipping company website with contact form integration.",
+      description: "Packaging and shipping company website with contact form integration",
       media: { type: "image" as const, src: "/magicboxroma.webp" },
-      tags: ["Next.js", "Tailwind"],
+      tags: ["Next.js", "Tailwind", "Resend"],
       link: "https://magicboxroma.it",
       github: "https://github.com/lorenzohauradou/magicboxroma",
       status: "Shipped",
@@ -80,10 +80,7 @@ export default function Projects() {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <h2 className="text-2xl font-medium tracking-tight mb-3">Projects</h2>
-          <p className="text-muted-foreground">
-            Some things I've built — from SaaS products to client work.
-          </p>
+          <h2 className="text-2xl font-medium tracking-tight mb-3">Some Projects</h2>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -135,7 +132,7 @@ export default function Projects() {
 
                     <div className="flex items-center justify-between">
                       <div className="flex flex-wrap gap-1.5">
-                        {project.tags.slice(0, 3).map((tag) => (
+                        {project.tags.map((tag) => (
                           <span
                             key={tag}
                             className="text-xs text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-md"
