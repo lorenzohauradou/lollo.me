@@ -49,8 +49,7 @@ export default function Header() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-foreground/60 max-w-xl leading-relaxed">
-                        Developer and founder helping startups turn ideas into
-                        real products — websites, apps, and AI automations
+                        Indie dev helping startups turn ideas into real products — websites, apps, and AI automations
                     </p>
                 </motion.div>
 
@@ -65,7 +64,7 @@ export default function Header() {
                         className="inline-flex items-center gap-2 text-sm text-foreground/50 hover:text-foreground transition-colors group"
                     >
                         <ArrowDown className="h-4 w-4 group-hover:translate-y-0.5 transition-transform" />
-                        Scroll to explore
+                        Scroll to my projects
                     </a>
                 </motion.div>
             </div>

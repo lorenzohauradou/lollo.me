@@ -57,7 +57,7 @@ export default function About() {
               <p>
                 I help startups, professionals, and companies turn their ideas into
                 real digital products. I only work on projects that solve real
-                problems and have high potential for impact.
+                problems and have high potential for impact
               </p>
             </div>
           </motion.div>
