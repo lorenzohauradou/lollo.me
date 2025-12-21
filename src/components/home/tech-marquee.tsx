@@ -112,6 +112,11 @@ const technologies = [
             </svg>
         )
     },
+    {
+        name: "n8n", icon: (
+            <Image src="/n8n.svg" alt="n8n" width={20} height={20} className="w-5 h-5 object-contain brightness-0 opacity-25 dark:brightness-0 dark:invert" />
+        )
+    },
 ]
 
 export default function TechMarquee() {
