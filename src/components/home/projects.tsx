@@ -34,7 +34,7 @@ export default function Projects() {
       title: "Vittori Consulting",
       description: "Marketing agency website with modern design and smooth animations",
       media: { type: "image" as const, src: "/vittori.webp" },
-      tags: ["Next.js", "Tailwind", "Framer Motion"],
+      tags: ["Next.js", "Tailwind", "Framer"],
       link: "https://vittoriconsulting.it",
       github: "https://github.com/lorenzohauradou/vittoriconsulting",
       status: "Shipped",
