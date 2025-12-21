@@ -46,7 +46,7 @@ export default function About() {
 
             <div className="space-y-4 text-muted-foreground leading-relaxed">
               <p className="italic border-l-2 border-border pl-4">
-                Born in Guadeloupe '99 during the wet season 🌴
+                I was born in Guadeloupe '99 during the wet season 🌴
               </p>
 
               <p>
