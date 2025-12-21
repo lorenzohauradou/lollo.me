@@ -49,7 +49,7 @@ export default function Header() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-foreground/60 max-w-xl leading-relaxed">
-                        Indie dev helping startups turn ideas into real products — websites, apps, and AI automations
+                        I'm an Indie dev helping startups turn ideas into real products — websites, apps, and AI automations
                     </p>
                 </motion.div>
 
