@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 
 const technologies = [
     {
@@ -94,20 +95,23 @@ const technologies = [
             </svg>
         )
     },
-    // {
-    //     name: "Groq", icon: (
-    //         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-    //             <path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 3.27c4.82 0 8.73 3.91 8.73 8.73s-3.91 8.73-8.73 8.73S3.27 16.82 3.27 12 7.18 3.27 12 3.27zm0 2.18A6.55 6.55 0 0 0 5.45 12 6.55 6.55 0 0 0 12 18.55 6.55 6.55 0 0 0 18.55 12 6.55 6.55 0 0 0 12 5.45zm0 2.19A4.36 4.36 0 0 1 16.36 12 4.36 4.36 0 0 1 12 16.36 4.36 4.36 0 0 1 7.64 12 4.36 4.36 0 0 1 12 7.64z" />
-    //         </svg>
-    //     )
-    // },
-    // {
-    //     name: "Gemini", icon: (
-    //         <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
-    //             <path d="M12 0C6.48 0 2 4.48 2 10c0 4.41 2.87 8.15 6.84 9.49C8.61 20.39 8.5 21.17 8.5 22c0 1.1.9 2 2 2h3c1.1 0 2-.9 2-2 0-.83-.11-1.61-.34-2.51C19.13 18.15 22 14.41 22 10c0-5.52-4.48-10-10-10zm0 2c4.41 0 8 3.59 8 8 0 3.35-2.07 6.22-5 7.41V14a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v3.41c-2.93-1.19-5-4.06-5-7.41 0-4.41 3.59-8 8-8z" />
-    //         </svg>
-    //     )
-    // },
+    {
+        name: "Groq", icon: (
+            <Image src="/groq.webp" alt="Groq" width={20} height={20} className="w-5 h-5 object-contain brightness-0 opacity-25 dark:brightness-80 dark:invert" />
+        )
+    },
+    {
+        name: "Gemini", icon: (
+            <Image src="/gemini.png" alt="Gemini" width={20} height={20} className="w-5 h-5 object-contain brightness-0 opacity-25 dark:brightness-0 dark:invert" />
+        )
+    },
+    {
+        name: "Anthropic", icon: (
+            <svg viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor">
+                <path d="M13.827 3.52h3.603L24 20.48h-3.603l-6.57-16.96Zm-7.257 0h3.603l6.57 16.96h-3.603L6.57 3.52ZM0 20.48h3.603L7.174 9.836 5.512 5.478 0 20.48Z" />
+            </svg>
+        )
+    },
 ]
 
 export default function TechMarquee() {
