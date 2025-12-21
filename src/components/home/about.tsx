@@ -3,101 +3,100 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import Image from "next/image"
-import { Button } from "@/src/components/ui/button"
-import { ArrowRight, CheckCircle } from "lucide-react"
-import { Badge } from "@/src/components/ui/badge"
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, amount: 0.2 })
+  const isInView = useInView(ref, { once: true, amount: 0.3 })
 
   const skills = [
-    "Sviluppo Web (Next.js, React)",
-    "Automazioni e Integrazioni (API, Webhooks)",
+    "Next.js / React",
+    "Python",
+    "AI & Automation",
     "UI/UX Design",
-    "Consulenza Strategica",
-    "Ottimizzazione Performance e SEO",
-    "Soluzioni Personalizzate",
-    "Sviluppo Software (Python)"
+    "API Development",
+    "SEO",
   ]
 
   return (
-    <section id="about" className="py-20 relative bg-[#f5f5f5]">
-      <div className="absolute inset-0 grid-pattern"></div>
-      <div className="noise-bg" />
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge className="mb-4" variant="outline">
-            CHI SONO
-          </Badge>
-        </div>
-
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="about" className="py-24 bg-muted/40 dark:bg-muted/20 section-fade-top relative" ref={ref}>
+      <div className="absolute inset-0 dot-pattern opacity-50" />
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="relative"
           >
-            <div className="relative aspect-square max-w-md mx-auto lg:mx-0 md:mb-28 scale-50">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-100 to-indigo-100 blur-3xl opacity-50" />
-              <Image
-                src="/emoji1.png"
-                alt="Descrizione dell'emoji"
-                fill
-                className="object-contain rounded-2xl"
-                priority
-              />
+            <div className="flex items-center gap-4 mb-8">
+              <h2 className="text-2xl font-medium tracking-tight">About</h2>
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={isInView ? { scale: 1, opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 }}
-                className="absolute -bottom-6 -right-6 bg-white border border-border rounded-lg p-4 shadow-md"
+                className="relative w-10 h-10 rounded-full overflow-hidden"
               >
-                <div className="text-4xl font-bold gradient-text">4+</div>
-                <div className="text-sm text-muted-foreground">Anni di esperienza</div>
+                <Image
+                  src="/emoji1.png"
+                  alt="Lorenzo"
+                  fill
+                  className="object-cover"
+                />
               </motion.div>
+            </div>
+
+            <div className="space-y-4 text-muted-foreground leading-relaxed">
+              <p className="italic border-l-2 border-border pl-4">
+                Born in Guadeloupe '99 during the wet season 🌴
+              </p>
+
+              <p>
+                I spend most of my time in front of a computer — building things,
+                solving problems, and learning what's new.
+              </p>
+
+              <p>
+                I help startups, professionals, and companies turn their ideas into
+                real digital products. I only work on projects that solve real
+                problems and have high potential for impact.
+              </p>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading tracking-tight">
-              Ciao, sono <span className="gradient-text">Lorenzo</span>
-            </h2>
-            <p className="text-lg text-muted-foreground mb-4 italic">
-              I was born in Guadeloupe 99' during the wet season 🌴
-            </p>
-            <p className="text-lg text-muted-foreground mb-4">
-              Passo ore davanti al computer a costruire cose, risolvere problemi e imparare cose nuove.
-            </p>
-            <p className="text-lg text-muted-foreground mb-6">
-              Aiuto startup, professionisti e aziende a trasformare le loro idee in prodotti digitali concreti —
-              lavoro solo su progetti che risolvono problemi reali e ad alto impatto.
-            </p>
+            <h3 className="text-xs font-medium text-muted-foreground mb-6 uppercase tracking-widest">
+              What I work with
+            </h3>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            <div className="grid grid-cols-2 gap-4">
               {skills.map((skill, index) => (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.3, delay: 0.2 + index * 0.1 }}
-                  className="flex items-center"
+                  key={skill}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.3, delay: 0.3 + index * 0.1 }}
+                  className="flex items-center gap-3 group"
                 >
-                  <CheckCircle className="h-5 w-5 text-accent-blue mr-2" />
-                  <span>{skill}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-foreground/60 group-hover:bg-foreground transition-colors" />
+                  <span className="text-sm">{skill}</span>
                 </motion.div>
               ))}
             </div>
 
-            <Button size="lg" className="group bg-accent-blue hover:bg-accent-blue/90">
-              Scopri di più
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ delay: 0.8 }}
+              className="mt-12 pt-8 border-t border-border"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="text-5xl font-medium tracking-tight">5+</span>
+                <span className="text-muted-foreground">years of experience</span>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </div>

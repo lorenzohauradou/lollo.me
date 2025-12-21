@@ -1,35 +1,34 @@
 "use client"
 
-import { useState, useEffect, Fragment } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
-import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Moon, Sun, Menu, X } from "lucide-react"
+import { useTheme } from "next-themes"
 import { Button } from "@/src/components/ui/button"
 import { useMobile } from "@/src/hooks/use-mobile"
-import Image from "next/image"
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const [isVisible, setIsVisible] = useState(true)
+  const [visible, setVisible] = useState(true)
   const [lastScrollY, setLastScrollY] = useState(0)
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
   const isMobile = useMobile()
 
   useEffect(() => {
+    setMounted(true)
+
     const handleScroll = () => {
       const currentScrollY = window.scrollY
 
-      if (currentScrollY < 10) {
-        setIsVisible(true)
-        setScrolled(false)
+      if (currentScrollY < 50) {
+        setVisible(true)
+      } else if (currentScrollY > lastScrollY) {
+        setVisible(false)
       } else {
-        setScrolled(true)
-        if (currentScrollY > lastScrollY) {
-          setIsVisible(false)
-        } else {
-          setIsVisible(true)
-        }
+        setVisible(true)
       }
+
       setLastScrollY(currentScrollY)
     }
 
@@ -37,140 +36,95 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [lastScrollY])
 
-  const toggleMenu = () => setIsOpen(!isOpen)
-
   const navLinks = [
-    { href: "#about", label: "Chi sono" },
-    { href: "#projects", label: "Progetti" },
-    { href: "#contact", label: "Contatti" },
+    { href: "#projects", label: "Projects" },
+    { href: "#about", label: "About" },
+    { href: "#contact", label: "Contact" },
   ]
 
-  const navVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: -20 },
-    visible: { opacity: 1, y: 0 },
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark")
   }
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
-        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${visible ? "translate-y-0" : "-translate-y-full"
+        } bg-background/80 backdrop-blur-lg`}
     >
-      <div className="container mx-auto px-4 py-4">
+      <div className="absolute inset-0 grid-pattern opacity-40" />
+
+      <div className="max-w-5xl mx-auto px-6 py-4 relative z-10">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="flex items-center"
-            >
-              <Image
-                src="/logo.webp"
-                alt="Logo lollo.me"
-                width={32}
-                height={32}
-                className="mr-2"
-              />
-              <div className="text-2xl font-bold font-heading">
-                <span className="gradient-text">lorenzo</span>
-                <span>.hauradou</span>
-              </div>
-            </motion.div>
+          <Link href="/" className="text-lg font-medium tracking-tight hover:text-muted-foreground transition-colors">
+            lorenzo.hauradou
           </Link>
 
           {!isMobile ? (
-            <motion.nav
-              variants={navVariants}
-              initial="hidden"
-              animate="visible"
-              className="flex items-center space-x-4 ml-auto"
-            >
-              {navLinks.map((link, index) => (
-                <Fragment key={link.href}>
-                  <motion.div variants={itemVariants}>
-                    <Link href={link.href} className="text-foreground/80 hover:text-accent-blue transition-colors text-sm font-medium">
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                  {index < navLinks.length - 1 && (
-                    <span className="text-gray-300 text-sm">/</span>
-                  )}
-                </Fragment>
-              ))}
-              <motion.div variants={itemVariants}>
-                <a
-                  href="https://wa.me/3394464650"
-                  target="_blank"
-                  rel="noopener noreferrer"
+            <nav className="flex items-center gap-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors link-underline"
                 >
-                  <Button className="bg-[#2563eb] hover:bg-[#2563eb]/90">Parliamo</Button>
-                </a>
-              </motion.div>
-            </motion.nav>
+                  {link.label}
+                </Link>
+              ))}
+
+              {mounted && (
+                <button
+                  onClick={toggleTheme}
+                  className="p-2.5 rounded-full hover:bg-muted/80 transition-all duration-200 active:scale-95"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )}
+                </button>
+              )}
+            </nav>
           ) : (
-            <div className="flex items-center">
-              <Button variant="ghost" size="icon" onClick={toggleMenu}>
-                <Menu className="h-6 w-6" />
+            <div className="flex items-center gap-2">
+              {mounted && (
+                <button
+                  onClick={toggleTheme}
+                  className="p-2.5 rounded-full hover:bg-muted/80 transition-all duration-200 active:scale-95"
+                  aria-label="Toggle theme"
+                >
+                  {theme === "dark" ? (
+                    <Sun className="h-4 w-4" />
+                  ) : (
+                    <Moon className="h-4 w-4" />
+                  )}
+                </button>
+              )}
+              <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
               </Button>
             </div>
           )}
         </div>
       </div>
 
-      <AnimatePresence>
-        {isOpen && isMobile && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="bg-white/95 backdrop-blur-md shadow-md"
-          >
-            <div className="container mx-auto px-4 py-6">
-              <div className="flex justify-end mb-4">
-                <Button variant="ghost" size="icon" onClick={toggleMenu}>
-                  <X className="h-6 w-6" />
-                </Button>
-              </div>
-              <nav className="flex flex-col space-y-6">
-                {navLinks.map((link) => (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={toggleMenu}
-                    className="text-foreground/80 hover:text-accent-blue transition-colors text-lg py-2"
-                  >
-                    {link.label}
-                  </Link>
-                ))}
-                <a
-                  href="https://wa.me/3394464650"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={toggleMenu}
-                >
-                  <Button className="w-full bg-[#2563eb] hover:bg-[#2563eb]/90">
-                    Parliamo
-                  </Button>
-                </a>
-              </nav>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isOpen && isMobile && (
+        <div className="bg-background/98 backdrop-blur-lg relative">
+          <div className="absolute inset-0 grid-pattern opacity-40" />
+          <nav className="max-w-5xl mx-auto px-6 py-6 flex flex-col gap-4 relative z-10">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="text-lg text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

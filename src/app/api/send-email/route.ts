@@ -6,19 +6,17 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { name, email, projectType, budget, message } = body
+    const { name, email, message } = body
 
     const { data, error } = await resend.emails.send({
-      from: 'Contatto da lollo.me <onboarding@resend.dev>',
+      from: 'Contact from lollo.me <onboarding@resend.dev>',
       to: ['lorenzooradu@gmail.com'],
-      subject: `Contatto da lollo.me: ${name}`,
+      subject: `New message from ${name}`,
       html: `
-        <h2>Nuovo messaggio dal portfolio</h2>
-        <p><strong>Nome:</strong> ${name}</p>
+        <h2>New message from your portfolio</h2>
+        <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Tipo di progetto:</strong> ${projectType}</p>
-        <p><strong>Budget:</strong> ${budget}</p>
-        <p><strong>Messaggio:</strong></p>
+        <p><strong>Message:</strong></p>
         <p>${message}</p>
       `,
     })
@@ -28,8 +26,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ success: true, data })
-  } catch (error) {
-    return NextResponse.json({ error: 'Errore nell\'invio del messaggio' }, { status: 500 })
+  } catch {
+    return NextResponse.json({ error: 'Error sending message' }, { status: 500 })
   }
 }
-

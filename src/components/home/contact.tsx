@@ -1,24 +1,19 @@
 "use client"
 
 import type React from "react"
-
 import { useRef, useState } from "react"
 import { motion, useInView } from "framer-motion"
+import { ArrowUpRight, Mail, Send } from "lucide-react"
 import { Button } from "@/src/components/ui/button"
 import { Input } from "@/src/components/ui/input"
 import { Textarea } from "@/src/components/ui/textarea"
-import { Mail, MessageSquare, Send, Instagram, Twitter, Linkedin, Github } from "lucide-react"
-import { Badge } from "@/src/components/ui/badge"
 import { Label } from "@/src/components/ui/label"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/src/components/ui/select"
 import { toast } from "sonner"
 
 export default function Contact() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.2 })
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [projectType, setProjectType] = useState("")
-  const [budget, setBudget] = useState("")
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -28,284 +23,177 @@ export default function Contact() {
     const data = {
       name: formData.get('name'),
       email: formData.get('email'),
-      projectType,
-      budget,
       message: formData.get('message'),
     }
 
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
 
       if (response.ok) {
-        toast.success("Messaggio inviato con successo!", {
-          description: "Ti risponderò entro 24 ore. Controlla anche lo spam.",
-          duration: 5000,
+        toast.success("Message sent!", {
+          description: "I'll get back to you within 24 hours.",
         })
           ; (e.target as HTMLFormElement).reset()
-        setProjectType("")
-        setBudget("")
       } else {
-        toast.error("Errore nell'invio del messaggio", {
-          description: "Si è verificato un problema. Riprova o contattami via email.",
-          duration: 5000,
+        toast.error("Something went wrong", {
+          description: "Please try again or email me directly.",
         })
       }
-    } catch (error) {
-      toast.error("Errore di connessione", {
-        description: "Controlla la tua connessione internet e riprova.",
-        duration: 5000,
+    } catch {
+      toast.error("Connection error", {
+        description: "Please check your connection and try again.",
       })
     } finally {
       setIsSubmitting(false)
     }
   }
 
+  const socials = [
+    { label: "Twitter", href: "https://twitter.com/TECHLOLLO" },
+    { label: "GitHub", href: "https://github.com/lorenzohauradou" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/lorenzohauradou" },
+    { label: "Instagram", href: "https://instagram.com/lorenzooradu" },
+  ]
+
   return (
-    <section id="contact" className="py-20 relative industrial-bg text-white">
-      <div className="noise-bg opacity-10"></div>
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <Badge className="mb-4 bg-white/10 text-white hover:bg-white/20 border-none">CONTATTI</Badge>
-          <motion.h2
+    <section id="contact" className="py-24 relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 bg-gradient-to-tl from-amber-50/40 via-transparent to-sky-50/30 dark:from-transparent dark:to-transparent" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-orange-100/30 to-rose-100/20 rounded-full blur-3xl dark:opacity-0" />
+      <div className="absolute top-20 left-0 w-64 h-64 bg-gradient-to-br from-indigo-100/20 to-cyan-100/20 rounded-full blur-3xl dark:opacity-0" />
+
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-5xl font-bold mb-4 font-heading tracking-tight"
           >
-            Parliamo del tuo <span className="gradient-text">Progetto</span>
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-white/70 max-w-2xl mx-auto"
-          >
-            Hai un'idea o un progetto in mente? Contattami per discuterne insieme e trasformarla in realtà.
-          </motion.p>
-        </div>
+            <h2 className="text-2xl font-semibold tracking-tight mb-6">
+              Let's work together
+            </h2>
 
-        <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="lg:text-left text-center"
-          >
-            <h3 className="text-2xl font-bold mb-6 gradient-text">Contattami</h3>
-            <p className="text-white/70 mb-8 lg:mx-0 mx-auto max-w-md">
-              Compila il modulo o contattami direttamente via email. Sono sempre disponibile per discutere nuovi
-              progetti, idee creative o opportunità di collaborazione.
+            <p className="text-foreground/60 mb-8 leading-relaxed">
+              Have a project in mind? I'm always open to discussing new
+              opportunities and ideas. Let's build something great
             </p>
 
-            <div className="space-y-6 flex flex-col items-center lg:items-start">
-              <div className="flex items-start max-w-md w-full">
-                <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <Mail className="h-6 w-6 text-accent-blue" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold mb-1">Email</h4>
-                  <p className="text-white/70">lorenzooradu@gmail.com</p>
-                </div>
+            <div className="space-y-6">
+              <div>
+                <p className="text-xs font-medium text-foreground/40 mb-2 uppercase tracking-widest">Email</p>
+                <a
+                  href="mailto:lorenzooradu@gmail.com"
+                  className="inline-flex items-center gap-2 text-foreground hover:text-foreground/70 transition-colors group"
+                >
+                  <Mail className="h-4 w-4" />
+                  lorenzooradu@gmail.com
+                  <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                </a>
               </div>
 
-              <div className="flex items-start max-w-md w-full">
-                <div className="h-12 w-12 rounded-full bg-white/10 flex items-center justify-center mr-4 flex-shrink-0">
-                  <MessageSquare className="h-6 w-6 text-accent-blue" />
-                </div>
-                <div className="text-left">
-                  <h4 className="text-lg font-semibold mb-1">Social</h4>
-                  <div className="space-y-2 mt-2">
+              <div>
+                <p className="text-xs font-medium text-foreground/40 mb-3 uppercase tracking-widest">Socials</p>
+                <div className="flex flex-wrap gap-4">
+                  {socials.map((social) => (
                     <a
-                      href="https://instagram.com/lorenzooradu"
+                      key={social.label}
+                      href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
+                      className="inline-flex items-center gap-1 text-sm text-foreground hover:text-foreground/70 transition-colors group"
                     >
-                      <Instagram className="h-5 w-5 group-hover:text-accent-pink transition-colors duration-200" />
-                      <span>lorenzooradu</span>
+                      {social.label}
+                      <ArrowUpRight className="h-3 w-3 opacity-0 -translate-y-0.5 translate-x-0.5 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                     </a>
-                    <a
-                      href="https://twitter.com/TECHLOLLO"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
-                    >
-                      <Twitter className="h-5 w-5 group-hover:text-accent-blue transition-colors duration-200" />
-                      <span>TECHLOLLO</span>
-                    </a>
-                    <a
-                      href="https://linkedin.com/in/lorenzohauradou"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
-                    >
-                      <Linkedin className="h-5 w-5 group-hover:text-accent-linkedin transition-colors duration-200" />
-                      <span>lorenzohauradou</span>
-                    </a>
-                    <a
-                      href="https://github.com/lorenzohauradou"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors duration-200 group"
-                    >
-                      <Github className="h-5 w-5 group-hover:text-gray-400 transition-colors duration-200" />
-                      <span>lorenzohauradou</span>
-                    </a>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-white/5 border border-white/10 rounded-lg p-6"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.4 }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Nome</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      placeholder="Il tuo nome"
-                      required
-                      className="bg-white/5 border-white/10 focus:border-accent-blue focus:ring-accent-blue/20 text-white"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      placeholder="La tua email"
-                      required
-                      className="bg-white/5 border-white/10 focus:border-accent-blue focus:ring-accent-blue/20 text-white"
-                    />
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.5 }}
-              >
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <Label htmlFor="subject">Tipo di progetto</Label>
-                  <Select value={projectType} onValueChange={setProjectType}>
-                    <SelectTrigger className="bg-white/5 border-white/10 focus:ring-accent-blue/20 text-white">
-                      <SelectValue placeholder="Seleziona il tipo di progetto" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="website">Sito Web</SelectItem>
-                      <SelectItem value="app">Applicazione Web</SelectItem>
-                      <SelectItem value="ecommerce">E-commerce</SelectItem>
-                      <SelectItem value="automation">Automazione</SelectItem>
-                      <SelectItem value="consulting">Consulenza</SelectItem>
-                      <SelectItem value="other">Altro</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.6 }}
-              >
-                <div className="space-y-2">
-                  <Label htmlFor="budget">Budget indicativo</Label>
-                  <Select value={budget} onValueChange={setBudget}>
-                    <SelectTrigger className="bg-white/5 border-white/10 focus:ring-accent-blue/20 text-white">
-                      <SelectValue placeholder="Seleziona il budget" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="small">Meno di €5.000</SelectItem>
-                      <SelectItem value="medium">€5.000 - €10.000</SelectItem>
-                      <SelectItem value="large">€10.000 - €20.000</SelectItem>
-                      <SelectItem value="enterprise">Più di €20.000</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.7 }}
-              >
-                <div className="space-y-2">
-                  <Label htmlFor="message">Messaggio</Label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Descrivi il tuo progetto"
-                    rows={5}
+                  <Label htmlFor="name" className="text-xs uppercase tracking-widest text-foreground/40">Name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
                     required
-                    className="bg-white/5 border-white/10 focus:border-accent-blue focus:ring-accent-blue/20 text-white"
+                    className="bg-card/50 backdrop-blur-sm border-border/50 focus:border-foreground/20 focus:bg-card"
                   />
                 </div>
-              </motion.div>
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-xs uppercase tracking-widest text-foreground/40">Email</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your@email.com"
+                    required
+                    className="bg-card/50 backdrop-blur-sm border-border/50 focus:border-foreground/20 focus:bg-card"
+                  />
+                </div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.3, delay: 0.8 }}
+              <div className="space-y-2">
+                <Label htmlFor="message" className="text-xs uppercase tracking-widest text-foreground/40">Message</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about your project..."
+                  rows={5}
+                  required
+                  className="bg-card/50 backdrop-blur-sm border-border/50 focus:border-foreground/20 focus:bg-card resize-none"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto"
               >
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full group bg-accent-blue hover:bg-accent-blue/90"
-                  disabled={isSubmitting}
-                >
-                  {isSubmitting ? (
-                    <span className="flex items-center">
-                      <svg
-                        className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                      >
-                        <circle
-                          className="opacity-25"
-                          cx="12"
-                          cy="12"
-                          r="10"
-                          stroke="currentColor"
-                          strokeWidth="4"
-                        ></circle>
-                        <path
-                          className="opacity-75"
-                          fill="currentColor"
-                          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                        ></path>
-                      </svg>
-                      Invio in corso...
-                    </span>
-                  ) : (
-                    <span className="flex items-center">
-                      Invia messaggio
-                      <Send className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </span>
-                  )}
-                </Button>
-              </motion.div>
+                {isSubmitting ? (
+                  <span className="flex items-center gap-2">
+                    <svg
+                      className="animate-spin h-4 w-4"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      />
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      />
+                    </svg>
+                    Sending...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    Send message
+                    <Send className="h-4 w-4" />
+                  </span>
+                )}
+              </Button>
             </form>
           </motion.div>
         </div>

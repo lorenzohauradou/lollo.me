@@ -1,5 +1,6 @@
 import type React from "react"
-import { Inter, Montserrat } from "next/font/google"
+import { Inter } from "next/font/google"
+import { ThemeProvider } from "next-themes"
 import "./globals.css"
 import type { Metadata, Viewport } from 'next'
 import { Analytics } from "@vercel/analytics/next"
@@ -7,21 +8,20 @@ import { Analytics } from "@vercel/analytics/next"
 export const metadata: Metadata = {
   metadataBase: new URL('https://lollo.me'),
   title: {
-    default: "Lorenzo Hauradou | Freelance Developer",
+    default: "Lorenzo Hauradou | Developer & Founder",
     template: "%s | Lorenzo Hauradou"
   },
-  description: "Freelance developer specializzato in sviluppo web, automazioni AI e consulenza digitale. Trasformo idee in prodotti digitali concreti per startup e aziende.",
+  description: "Developer building digital products. Specializing in web development, AI automation, and turning ideas into reality.",
   keywords: [
-    "freelance developer",
-    "sviluppo web",
+    "developer",
+    "founder",
+    "web development",
     "Next.js",
     "React",
-    "automazioni AI",
-    "consulenza digitale",
+    "AI automation",
+    "digital products",
     "Lorenzo Hauradou",
-    "web developer Italia",
-    "startup developer",
-    "digital partner",
+    "startup",
   ],
   authors: [{ name: "Lorenzo Hauradou", url: "https://lollo.me" }],
   creator: "Lorenzo Hauradou",
@@ -33,10 +33,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "https://lollo.me",
-    languages: {
-      'it-IT': 'https://lollo.me',
-      'en-US': 'https://lollo.me/en',
-    },
   },
   robots: {
     index: true,
@@ -56,17 +52,17 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "it_IT",
+    locale: "en_US",
     url: "https://lollo.me",
     siteName: "Lorenzo Hauradou",
-    title: "Lorenzo Hauradou | Developer",
-    description: "Sviluppo web, automazioni AI e consulenza digitale",
+    title: "Lorenzo Hauradou | Developer & Founder",
+    description: "Building digital products that matter.",
     images: [
       {
         url: "https://lollo.me/logo.webp",
         width: 512,
         height: 512,
-        alt: "Lorenzo Hauradou - Freelance Developer",
+        alt: "Lorenzo Hauradou",
       },
     ],
   },
@@ -74,19 +70,24 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@TECHLOLLO",
     creator: "@TECHLOLLO",
-    title: "Lorenzo Hauradou | Freelance Developer & Digital Partner",
-    description: "Freelance developer specializzato in sviluppo web moderno, automazioni AI e consulenza digitale. Trasformo idee in prodotti digitali per startup e aziende in tutta Italia.",
+    title: "Lorenzo Hauradou | Developer & Founder",
+    description: "Building digital products that matter.",
     images: ["https://lollo.me/logo.webp"],
   },
   manifest: "/site.webmanifest",
 }
 
 export const viewport: Viewport = {
-  themeColor: '#2563eb',
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 }
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
-const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" })
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+})
 
 export default function RootLayout({
   children,
@@ -99,12 +100,8 @@ export default function RootLayout({
     "name": "Lorenzo Hauradou",
     "url": "https://lollo.me",
     "image": "https://lollo.me/logo.webp",
-    "jobTitle": "Freelance Developer & Digital Partner",
-    "description": "Freelance developer specializzato in sviluppo web, automazioni AI e consulenza digitale",
-    "address": {
-      "@type": "PostalAddress",
-      "addressCountry": "IT"
-    },
+    "jobTitle": "Developer & Founder",
+    "description": "Developer building digital products",
     "sameAs": [
       "https://twitter.com/TECHLOLLO",
       "https://instagram.com/lorenzooradu",
@@ -116,32 +113,29 @@ export default function RootLayout({
       "Next.js",
       "React",
       "AI Automation",
-      "Digital Consulting",
-      "SEO"
-    ],
-    "offers": {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Sviluppo Web e Consulenza Digitale",
-        "description": "Sviluppo siti web, landing page, applicazioni web e automazioni AI"
-      }
-    }
+      "Python"
+    ]
   }
 
   return (
-    <html lang="it" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} font-sans`}>
-        {children}
+      <body className={inter.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>
   )
 }
-

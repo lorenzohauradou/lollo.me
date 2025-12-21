@@ -1,33 +1,29 @@
 import type { Metadata } from "next"
 import Navbar from "@/src/components/home/navbar"
-import Cursor from "@/src/components/ui/cursor"
-import Hero from "@/src/components/home/hero"
+import Header from "@/src/components/home/header"
 import About from "@/src/components/home/about"
 import Projects from "@/src/components/home/projects"
 import Contact from "@/src/components/home/contact"
 import Footer from "@/src/components/home/footer"
-import LogoMarquee from "@/src/components/ui/logo-marquee"
 import { Toaster } from "@/src/components/ui/sonner"
 
 export const metadata: Metadata = {
-  title: "Lollo.me | Sviluppo web, automazioni, consulenza e soluzioni digitali su misura",
+  title: "Lorenzo Hauradou | Developer & Founder",
   description:
-    "Trasformo idee in prodotti digitali concreti: siti web, landing page, automazioni e strumenti personalizzati.",
+    "Building digital products that matter. Developer specializing in web development, AI automation, and turning ideas into reality.",
 }
 
 export default function Home() {
   return (
     <>
-      <Cursor />
       <Navbar />
-      <main className="min-h-screen relative overflow-x-hidden">
-        <Hero />
-        <LogoMarquee />
-        <About />
+      <main className="min-h-screen">
+        <Header />
         <Projects />
+        <About />
         <Contact />
-        <Footer />
       </main>
+      <Footer />
       <Toaster />
     </>
   )
