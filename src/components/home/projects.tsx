@@ -180,8 +180,8 @@ export default function Projects() {
                               ? "bg-blue-500/10 text-blue-700 dark:text-blue-400"
                               : "bg-muted text-muted-foreground"
                             }`}>
-                            {project.statusEmoji && <span>{project.statusEmoji}</span>}
-                            {project.status}
+                            {project.statusEmoji && <span>{project.status} </span>}
+                            {project.statusEmoji}
                           </span>
                         </div>
                       </div>
