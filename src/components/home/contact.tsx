@@ -112,7 +112,7 @@ export default function Contact() {
 
             <p className="text-foreground/60 mb-8 leading-relaxed">
               Have a project in mind? I'm always open to discussing new
-              opportunities and ideas. Let's build something great
+              opportunities and ideas. Let's build something great!
             </p>
 
             <div className="space-y-6">
