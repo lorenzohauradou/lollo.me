@@ -162,7 +162,7 @@ export default function Contact() {
                     name="name"
                     placeholder="Your name"
                     required
-                    className="bg-card/50 backdrop-blur-sm border-border/50 focus:border-foreground/20 focus:bg-card"
+                    className="bg-zinc-100 dark:bg-card/50 border-border/50 focus-visible:border-foreground/20"
                   />
                 </div>
                 <div className="space-y-2">
@@ -173,7 +173,7 @@ export default function Contact() {
                     type="email"
                     placeholder="your@email.com"
                     required
-                    className="bg-card/50 backdrop-blur-sm border-border/50 focus:border-foreground/20 focus:bg-card"
+                    className="bg-zinc-100 dark:bg-card/50 border-border/50 focus-visible:border-foreground/20"
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function Contact() {
                   placeholder="Tell me about your project..."
                   rows={5}
                   required
-                  className="bg-card/50 backdrop-blur-sm border-border/50 focus:border-foreground/20 focus:bg-card resize-none"
+                  className="bg-zinc-100 dark:bg-card/50 border-border/50 focus-visible:border-foreground/20 resize-none"
                 />
               </div>
 

@@ -109,7 +109,7 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="group block h-full"
                 >
-                  <article className="project-card bg-card border border-border rounded-xl overflow-hidden h-full">
+                  <article className="project-card bg-zinc-100 dark:bg-card border border-border rounded-xl overflow-hidden h-full">
                     <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                       {project.media.type === "video" ? (
                         <video
