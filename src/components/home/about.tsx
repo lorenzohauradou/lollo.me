@@ -2,7 +2,6 @@
 
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
-import Image from "next/image"
 
 export default function About() {
   const ref = useRef<HTMLDivElement>(null)
@@ -29,19 +28,6 @@ export default function About() {
           >
             <div className="flex items-center gap-4 mb-8">
               <h2 className="text-2xl font-medium tracking-tight">About</h2>
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="relative w-10 h-10 rounded-full overflow-hidden"
-              >
-                <Image
-                  src="/emoji1.webp"
-                  alt="Lorenzo Hauradou"
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
             </div>
 
             <div className="space-y-4 text-muted-foreground leading-relaxed">
