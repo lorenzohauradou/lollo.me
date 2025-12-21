@@ -31,14 +31,6 @@ export default function Projects() {
       statusEmoji: "🚴",
     },
     {
-      title: "Waibe",
-      description: "Transform your selfies into time-traveling trips through history",
-      media: { type: "image" as const, src: "/waibe1.png" },
-      tags: ["Next.js", "Python", "AI"],
-      link: "https://waibe.app",
-      status: "Free",
-    },
-    {
       title: "Vittori Consulting",
       description: "Marketing agency website with modern design and smooth animations",
       media: { type: "image" as const, src: "/vittori.png" },
@@ -47,6 +39,14 @@ export default function Projects() {
       github: "https://github.com/lorenzohauradou/vittoriconsulting",
       status: "Shipped",
       statusEmoji: "🚀",
+    },
+    {
+      title: "Waibe",
+      description: "Transform your selfies into time-traveling trips through history",
+      media: { type: "image" as const, src: "/waibe1.png" },
+      tags: ["Next.js", "Python", "AI"],
+      link: "https://waibe.app",
+      status: "Free",
     },
     {
       title: "OsFlumen",
