@@ -67,14 +67,6 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-8 border-t border-border/50">
-            <p className="text-xs text-muted-foreground">
-              © {currentYear} Lorenzo Hauradou. All rights reserved.
-            </p>
-            <p className="text-xs text-muted-foreground">
-              Designed & built with care
-            </p>
-          </div>
         </div>
       </div>
     </footer>
