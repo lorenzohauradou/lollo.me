@@ -419,7 +419,7 @@ function SlotCard({
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
         >
-            <div className="h-full w-full bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50 p-8 md:p-12">
+            <div className="h-full w-full bg-neutral-200/50 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50 p-8 md:p-12">
                 {/* Top border accent */}
                 <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
 
