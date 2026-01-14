@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { motion, useInView } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
 import Link from "next/link"
 
 function LandingPageIllustration({ isHovered }: { isHovered: boolean }) {
@@ -284,316 +284,452 @@ function MVPLaunchpadIllustration({ isHovered }: { isHovered: boolean }) {
 
 const illustrations = [LandingPageIllustration, AIAutomationIllustration, MVPLaunchpadIllustration]
 
-export default function Solutions() {
-    const ref = useRef<HTMLDivElement>(null)
-    const isInView = useInView(ref, { once: true, amount: 0.1 })
-    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+const solutions = [
+    {
+        number: "01",
+        title: "Landing Page",
+        accent: "Conversion-First",
+        target: "For freelancers and product launches",
+        deliverables: [
+            "Full custom design - Next.js",
+            "Conversion-optimized copy",
+            "Accessibility + SEO + 100/100 Performance",
+        ],
+        timeline: "7 days",
+        price: "1,500",
+        cta: "Ready to launch?",
+    },
+    {
+        number: "02",
+        title: "AI Automation",
+        accent: "n8n/code + AI",
+        target: "For small businesses losing time on repetitive tasks",
+        deliverables: [
+            "Process analysis and mapping",
+            "Custom workflow automation",
+            "Team training included",
+        ],
+        timeline: "2-3 weeks",
+        price: "2,000",
+        suffix: "+ maintenance",
+        cta: "Automate your biz",
+    },
+    {
+        number: "03",
+        title: "MVP Launchpad",
+        accent: "Full Stack Product",
+        target: "For founders who want to validate fast",
+        deliverables: [
+            "Scalable architecture API & Frontend",
+            "Stripe payment integration",
+            "User dashboard + Launch support",
+        ],
+        timeline: "3-4 weeks",
+        price: "4,000",
+        cta: "Build your MVP",
+    },
+]
 
-    const solutions = [
-        {
-            number: "01",
-            title: "Landing Page",
-            accent: "Conversion-First",
-            target: "For freelancers and product launches",
-            deliverables: [
-                "Full custom design - Next.js",
-                "Conversion-optimized copy",
-                "Accessibility + SEO + 100/100 Performance",
-            ],
-            timeline: "7 days",
-            price: "1,500",
-            cta: "Ready to launch?",
-        },
-        {
-            number: "02",
-            title: "AI Automation",
-            accent: "n8n/code + AI",
-            target: "For small businesses losing time on repetitive tasks",
-            deliverables: [
-                "Process analysis and mapping",
-                "Custom workflow automation",
-                "Team training included",
-            ],
-            timeline: "2-3 weeks",
-            price: "2,000",
-            suffix: "+ maintenance",
-            cta: "Automate your biz",
-        },
-        {
-            number: "03",
-            title: "MVP Launchpad",
-            accent: "Full Stack Product",
-            target: "For founders who want to validate fast",
-            deliverables: [
-                "Scalable architecture API & Frontend",
-                "Stripe payment integration",
-                "User dashboard + Launch support",
-            ],
-            timeline: "3-4 weeks",
-            price: "4,000",
-            cta: "Build your MVP",
-        },
-    ]
+// Single slot card component with 3D rotation
+function SlotCard({
+    solution,
+    index,
+    scrollYProgress,
+    isActive,
+    onHover,
+    onLeave,
+}: {
+    solution: typeof solutions[0]
+    index: number
+    scrollYProgress: ReturnType<typeof useScroll>["scrollYProgress"]
+    isActive: boolean
+    onHover: () => void
+    onLeave: () => void
+}) {
+    const totalCards = solutions.length
+
+    // Each card occupies 1/3 of the scroll range
+    const segmentSize = 1 / totalCards
+    const cardStart = index * segmentSize
+    const cardEnd = (index + 1) * segmentSize
+
+    // Rotation: starts at 90deg (below), goes to 0 (visible), then to -90deg (above)
+    const rotateX = useTransform(
+        scrollYProgress,
+        [
+            cardStart - segmentSize * 0.5,
+            cardStart,
+            cardStart + segmentSize * 0.1,
+            cardEnd - segmentSize * 0.1,
+            cardEnd,
+            cardEnd + segmentSize * 0.5
+        ],
+        [90, 90, 0, 0, -90, -90]
+    )
+
+    // Opacity for smooth transitions
+    const opacity = useTransform(
+        scrollYProgress,
+        [
+            cardStart - segmentSize * 0.3,
+            cardStart,
+            cardStart + segmentSize * 0.15,
+            cardEnd - segmentSize * 0.15,
+            cardEnd,
+            cardEnd + segmentSize * 0.3
+        ],
+        [0, 0.3, 1, 1, 0.3, 0]
+    )
+
+    // Z-index based on visibility (active card on top)
+    const zIndex = useTransform(
+        scrollYProgress,
+        [cardStart, cardStart + segmentSize * 0.1, cardEnd - segmentSize * 0.1, cardEnd],
+        [0, 10, 10, 0]
+    )
+
+    // Slight Y translation for depth effect
+    const translateY = useTransform(
+        scrollYProgress,
+        [cardStart, cardStart + segmentSize * 0.15, cardEnd - segmentSize * 0.15, cardEnd],
+        [30, 0, 0, -30]
+    )
+
+    // Scale for depth
+    const scale = useTransform(
+        scrollYProgress,
+        [cardStart, cardStart + segmentSize * 0.15, cardEnd - segmentSize * 0.15, cardEnd],
+        [0.9, 1, 1, 0.9]
+    )
+
+    const Illustration = illustrations[index]
 
     return (
-        <section id="solutions" className="py-32 relative overflow-hidden" ref={ref}>
-            <div className="absolute inset-0 dot-pattern opacity-40" />
+        <motion.div
+            className="absolute inset-0 backface-hidden"
+            style={{
+                rotateX,
+                opacity,
+                zIndex,
+                y: translateY,
+                scale,
+                transformStyle: "preserve-3d",
+                transformOrigin: "center center",
+            }}
+            onMouseEnter={onHover}
+            onMouseLeave={onLeave}
+        >
+            <div className="h-full w-full bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50 p-8 md:p-12">
+                {/* Top border accent */}
+                <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
 
-            <div className="max-w-5xl mx-auto px-6 relative z-10">
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ duration: 0.8 }}
-                    className="mb-20"
-                >
-                    <div className="flex items-center gap-4 mb-6">
-                        <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
-                        <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">Services</span>
-                        <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start h-full">
+                    {/* Number + Title */}
+                    <div className="lg:col-span-5">
+                        {/* Mobile header */}
+                        <div className="flex items-center justify-between lg:hidden mb-4">
+                            <div className="flex items-center gap-3">
+                                <span className="text-2xl font-light text-foreground/20 tabular-nums">
+                                    {solution.number}
+                                </span>
+                                <div>
+                                    <h3 className="text-lg font-medium tracking-tight">
+                                        {solution.title}
+                                    </h3>
+                                    <span className="text-xs text-foreground/50 font-mono">
+                                        {solution.accent}
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="text-right">
+                                <span className="text-xs text-foreground/40 uppercase tracking-wider block">
+                                    {solution.timeline}
+                                </span>
+                                <div className="flex items-baseline gap-0.5 justify-end">
+                                    <span className="text-xl font-semibold tracking-tight">
+                                        {solution.price}
+                                    </span>
+                                    <span className="text-sm font-medium text-foreground/60">€</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Desktop header */}
+                        <div className="hidden lg:flex items-start gap-6">
+                            <motion.span
+                                className="text-7xl font-light text-foreground/10 tabular-nums leading-none select-none"
+                                animate={{
+                                    color: isActive
+                                        ? "hsl(var(--foreground) / 0.2)"
+                                        : "hsl(var(--foreground) / 0.1)"
+                                }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                {solution.number}
+                            </motion.span>
+
+                            <div className="pt-2">
+                                <h3 className="text-3xl font-medium tracking-tight mb-2">
+                                    {solution.title}
+                                </h3>
+                                <span className="text-sm text-foreground/50 font-mono">
+                                    {solution.accent}
+                                </span>
+
+                                {/* Animated illustration */}
+                                <div className="mt-6">
+                                    <Illustration isHovered={isActive} />
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center">
-                        How we can work together
-                    </h2>
-                </motion.div>
-
-                <div className="space-y-0">
-                    {solutions.map((solution, index) => (
-                        <motion.div
-                            key={solution.number}
-                            initial={{ opacity: 0, y: 40 }}
-                            animate={isInView ? { opacity: 1, y: 0 } : {}}
-                            transition={{ duration: 0.6, delay: index * 0.15 }}
-                            onMouseEnter={() => setHoveredIndex(index)}
-                            onMouseLeave={() => setHoveredIndex(null)}
-                            className="group relative"
-                        >
-                            <div className="absolute left-0 right-0 top-0 h-px bg-border" />
-
-                            <div className="py-8 md:py-14 relative">
-
-                                <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
-                                    {/* Number + Title */}
-                                    <div className="lg:col-span-5">
-                                        {/* Mobile header */}
-                                        <div className="flex items-center justify-between lg:hidden mb-4">
-                                            <div className="flex items-center gap-3">
-                                                <span className="text-2xl font-light text-foreground/20 tabular-nums">
-                                                    {solution.number}
-                                                </span>
-                                                <div>
-                                                    <h3 className="text-lg font-medium tracking-tight">
-                                                        {solution.title}
-                                                    </h3>
-                                                    <span className="text-xs text-foreground/50 font-mono">
-                                                        {solution.accent}
-                                                    </span>
-                                                </div>
-                                            </div>
-                                            <div className="text-right">
-                                                <span className="text-xs text-foreground/40 uppercase tracking-wider block">
-                                                    {solution.timeline}
-                                                </span>
-                                                <div className="flex items-baseline gap-0.5 justify-end">
-                                                    <span className="text-xl font-semibold tracking-tight">
-                                                        {solution.price}
-                                                    </span>
-                                                    <span className="text-sm font-medium text-foreground/60">€</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        {/* Desktop header */}
-                                        <div className="hidden lg:flex items-start gap-6">
-                                            <motion.span
-                                                className="text-6xl font-light text-foreground/10 tabular-nums leading-none select-none"
-                                                animate={{
-                                                    color: hoveredIndex === index
-                                                        ? "hsl(var(--foreground) / 0.25)"
-                                                        : "hsl(var(--foreground) / 0.1)"
-                                                }}
-                                                transition={{ duration: 0.3 }}
-                                            >
-                                                {solution.number}
-                                            </motion.span>
-
-                                            <div className="pt-1">
-                                                <h3 className="text-2xl font-medium tracking-tight mb-1">
-                                                    {solution.title}
-                                                </h3>
-                                                <span className="text-sm text-foreground/50 font-mono">
-                                                    {solution.accent}
-                                                </span>
-
-                                                {/* Animated illustration - desktop only */}
-                                                <motion.div
-                                                    className="mt-4"
-                                                    initial={{ opacity: 0 }}
-                                                    animate={{ opacity: isInView ? 1 : 0 }}
-                                                    transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
-                                                >
-                                                    {(() => {
-                                                        const Illustration = illustrations[index]
-                                                        return <Illustration isHovered={hoveredIndex === index} />
-                                                    })()}
-                                                </motion.div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    {/* Deliverables */}
-                                    <div className="lg:col-span-4">
-                                        <p className="text-xs text-foreground/40 uppercase tracking-wider mb-3">
-                                            {solution.target}
-                                        </p>
-                                        <ul className="space-y-2">
-                                            {solution.deliverables.map((item, i) => (
-                                                <motion.li
-                                                    key={i}
-                                                    className="text-sm text-foreground/70 flex items-start gap-3"
-                                                    initial={{ opacity: 0.7 }}
-                                                    animate={{ opacity: hoveredIndex === index ? 1 : 0.7 }}
-                                                    transition={{ duration: 0.3, delay: i * 0.05 }}
-                                                >
-                                                    <svg
-                                                        className="w-4 h-4 mt-0.5 flex-shrink-0 text-foreground/30"
-                                                        viewBox="0 0 16 16"
-                                                        fill="none"
-                                                    >
-                                                        <motion.path
-                                                            d="M2 8h12M10 4l4 4-4 4"
-                                                            stroke="currentColor"
-                                                            strokeWidth="1.5"
-                                                            strokeLinecap="round"
-                                                            strokeLinejoin="round"
-                                                            initial={{ pathLength: 0 }}
-                                                            animate={{ pathLength: hoveredIndex === index ? 1 : 0.5 }}
-                                                            transition={{ duration: 0.4, delay: i * 0.1 }}
-                                                        />
-                                                    </svg>
-                                                    {item}
-                                                </motion.li>
-                                            ))}
-                                        </ul>
-
-                                        {/* CTA Button - mobile */}
-                                        <a
-                                            href="https://calendly.com/lorenzooradu/30min"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="lg:hidden mt-5 text-sm font-medium px-5 py-2.5 rounded-full border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
-                                        >
-                                            {solution.cta}
-                                            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
-                                                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </a>
-                                    </div>
-
-                                    {/* Price + CTA - desktop */}
-                                    <div className="hidden lg:flex lg:col-span-3 lg:text-right flex-col gap-4">
-                                        <div>
-                                            <span className="text-xs text-foreground/40 uppercase tracking-wider block mb-2">
-                                                {solution.timeline}
-                                            </span>
-                                            <div className="flex items-baseline gap-1 justify-end">
-                                                <span className="text-xs text-foreground/50">from</span>
-                                                <motion.span
-                                                    className="text-3xl font-semibold tracking-tight"
-                                                    animate={{
-                                                        scale: hoveredIndex === index ? 1.02 : 1
-                                                    }}
-                                                    transition={{ duration: 0.3 }}
-                                                >
-                                                    {solution.price}
-                                                </motion.span>
-                                                <span className="text-lg font-medium text-foreground/60">€</span>
-                                            </div>
-                                            {solution.suffix && (
-                                                <span className="text-xs text-foreground/40 mt-1 block">
-                                                    {solution.suffix}
-                                                </span>
-                                            )}
-                                        </div>
-
-                                        {/* Calendly CTA Button */}
-                                        <a
-                                            href="https://calendly.com/lorenzooradu/30min"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="text-sm font-medium px-4 py-2 rounded-full border border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 transition-all duration-300 text-foreground/70 hover:text-foreground inline-block text-center"
-                                        >
-                                            {solution.cta}
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Animated line on hover */}
-                                <motion.div
-                                    className="absolute bottom-0 left-0 right-0 h-px overflow-hidden"
-                                >
-                                    <motion.div
-                                        className="h-full bg-gradient-to-r from-transparent via-foreground/15 to-transparent"
-                                        initial={{ x: "-100%" }}
-                                        animate={{ x: hoveredIndex === index ? "0%" : "-100%" }}
-                                        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
-                                    />
-                                </motion.div>
-                            </div>
-
-                            {index === solutions.length - 1 && (
-                                <div className="absolute left-0 right-0 bottom-0 h-px bg-border" />
-                            )}
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Custom CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={isInView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="mt-16 relative"
-                >
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 py-6">
-                        <p className="text-foreground/50 text-center sm:text-left text-sm">
-                            Got a different project in mind?
+                    {/* Deliverables */}
+                    <div className="lg:col-span-4">
+                        <p className="text-xs text-foreground/40 uppercase tracking-wider mb-4">
+                            {solution.target}
                         </p>
+                        <ul className="space-y-3">
+                            {solution.deliverables.map((item, i) => (
+                                <motion.li
+                                    key={i}
+                                    className="text-sm text-foreground/70 flex items-start gap-3"
+                                    initial={{ opacity: 0.7 }}
+                                    animate={{ opacity: isActive ? 1 : 0.7 }}
+                                    transition={{ duration: 0.3, delay: i * 0.05 }}
+                                >
+                                    <svg
+                                        className="w-4 h-4 mt-0.5 flex-shrink-0 text-foreground/30"
+                                        viewBox="0 0 16 16"
+                                        fill="none"
+                                    >
+                                        <motion.path
+                                            d="M2 8h12M10 4l4 4-4 4"
+                                            stroke="currentColor"
+                                            strokeWidth="1.5"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            initial={{ pathLength: 0 }}
+                                            animate={{ pathLength: isActive ? 1 : 0.5 }}
+                                            transition={{ duration: 0.4, delay: i * 0.1 }}
+                                        />
+                                    </svg>
+                                    {item}
+                                </motion.li>
+                            ))}
+                        </ul>
 
-                        <Link
+                        {/* CTA Button - mobile */}
+                        <a
                             href="https://calendly.com/lorenzooradu/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group relative inline-flex items-center gap-2 text-sm font-medium"
+                            className="lg:hidden mt-6 text-sm font-medium px-5 py-2.5 rounded-full border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
                         >
-                            <span className="relative">
-                                Let's talk
-                                <motion.span
-                                    className="absolute -bottom-0.5 left-0 h-px bg-foreground"
-                                    initial={{ width: "100%" }}
-                                    whileHover={{ width: "0%" }}
-                                    transition={{ duration: 0.3 }}
-                                />
-                            </span>
-
-                            <motion.svg
-                                className="w-4 h-4"
-                                viewBox="0 0 16 16"
-                                fill="none"
-                                whileHover={{ x: 3 }}
-                                transition={{ duration: 0.2 }}
-                            >
-                                <path
-                                    d="M1 8h14M11 4l4 4-4 4"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                />
-                            </motion.svg>
-                        </Link>
+                            {solution.cta}
+                            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                        </a>
                     </div>
-                </motion.div>
+
+                    {/* Price + CTA - desktop */}
+                    <div className="hidden lg:flex lg:col-span-3 lg:text-right flex-col gap-5">
+                        <div>
+                            <span className="text-xs text-foreground/40 uppercase tracking-wider block mb-2">
+                                {solution.timeline}
+                            </span>
+                            <div className="flex items-baseline gap-1 justify-end">
+                                <span className="text-xs text-foreground/50">from</span>
+                                <motion.span
+                                    className="text-4xl font-semibold tracking-tight"
+                                    animate={{ scale: isActive ? 1.02 : 1 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    {solution.price}
+                                </motion.span>
+                                <span className="text-xl font-medium text-foreground/60">€</span>
+                            </div>
+                            {solution.suffix && (
+                                <span className="text-xs text-foreground/40 mt-1 block">
+                                    {solution.suffix}
+                                </span>
+                            )}
+                        </div>
+
+                        <a
+                            href="https://calendly.com/lorenzooradu/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm font-medium px-5 py-2.5 rounded-full border border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 transition-all duration-300 text-foreground/70 hover:text-foreground inline-block text-center"
+                        >
+                            {solution.cta}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+    )
+}
+
+export default function Solutions() {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const [activeIndex, setActiveIndex] = useState(0)
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    })
+
+    // Track which card is currently active based on scroll
+    useMotionValueEvent(scrollYProgress, "change", (latest) => {
+        const segmentSize = 1 / solutions.length
+        const newIndex = Math.min(
+            solutions.length - 1,
+            Math.floor(latest / segmentSize)
+        )
+        if (newIndex !== activeIndex && newIndex >= 0) {
+            setActiveIndex(newIndex)
+        }
+    })
+
+    // Header animation
+    const headerOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 1])
+    const headerY = useTransform(scrollYProgress, [0, 0.1], [0, -20])
+
+    // CTA opacity (appears after last card)
+    const ctaOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1])
+
+    return (
+        <section
+            id="solutions"
+            ref={containerRef}
+            className="relative"
+            style={{ height: "300vh" }}
+        >
+            <div className="sticky top-0 h-screen overflow-hidden">
+                <div className="absolute inset-0 dot-pattern opacity-40" />
+
+                <div className="h-full flex flex-col justify-center max-w-5xl mx-auto px-6 relative z-10">
+                    {/* Header */}
+                    <motion.div
+                        style={{ opacity: headerOpacity, y: headerY }}
+                        className="mb-8 md:mb-12"
+                    >
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                            <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">Services</span>
+                            <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
+                        </div>
+
+                        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center">
+                            How we can work together
+                        </h2>
+                    </motion.div>
+
+                    {/* Slot machine container */}
+                    <div
+                        className="relative flex-1 max-h-[420px] md:max-h-[380px]"
+                        style={{ perspective: "1200px" }}
+                    >
+                        {solutions.map((solution, index) => (
+                            <SlotCard
+                                key={solution.number}
+                                solution={solution}
+                                index={index}
+                                scrollYProgress={scrollYProgress}
+                                isActive={hoveredIndex === index || (hoveredIndex === null && activeIndex === index)}
+                                onHover={() => setHoveredIndex(index)}
+                                onLeave={() => setHoveredIndex(null)}
+                            />
+                        ))}
+                    </div>
+
+                    {/* Progress indicators */}
+                    <div className="flex justify-center gap-2 mt-8">
+                        {solutions.map((_, index) => (
+                            <motion.div
+                                key={index}
+                                className="h-1 rounded-full bg-foreground/10 overflow-hidden"
+                                style={{ width: 40 }}
+                            >
+                                <motion.div
+                                    className="h-full bg-foreground/40 rounded-full"
+                                    initial={{ width: index === 0 ? "100%" : "0%" }}
+                                    animate={{
+                                        width: activeIndex === index ? "100%" :
+                                            activeIndex > index ? "100%" : "0%"
+                                    }}
+                                    transition={{ duration: 0.4, ease: "easeOut" }}
+                                />
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Scroll hint */}
+                    <motion.div
+                        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                        animate={{
+                            opacity: activeIndex < solutions.length - 1 ? 0.5 : 0,
+                            y: [0, 5, 0]
+                        }}
+                        transition={{
+                            opacity: { duration: 0.3 },
+                            y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
+                        }}
+                    >
+                        <span className="text-xs text-foreground/40 uppercase tracking-wider">Scroll</span>
+                        <svg className="w-4 h-4 text-foreground/30" viewBox="0 0 16 16" fill="none">
+                            <path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </motion.div>
+
+                    {/* Custom CTA - appears at the end */}
+                    <motion.div
+                        style={{ opacity: ctaOpacity }}
+                        className="absolute bottom-20 left-0 right-0"
+                    >
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 py-6">
+                            <p className="text-foreground/50 text-center sm:text-left text-sm">
+                                Got a different project in mind?
+                            </p>
+
+                            <Link
+                                href="https://calendly.com/lorenzooradu/30min"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group relative inline-flex items-center gap-2 text-sm font-medium"
+                            >
+                                <span className="relative">
+                                    Let&apos;s talk
+                                    <motion.span
+                                        className="absolute -bottom-0.5 left-0 h-px bg-foreground"
+                                        initial={{ width: "100%" }}
+                                        whileHover={{ width: "0%" }}
+                                        transition={{ duration: 0.3 }}
+                                    />
+                                </span>
+
+                                <motion.svg
+                                    className="w-4 h-4"
+                                    viewBox="0 0 16 16"
+                                    fill="none"
+                                    whileHover={{ x: 3 }}
+                                    transition={{ duration: 0.2 }}
+                                >
+                                    <path
+                                        d="M1 8h14M11 4l4 4-4 4"
+                                        stroke="currentColor"
+                                        strokeWidth="1.5"
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                    />
+                                </motion.svg>
+                            </Link>
+                        </div>
+                    </motion.div>
+                </div>
             </div>
         </section>
     )
