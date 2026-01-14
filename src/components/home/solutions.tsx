@@ -322,7 +322,7 @@ export default function Solutions() {
         {
             number: "03",
             title: "MVP Launchpad",
-            accent: "Full Product",
+            accent: "Full Stack Product",
             target: "For founders who want to validate fast",
             deliverables: [
                 "Scalable architecture API & Frontend",
