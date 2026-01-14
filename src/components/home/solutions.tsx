@@ -561,7 +561,9 @@ export default function Solutions() {
                         </p>
 
                         <Link
-                            href="#contact"
+                            href="https://calendly.com/lorenzooradu/30min"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="group relative inline-flex items-center gap-2 text-sm font-medium"
                         >
                             <span className="relative">
