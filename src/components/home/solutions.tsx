@@ -302,6 +302,7 @@ export default function Solutions() {
             ],
             timeline: "7 days",
             price: "1,500",
+            cta: "Ready to launch? Book a call",
         },
         {
             number: "02",
@@ -316,6 +317,7 @@ export default function Solutions() {
             timeline: "2-3 weeks",
             price: "2,000",
             suffix: "+ maintenance",
+            cta: "Automate your biz. Let's talk!",
         },
         {
             number: "03",
@@ -329,6 +331,7 @@ export default function Solutions() {
             ],
             timeline: "3-4 weeks",
             price: "4,000",
+            cta: "Build your MVP. Get started",
         },
     ]
 
@@ -367,7 +370,7 @@ export default function Solutions() {
                         >
                             <div className="absolute left-0 right-0 top-0 h-px bg-border" />
 
-                            <div className="py-10 md:py-14 relative">
+                            <div className="py-8 md:py-14 relative">
                                 {/* Hover background */}
                                 <motion.div
                                     className="absolute inset-0 bg-foreground/[0.02] dark:bg-foreground/[0.03]"
@@ -376,46 +379,77 @@ export default function Solutions() {
                                     transition={{ duration: 0.3 }}
                                 />
 
-                                <div className="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+                                <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                                     {/* Number + Title */}
-                                    <div className="md:col-span-5 flex items-start gap-6">
-                                        <motion.span
-                                            className="text-5xl md:text-6xl font-light text-foreground/10 tabular-nums leading-none select-none"
-                                            animate={{
-                                                color: hoveredIndex === index
-                                                    ? "hsl(var(--foreground) / 0.25)"
-                                                    : "hsl(var(--foreground) / 0.1)"
-                                            }}
-                                            transition={{ duration: 0.3 }}
-                                        >
-                                            {solution.number}
-                                        </motion.span>
+                                    <div className="lg:col-span-5">
+                                        {/* Mobile header */}
+                                        <div className="flex items-center justify-between lg:hidden mb-4">
+                                            <div className="flex items-center gap-3">
+                                                <span className="text-2xl font-light text-foreground/20 tabular-nums">
+                                                    {solution.number}
+                                                </span>
+                                                <div>
+                                                    <h3 className="text-lg font-medium tracking-tight">
+                                                        {solution.title}
+                                                    </h3>
+                                                    <span className="text-xs text-foreground/50 font-mono">
+                                                        {solution.accent}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            <div className="text-right">
+                                                <span className="text-xs text-foreground/40 uppercase tracking-wider block">
+                                                    {solution.timeline}
+                                                </span>
+                                                <div className="flex items-baseline gap-0.5 justify-end">
+                                                    <span className="text-xl font-semibold tracking-tight">
+                                                        {solution.price}
+                                                    </span>
+                                                    <span className="text-sm font-medium text-foreground/60">€</span>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                                        <div className="pt-1">
-                                            <h3 className="text-xl md:text-2xl font-medium tracking-tight mb-1">
-                                                {solution.title}
-                                            </h3>
-                                            <span className="text-sm text-foreground/50 font-mono">
-                                                {solution.accent}
-                                            </span>
-
-                                            {/* Animated illustration */}
-                                            <motion.div
-                                                className="mt-4"
-                                                initial={{ opacity: 0 }}
-                                                animate={{ opacity: isInView ? 1 : 0 }}
-                                                transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                                        {/* Desktop header */}
+                                        <div className="hidden lg:flex items-start gap-6">
+                                            <motion.span
+                                                className="text-6xl font-light text-foreground/10 tabular-nums leading-none select-none"
+                                                animate={{
+                                                    color: hoveredIndex === index
+                                                        ? "hsl(var(--foreground) / 0.25)"
+                                                        : "hsl(var(--foreground) / 0.1)"
+                                                }}
+                                                transition={{ duration: 0.3 }}
                                             >
-                                                {(() => {
-                                                    const Illustration = illustrations[index]
-                                                    return <Illustration isHovered={hoveredIndex === index} />
-                                                })()}
-                                            </motion.div>
+                                                {solution.number}
+                                            </motion.span>
+
+                                            <div className="pt-1">
+                                                <h3 className="text-2xl font-medium tracking-tight mb-1">
+                                                    {solution.title}
+                                                </h3>
+                                                <span className="text-sm text-foreground/50 font-mono">
+                                                    {solution.accent}
+                                                </span>
+
+                                                {/* Animated illustration - desktop only */}
+                                                <motion.div
+                                                    className="mt-4"
+                                                    initial={{ opacity: 0 }}
+                                                    animate={{ opacity: isInView ? 1 : 0 }}
+                                                    transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                                                >
+                                                    {(() => {
+                                                        const Illustration = illustrations[index]
+                                                        return <Illustration isHovered={hoveredIndex === index} />
+                                                    })()}
+                                                </motion.div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     {/* Deliverables */}
-                                    <div className="md:col-span-4">
+                                    <div className="lg:col-span-4">
                                         <p className="text-xs text-foreground/40 uppercase tracking-wider mb-3">
                                             {solution.target}
                                         </p>
@@ -448,18 +482,31 @@ export default function Solutions() {
                                                 </motion.li>
                                             ))}
                                         </ul>
+
+                                        {/* CTA Button - mobile */}
+                                        <a
+                                            href="https://calendly.com/lorenzooradu/30min"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="lg:hidden mt-5 text-sm font-medium px-5 py-2.5 rounded-full border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
+                                        >
+                                            {solution.cta}
+                                            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                                                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </a>
                                     </div>
 
-                                    {/* Price */}
-                                    <div className="md:col-span-3 md:text-right">
-                                        <div className="inline-block md:block">
+                                    {/* Price + CTA - desktop */}
+                                    <div className="hidden lg:flex lg:col-span-3 lg:text-right flex-col gap-4">
+                                        <div>
                                             <span className="text-xs text-foreground/40 uppercase tracking-wider block mb-2">
                                                 {solution.timeline}
                                             </span>
-                                            <div className="flex items-baseline gap-1 md:justify-end">
+                                            <div className="flex items-baseline gap-1 justify-end">
                                                 <span className="text-xs text-foreground/50">from</span>
                                                 <motion.span
-                                                    className="text-2xl md:text-3xl font-semibold tracking-tight"
+                                                    className="text-3xl font-semibold tracking-tight"
                                                     animate={{
                                                         scale: hoveredIndex === index ? 1.02 : 1
                                                     }}
@@ -475,6 +522,16 @@ export default function Solutions() {
                                                 </span>
                                             )}
                                         </div>
+
+                                        {/* Calendly CTA Button */}
+                                        <a
+                                            href="https://calendly.com/lorenzooradu/30min"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="text-sm font-medium px-4 py-2 rounded-full border border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 transition-all duration-300 text-foreground/70 hover:text-foreground inline-block text-center"
+                                        >
+                                            {solution.cta}
+                                        </a>
                                     </div>
                                 </div>
 
@@ -499,21 +556,21 @@ export default function Solutions() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={isInView ? { opacity: 1, y: 0 } : {}}
                     transition={{ duration: 0.6, delay: 0.6 }}
-                    className="mt-20 relative"
+                    className="mt-16 relative"
                 >
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 py-8">
-                        <p className="text-foreground/60 text-center sm:text-left">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 py-6">
+                        <p className="text-foreground/50 text-center sm:text-left text-sm">
                             Got a different project in mind?
                         </p>
 
                         <Link
                             href="#contact"
-                            className="group relative inline-flex items-center gap-3 text-sm font-medium"
+                            className="group relative inline-flex items-center gap-2 text-sm font-medium"
                         >
                             <span className="relative">
                                 Let's talk
                                 <motion.span
-                                    className="absolute -bottom-1 left-0 h-px bg-foreground"
+                                    className="absolute -bottom-0.5 left-0 h-px bg-foreground"
                                     initial={{ width: "100%" }}
                                     whileHover={{ width: "0%" }}
                                     transition={{ duration: 0.3 }}
@@ -524,7 +581,7 @@ export default function Solutions() {
                                 className="w-4 h-4"
                                 viewBox="0 0 16 16"
                                 fill="none"
-                                whileHover={{ x: 4 }}
+                                whileHover={{ x: 3 }}
                                 transition={{ duration: 0.2 }}
                             >
                                 <path
