@@ -1,0 +1,544 @@
+"use client"
+
+import { useRef, useState } from "react"
+import { motion, useInView } from "framer-motion"
+import Link from "next/link"
+
+function LandingPageIllustration({ isHovered }: { isHovered: boolean }) {
+    return (
+        <svg viewBox="0 0 80 48" className="w-20 h-12" fill="none">
+            {/* Browser frame */}
+            <motion.rect
+                x="4" y="4" width="72" height="40" rx="3"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="text-foreground/20"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: isHovered ? 1 : 0.6 }}
+                transition={{ duration: 0.6 }}
+            />
+            {/* Browser dots */}
+            <motion.circle cx="10" cy="10" r="1.5" fill="currentColor" className="text-foreground/30"
+                animate={{ scale: isHovered ? [1, 1.3, 1] : 1 }}
+                transition={{ duration: 0.4, delay: 0.1 }}
+            />
+            <motion.circle cx="16" cy="10" r="1.5" fill="currentColor" className="text-foreground/20"
+                animate={{ scale: isHovered ? [1, 1.3, 1] : 1 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+            />
+            <motion.circle cx="22" cy="10" r="1.5" fill="currentColor" className="text-foreground/15"
+                animate={{ scale: isHovered ? [1, 1.3, 1] : 1 }}
+                transition={{ duration: 0.4, delay: 0.3 }}
+            />
+            {/* Content lines */}
+            <motion.line x1="12" y1="20" x2="40" y2="20" stroke="currentColor" strokeWidth="2" className="text-foreground/15"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: isHovered ? 1 : 0.5 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+            />
+            <motion.line x1="12" y1="26" x2="32" y2="26" stroke="currentColor" strokeWidth="1.5" className="text-foreground/10"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: isHovered ? 1 : 0.4 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+            />
+            {/* CTA button */}
+            <motion.rect x="12" y="32" width="24" height="6" rx="1.5" fill="currentColor" className="text-foreground/20"
+                animate={{ opacity: isHovered ? 1 : 0.5, x: isHovered ? 0 : -2 }}
+                transition={{ duration: 0.4 }}
+            />
+            {/* Cursor */}
+            <motion.path
+                d="M52 28 L52 38 L56 35 L60 40 L62 39 L58 34 L63 33 Z"
+                fill="currentColor"
+                className="text-foreground/40"
+                animate={{
+                    x: isHovered ? [0, 4, 0] : 0,
+                    y: isHovered ? [0, 2, 0] : 0,
+                }}
+                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+            />
+        </svg>
+    )
+}
+
+function AIAutomationIllustration({ isHovered }: { isHovered: boolean }) {
+    return (
+        <div className="relative w-44 h-16 flex items-center justify-center">
+            {/* SVG nodes and connections */}
+            <svg viewBox="0 0 176 64" className="absolute inset-0 w-full h-full" fill="none">
+                {/* Left node - input */}
+                <motion.rect
+                    x="4" y="20" width="24" height="24" rx="6"
+                    stroke="currentColor" strokeWidth="1.5"
+                    className="text-foreground/20"
+                    fill="none"
+                    animate={{
+                        strokeOpacity: isHovered ? 0.5 : 0.2,
+                    }}
+                    transition={{ duration: 0.3 }}
+                />
+                {/* Input icon */}
+                <motion.path
+                    d="M11 28h10M11 32h7M11 36h10"
+                    stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"
+                    className="text-foreground/30"
+                    animate={{ opacity: isHovered ? 0.6 : 0.3 }}
+                    transition={{ duration: 0.3 }}
+                />
+
+                {/* Right node - output */}
+                <motion.rect
+                    x="148" y="20" width="24" height="24" rx="6"
+                    stroke="currentColor" strokeWidth="1.5"
+                    className="text-foreground/20"
+                    fill="none"
+                    animate={{
+                        strokeOpacity: isHovered ? 0.5 : 0.2,
+                    }}
+                    transition={{ duration: 0.3 }}
+                />
+                {/* Output checkmark */}
+                <motion.path
+                    d="M156 32l3 3 6-6"
+                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"
+                    className="text-foreground/30"
+                    initial={{ pathLength: 0 }}
+                    animate={{
+                        pathLength: isHovered ? 1 : 0.5,
+                        opacity: isHovered ? 0.7 : 0.3
+                    }}
+                    transition={{ duration: 0.4, delay: 0.6 }}
+                />
+
+                {/* Connection line left */}
+                <motion.path
+                    d="M28 32 L56 32"
+                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+                    className="text-foreground/10"
+                    strokeDasharray="2 4"
+                    animate={{
+                        strokeOpacity: isHovered ? 0.3 : 0.1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                />
+
+                {/* Connection line right */}
+                <motion.path
+                    d="M120 32 L148 32"
+                    stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"
+                    className="text-foreground/10"
+                    strokeDasharray="2 4"
+                    animate={{
+                        strokeOpacity: isHovered ? 0.3 : 0.1,
+                    }}
+                    transition={{ duration: 0.3 }}
+                />
+
+                {/* Data pulse 1 - left to center */}
+                <motion.circle r="3" fill="#EA4B71"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        cx: isHovered ? [28, 56] : 28,
+                        cy: 32,
+                        opacity: isHovered ? [0.8, 0] : 0,
+                    }}
+                    transition={{ duration: 0.5, repeat: Infinity, ease: "easeOut" }}
+                />
+                {/* Data pulse 2 - left to center delayed */}
+                <motion.circle r="2" fill="#EA4B71"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        cx: isHovered ? [28, 56] : 28,
+                        cy: 32,
+                        opacity: isHovered ? [0.5, 0] : 0,
+                    }}
+                    transition={{ duration: 0.5, delay: 0.25, repeat: Infinity, ease: "easeOut" }}
+                />
+
+                {/* Data pulse 3 - center to right */}
+                <motion.circle r="3" fill="#EA4B71"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        cx: isHovered ? [120, 148] : 120,
+                        cy: 32,
+                        opacity: isHovered ? [0.8, 0] : 0,
+                    }}
+                    transition={{ duration: 0.5, delay: 0.5, repeat: Infinity, ease: "easeOut" }}
+                />
+                {/* Data pulse 4 - center to right delayed */}
+                <motion.circle r="2" fill="#EA4B71"
+                    initial={{ opacity: 0 }}
+                    animate={{
+                        cx: isHovered ? [120, 148] : 120,
+                        cy: 32,
+                        opacity: isHovered ? [0.5, 0] : 0,
+                    }}
+                    transition={{ duration: 0.5, delay: 0.75, repeat: Infinity, ease: "easeOut" }}
+                />
+            </svg>
+
+            {/* Glow behind logo */}
+            <motion.div
+                className="absolute w-14 h-14 rounded-2xl bg-[#EA4B71]/10 blur-xl"
+                animate={{
+                    opacity: isHovered ? 0.8 : 0,
+                    scale: isHovered ? 1.2 : 0.8
+                }}
+                transition={{ duration: 0.4 }}
+            />
+
+            {/* n8n logo center with border */}
+            <motion.div
+                className="relative z-10 w-12 h-12 rounded-xl border border-foreground/10 bg-background/50 backdrop-blur-sm flex items-center justify-center"
+                animate={{
+                    borderColor: isHovered ? "rgba(234, 75, 113, 0.3)" : "hsl(var(--foreground) / 0.1)",
+                    scale: isHovered ? 1.05 : 1,
+                }}
+                transition={{ duration: 0.3 }}
+            >
+                <motion.img
+                    src="/n8n.svg"
+                    alt="n8n"
+                    className="w-8 h-8"
+                    animate={{
+                        scale: isHovered ? [1, 1.08, 1] : 1,
+                    }}
+                    transition={{ duration: 1, repeat: isHovered ? Infinity : 0, ease: "easeInOut" }}
+                />
+            </motion.div>
+        </div>
+    )
+}
+
+function MVPLaunchpadIllustration({ isHovered }: { isHovered: boolean }) {
+    return (
+        <svg viewBox="0 0 80 48" className="w-20 h-12" fill="none">
+            {/* Rocket body */}
+            <motion.path
+                d="M40 8 L46 20 L46 32 L40 36 L34 32 L34 20 Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                className="text-foreground/25"
+                fill="none"
+                animate={{ y: isHovered ? [0, -3, 0] : 0 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Rocket tip */}
+            <motion.path
+                d="M40 4 L44 12 L36 12 Z"
+                fill="currentColor"
+                className="text-foreground/20"
+                animate={{ y: isHovered ? [0, -3, 0] : 0 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Fins */}
+            <motion.path
+                d="M34 28 L28 36 L34 32"
+                stroke="currentColor" strokeWidth="1.5" className="text-foreground/15"
+                animate={{ y: isHovered ? [0, -3, 0] : 0 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <motion.path
+                d="M46 28 L52 36 L46 32"
+                stroke="currentColor" strokeWidth="1.5" className="text-foreground/15"
+                animate={{ y: isHovered ? [0, -3, 0] : 0 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            />
+            {/* Flames */}
+            <motion.path
+                d="M37 36 Q40 44 43 36"
+                stroke="currentColor" strokeWidth="2" className="text-foreground/30"
+                animate={{
+                    d: isHovered
+                        ? ["M37 36 Q40 42 43 36", "M37 36 Q40 48 43 36", "M37 36 Q40 42 43 36"]
+                        : "M37 36 Q40 40 43 36",
+                    opacity: isHovered ? [0.5, 1, 0.5] : 0.3,
+                }}
+                transition={{ duration: 0.3, repeat: Infinity }}
+            />
+            {/* Smoke particles */}
+            <motion.circle cx="36" cy="44" r="1.5" fill="currentColor" className="text-foreground/10"
+                animate={{
+                    y: isHovered ? [0, 4, 8] : 0,
+                    opacity: isHovered ? [0.4, 0.2, 0] : 0.1,
+                    x: isHovered ? [0, -2, -4] : 0,
+                }}
+                transition={{ duration: 0.8, repeat: Infinity }}
+            />
+            <motion.circle cx="44" cy="44" r="1.5" fill="currentColor" className="text-foreground/10"
+                animate={{
+                    y: isHovered ? [0, 4, 8] : 0,
+                    opacity: isHovered ? [0.4, 0.2, 0] : 0.1,
+                    x: isHovered ? [0, 2, 4] : 0,
+                }}
+                transition={{ duration: 0.8, delay: 0.2, repeat: Infinity }}
+            />
+            {/* Window */}
+            <motion.circle cx="40" cy="18" r="3" stroke="currentColor" strokeWidth="1" className="text-foreground/20"
+                animate={{ y: isHovered ? [0, -3, 0] : 0 }}
+                transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+            />
+        </svg>
+    )
+}
+
+const illustrations = [LandingPageIllustration, AIAutomationIllustration, MVPLaunchpadIllustration]
+
+export default function Solutions() {
+    const ref = useRef<HTMLDivElement>(null)
+    const isInView = useInView(ref, { once: true, amount: 0.1 })
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+
+    const solutions = [
+        {
+            number: "01",
+            title: "Landing Page",
+            accent: "Conversion-First",
+            target: "For freelancers and product launches",
+            deliverables: [
+                "Custom design in Framer or Next.js",
+                "Conversion-optimized copy",
+                "Technical SEO + 100/100 Performance",
+            ],
+            timeline: "7 days",
+            price: "1,500",
+        },
+        {
+            number: "02",
+            title: "AI Automation",
+            accent: "n8n + OpenAI",
+            target: "For small businesses losing time on repetitive tasks",
+            deliverables: [
+                "Process analysis and mapping",
+                "Custom workflow automation",
+                "Team training included",
+            ],
+            timeline: "2-3 weeks",
+            price: "2,000",
+            suffix: "+ maintenance",
+        },
+        {
+            number: "03",
+            title: "MVP Launchpad",
+            accent: "Full Product",
+            target: "For founders who want to validate fast",
+            deliverables: [
+                "Scalable architecture (Supabase/Prisma)",
+                "Stripe payment integration",
+                "User dashboard + Launch support",
+            ],
+            timeline: "3-4 weeks",
+            price: "4,000",
+        },
+    ]
+
+    return (
+        <section id="solutions" className="py-32 relative overflow-hidden" ref={ref}>
+            <div className="absolute inset-0 dot-pattern opacity-40" />
+
+            <div className="max-w-5xl mx-auto px-6 relative z-10">
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={isInView ? { opacity: 1 } : {}}
+                    transition={{ duration: 0.8 }}
+                    className="mb-20"
+                >
+                    <div className="flex items-center gap-4 mb-6">
+                        <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                        <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">Services</span>
+                        <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
+                    </div>
+
+                    <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-center">
+                        How we can work together
+                    </h2>
+                </motion.div>
+
+                <div className="space-y-0">
+                    {solutions.map((solution, index) => (
+                        <motion.div
+                            key={solution.number}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={isInView ? { opacity: 1, y: 0 } : {}}
+                            transition={{ duration: 0.6, delay: index * 0.15 }}
+                            onMouseEnter={() => setHoveredIndex(index)}
+                            onMouseLeave={() => setHoveredIndex(null)}
+                            className="group relative"
+                        >
+                            <div className="absolute left-0 right-0 top-0 h-px bg-border" />
+
+                            <div className="py-10 md:py-14 relative">
+                                {/* Hover background */}
+                                <motion.div
+                                    className="absolute inset-0 bg-foreground/[0.02] dark:bg-foreground/[0.03]"
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
+                                    transition={{ duration: 0.3 }}
+                                />
+
+                                <div className="relative grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
+                                    {/* Number + Title */}
+                                    <div className="md:col-span-5 flex items-start gap-6">
+                                        <motion.span
+                                            className="text-5xl md:text-6xl font-light text-foreground/10 tabular-nums leading-none select-none"
+                                            animate={{
+                                                color: hoveredIndex === index
+                                                    ? "hsl(var(--foreground) / 0.25)"
+                                                    : "hsl(var(--foreground) / 0.1)"
+                                            }}
+                                            transition={{ duration: 0.3 }}
+                                        >
+                                            {solution.number}
+                                        </motion.span>
+
+                                        <div className="pt-1">
+                                            <h3 className="text-xl md:text-2xl font-medium tracking-tight mb-1">
+                                                {solution.title}
+                                            </h3>
+                                            <span className="text-sm text-foreground/50 font-mono">
+                                                {solution.accent}
+                                            </span>
+
+                                            {/* Animated illustration */}
+                                            <motion.div
+                                                className="mt-4"
+                                                initial={{ opacity: 0 }}
+                                                animate={{ opacity: isInView ? 1 : 0 }}
+                                                transition={{ duration: 0.5, delay: 0.3 + index * 0.15 }}
+                                            >
+                                                {(() => {
+                                                    const Illustration = illustrations[index]
+                                                    return <Illustration isHovered={hoveredIndex === index} />
+                                                })()}
+                                            </motion.div>
+                                        </div>
+                                    </div>
+
+                                    {/* Deliverables */}
+                                    <div className="md:col-span-4">
+                                        <p className="text-xs text-foreground/40 uppercase tracking-wider mb-3">
+                                            {solution.target}
+                                        </p>
+                                        <ul className="space-y-2">
+                                            {solution.deliverables.map((item, i) => (
+                                                <motion.li
+                                                    key={i}
+                                                    className="text-sm text-foreground/70 flex items-start gap-3"
+                                                    initial={{ opacity: 0.7 }}
+                                                    animate={{ opacity: hoveredIndex === index ? 1 : 0.7 }}
+                                                    transition={{ duration: 0.3, delay: i * 0.05 }}
+                                                >
+                                                    <svg
+                                                        className="w-4 h-4 mt-0.5 flex-shrink-0 text-foreground/30"
+                                                        viewBox="0 0 16 16"
+                                                        fill="none"
+                                                    >
+                                                        <motion.path
+                                                            d="M2 8h12M10 4l4 4-4 4"
+                                                            stroke="currentColor"
+                                                            strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                            initial={{ pathLength: 0 }}
+                                                            animate={{ pathLength: hoveredIndex === index ? 1 : 0.5 }}
+                                                            transition={{ duration: 0.4, delay: i * 0.1 }}
+                                                        />
+                                                    </svg>
+                                                    {item}
+                                                </motion.li>
+                                            ))}
+                                        </ul>
+                                    </div>
+
+                                    {/* Price */}
+                                    <div className="md:col-span-3 md:text-right">
+                                        <div className="inline-block md:block">
+                                            <span className="text-xs text-foreground/40 uppercase tracking-wider block mb-2">
+                                                {solution.timeline}
+                                            </span>
+                                            <div className="flex items-baseline gap-1 md:justify-end">
+                                                <span className="text-xs text-foreground/50">from</span>
+                                                <motion.span
+                                                    className="text-2xl md:text-3xl font-semibold tracking-tight"
+                                                    animate={{
+                                                        scale: hoveredIndex === index ? 1.02 : 1
+                                                    }}
+                                                    transition={{ duration: 0.3 }}
+                                                >
+                                                    {solution.price}
+                                                </motion.span>
+                                                <span className="text-lg font-medium text-foreground/60">€</span>
+                                            </div>
+                                            {solution.suffix && (
+                                                <span className="text-xs text-foreground/40 mt-1 block">
+                                                    {solution.suffix}
+                                                </span>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Animated line on hover */}
+                                <motion.div
+                                    className="absolute bottom-0 left-0 h-px bg-foreground/20"
+                                    initial={{ width: "0%" }}
+                                    animate={{ width: hoveredIndex === index ? "100%" : "0%" }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                />
+                            </div>
+
+                            {index === solutions.length - 1 && (
+                                <div className="absolute left-0 right-0 bottom-0 h-px bg-border" />
+                            )}
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* Custom CTA */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6, delay: 0.6 }}
+                    className="mt-20 relative"
+                >
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 py-8">
+                        <p className="text-foreground/60 text-center sm:text-left">
+                            Got a different project in mind?
+                        </p>
+
+                        <Link
+                            href="#contact"
+                            className="group relative inline-flex items-center gap-3 text-sm font-medium"
+                        >
+                            <span className="relative">
+                                Let's talk
+                                <motion.span
+                                    className="absolute -bottom-1 left-0 h-px bg-foreground"
+                                    initial={{ width: "100%" }}
+                                    whileHover={{ width: "0%" }}
+                                    transition={{ duration: 0.3 }}
+                                />
+                            </span>
+
+                            <motion.svg
+                                className="w-4 h-4"
+                                viewBox="0 0 16 16"
+                                fill="none"
+                                whileHover={{ x: 4 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                <path
+                                    d="M1 8h14M11 4l4 4-4 4"
+                                    stroke="currentColor"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                            </motion.svg>
+                        </Link>
+                    </div>
+                </motion.div>
+            </div>
+        </section>
+    )
+}
