@@ -302,7 +302,7 @@ export default function Solutions() {
             ],
             timeline: "7 days",
             price: "1,500",
-            cta: "Ready to launch? Book a call",
+            cta: "Ready to launch?",
         },
         {
             number: "02",
@@ -317,7 +317,7 @@ export default function Solutions() {
             timeline: "2-3 weeks",
             price: "2,000",
             suffix: "+ maintenance",
-            cta: "Automate your biz. Let's talk!",
+            cta: "Automate your biz",
         },
         {
             number: "03",
@@ -331,7 +331,7 @@ export default function Solutions() {
             ],
             timeline: "3-4 weeks",
             price: "4,000",
-            cta: "Build your MVP. Get started",
+            cta: "Build your MVP",
         },
     ]
 
