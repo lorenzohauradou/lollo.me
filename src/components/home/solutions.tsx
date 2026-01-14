@@ -371,13 +371,6 @@ export default function Solutions() {
                             <div className="absolute left-0 right-0 top-0 h-px bg-border" />
 
                             <div className="py-8 md:py-14 relative">
-                                {/* Hover background */}
-                                <motion.div
-                                    className="absolute inset-0 bg-foreground/[0.02] dark:bg-foreground/[0.03]"
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-                                    transition={{ duration: 0.3 }}
-                                />
 
                                 <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
                                     {/* Number + Title */}
@@ -537,11 +530,15 @@ export default function Solutions() {
 
                                 {/* Animated line on hover */}
                                 <motion.div
-                                    className="absolute bottom-0 left-0 h-px bg-foreground/20"
-                                    initial={{ width: "0%" }}
-                                    animate={{ width: hoveredIndex === index ? "100%" : "0%" }}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                />
+                                    className="absolute bottom-0 left-0 right-0 h-px overflow-hidden"
+                                >
+                                    <motion.div
+                                        className="h-full bg-gradient-to-r from-transparent via-foreground/15 to-transparent"
+                                        initial={{ x: "-100%" }}
+                                        animate={{ x: hoveredIndex === index ? "0%" : "-100%" }}
+                                        transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+                                    />
+                                </motion.div>
                             </div>
 
                             {index === solutions.length - 1 && (
