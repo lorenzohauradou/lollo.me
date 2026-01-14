@@ -307,7 +307,7 @@ export default function Solutions() {
         {
             number: "02",
             title: "AI Automation",
-            accent: "n8n + OpenAI",
+            accent: "n8n/code + AI",
             target: "For small businesses losing time on repetitive tasks",
             deliverables: [
                 "Process analysis and mapping",
