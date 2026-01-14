@@ -296,9 +296,9 @@ export default function Solutions() {
             accent: "Conversion-First",
             target: "For freelancers and product launches",
             deliverables: [
-                "Custom design in Framer or Next.js",
+                "Full custom design - Next.js",
                 "Conversion-optimized copy",
-                "Technical SEO + 100/100 Performance",
+                "Accessibility + SEO + 100/100 Performance",
             ],
             timeline: "7 days",
             price: "1,500",
@@ -325,7 +325,7 @@ export default function Solutions() {
             accent: "Full Product",
             target: "For founders who want to validate fast",
             deliverables: [
-                "Scalable architecture (Supabase/Prisma)",
+                "Scalable architecture API & Frontend",
                 "Stripe payment integration",
                 "User dashboard + Launch support",
             ],
