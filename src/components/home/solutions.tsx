@@ -427,30 +427,36 @@ function SlotCard({
                     {/* Number + Title */}
                     <div className="lg:col-span-5">
                         {/* Mobile header */}
-                        <div className="flex items-center justify-between lg:hidden mb-4">
-                            <div className="flex items-center gap-3">
-                                <span className="text-2xl font-light text-foreground/20 tabular-nums">
-                                    {solution.number}
-                                </span>
-                                <div>
-                                    <h3 className="text-lg font-medium tracking-tight">
-                                        {solution.title}
-                                    </h3>
-                                    <span className="text-xs text-foreground/50 font-mono">
-                                        {solution.accent}
+                        <div className="lg:hidden mb-4">
+                            <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                    <span className="text-2xl font-light text-foreground/20 tabular-nums">
+                                        {solution.number}
                                     </span>
+                                    <div>
+                                        <h3 className="text-lg font-medium tracking-tight">
+                                            {solution.title}
+                                        </h3>
+                                        <span className="text-xs text-foreground/50 font-mono">
+                                            {solution.accent}
+                                        </span>
+                                    </div>
+                                </div>
+                                <div className="text-right">
+                                    <span className="text-xs text-foreground/40 uppercase tracking-wider block">
+                                        {solution.timeline}
+                                    </span>
+                                    <div className="flex items-baseline gap-0.5 justify-end">
+                                        <span className="text-xl font-semibold tracking-tight">
+                                            {solution.price}
+                                        </span>
+                                        <span className="text-sm font-medium text-foreground/60">€</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="text-right">
-                                <span className="text-xs text-foreground/40 uppercase tracking-wider block">
-                                    {solution.timeline}
-                                </span>
-                                <div className="flex items-baseline gap-0.5 justify-end">
-                                    <span className="text-xl font-semibold tracking-tight">
-                                        {solution.price}
-                                    </span>
-                                    <span className="text-sm font-medium text-foreground/60">€</span>
-                                </div>
+                            {/* Mobile illustration */}
+                            <div className="mt-4 flex justify-center">
+                                <Illustration isHovered={isActive} />
                             </div>
                         </div>
 
@@ -667,9 +673,9 @@ export default function Solutions() {
                         ))}
                     </div>
 
-                    {/* Scroll hint */}
+                    {/* Scroll hint - hidden on mobile */}
                     <motion.div
-                        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+                        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
                         animate={{
                             opacity: activeIndex < solutions.length - 1 ? 0.5 : 0,
                             y: [0, 5, 0]
