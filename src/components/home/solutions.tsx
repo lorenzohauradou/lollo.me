@@ -430,7 +430,7 @@ function SlotCard({
                     {/* Number + Title */}
                     <div className="lg:col-span-5">
                         {/* Mobile header */}
-                        <div className="lg:hidden mb-3">
+                        <div className="lg:hidden mb-2">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <span className="text-2xl font-light text-foreground/20 tabular-nums">
@@ -456,6 +456,10 @@ function SlotCard({
                                         <span className="text-sm font-medium text-foreground/60">€</span>
                                     </div>
                                 </div>
+                            </div>
+                            {/* Mobile illustration */}
+                            <div className="mt-2 flex justify-center scale-[0.6] origin-center -my-2">
+                                <Illustration isHovered={isActive} />
                             </div>
                         </div>
 
