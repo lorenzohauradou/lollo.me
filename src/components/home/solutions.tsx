@@ -212,7 +212,7 @@ function AIAutomationIllustration({ isHovered }: { isHovered: boolean }) {
 
 function MVPLaunchpadIllustration({ isHovered }: { isHovered: boolean }) {
     return (
-        <svg viewBox="0 0 80 48" className="w-32 h-20 mt-4" fill="none">
+        <svg viewBox="0 0 80 48" className="w-32 h-20 mt-6" fill="none">
             {/* Rocket body */}
             <motion.path
                 d="M40 8 L46 20 L46 32 L40 36 L34 32 L34 20 Z"
