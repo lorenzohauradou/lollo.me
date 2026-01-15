@@ -6,7 +6,7 @@ import Link from "next/link"
 
 function LandingPageIllustration({ isHovered }: { isHovered: boolean }) {
     return (
-        <svg viewBox="0 0 80 48" className="w-20 h-12" fill="none">
+        <svg viewBox="0 0 80 48" className="w-32 h-25" fill="none">
             {/* Browser frame */}
             <motion.rect
                 x="4" y="4" width="72" height="40" rx="3"
@@ -212,7 +212,7 @@ function AIAutomationIllustration({ isHovered }: { isHovered: boolean }) {
 
 function MVPLaunchpadIllustration({ isHovered }: { isHovered: boolean }) {
     return (
-        <svg viewBox="0 0 80 48" className="w-20 h-12" fill="none">
+        <svg viewBox="0 0 80 48" className="w-32 h-20 mt-6" fill="none">
             {/* Rocket body */}
             <motion.path
                 d="M40 8 L46 20 L46 32 L40 36 L34 32 L34 20 Z"
@@ -653,7 +653,7 @@ export default function Solutions() {
                     </div>
 
                     {/* Progress indicators */}
-                    <div className="flex justify-center gap-2 mt-8">
+                    <div className="absolute md:bottom-24 bottom-32 left-0 right-0 flex justify-center gap-2">
                         {solutions.map((_, index) => (
                             <motion.div
                                 key={index}
@@ -673,28 +673,10 @@ export default function Solutions() {
                         ))}
                     </div>
 
-                    {/* Scroll hint - hidden on mobile */}
-                    <motion.div
-                        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2"
-                        animate={{
-                            opacity: activeIndex < solutions.length - 1 ? 0.5 : 0,
-                            y: [0, 5, 0]
-                        }}
-                        transition={{
-                            opacity: { duration: 0.3 },
-                            y: { duration: 1.5, repeat: Infinity, ease: "easeInOut" }
-                        }}
-                    >
-                        <span className="text-xs text-foreground/40 uppercase tracking-wider">Scroll</span>
-                        <svg className="w-4 h-4 text-foreground/30" viewBox="0 0 16 16" fill="none">
-                            <path d="M8 2v12M4 10l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                    </motion.div>
-
                     {/* Custom CTA - appears at the end */}
                     <motion.div
                         style={{ opacity: ctaOpacity }}
-                        className="absolute bottom-20 left-0 right-0"
+                        className="absolute bottom-8 left-0 right-0"
                     >
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 py-6">
                             <p className="text-foreground/50 text-center sm:text-left text-sm">
