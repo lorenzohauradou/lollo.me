@@ -626,7 +626,7 @@ export default function Solutions() {
             <div className="sticky top-0 h-screen overflow-hidden">
                 <div className="absolute inset-0 dot-pattern opacity-40" />
 
-                <div className="h-full flex flex-col justify-start pt-32 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
+                <div className="h-full flex flex-col justify-start pt-24 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
                     {/* Header */}
                     <motion.div
                         style={{ opacity: headerOpacity, y: headerY }}
