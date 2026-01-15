@@ -666,7 +666,7 @@ export default function Solutions() {
                     </div>
 
                     {/* Progress indicators */}
-                    <div className="absolute top-36 md:top-16 xl:top-36 left-0 right-0 flex justify-center gap-2">
+                    <div className="hidden absolute top-36 md:top-16 xl:top-36 left-0 right-0 md:flex justify-center gap-2">
                         {solutions.map((_, index) => (
                             <motion.div
                                 key={index}
