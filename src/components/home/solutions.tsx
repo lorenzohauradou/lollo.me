@@ -212,7 +212,7 @@ function AIAutomationIllustration({ isHovered }: { isHovered: boolean }) {
 
 function MVPLaunchpadIllustration({ isHovered }: { isHovered: boolean }) {
     return (
-        <svg viewBox="0 0 80 48" className="w-32 h-20 mt-6" fill="none">
+        <svg viewBox="0 0 80 48" className="w-32 h-20 mt-4" fill="none">
             {/* Rocket body */}
             <motion.path
                 d="M40 8 L46 20 L46 32 L40 36 L34 32 L34 20 Z"
@@ -458,7 +458,7 @@ function SlotCard({
                                 </div>
                             </div>
                             {/* Mobile illustration */}
-                            <div className="mt-2 flex justify-center scale-[0.6] origin-center -my-2">
+                            <div className="flex justify-center scale-[0.55] origin-center -my-4">
                                 <Illustration isHovered={isActive} />
                             </div>
                         </div>
@@ -630,7 +630,7 @@ export default function Solutions() {
             <div className="sticky top-0 h-screen overflow-hidden">
                 <div className="absolute inset-0 dot-pattern opacity-40" />
 
-                <div className="h-full flex flex-col justify-start pt-24 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
+                <div className="h-full flex flex-col justify-start pt-16 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
                     {/* Header */}
                     <motion.div
                         style={{ opacity: headerOpacity, y: headerY }}
