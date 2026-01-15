@@ -422,15 +422,15 @@ function SlotCard({
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
         >
-            <div className="h-full w-full bg-neutral-200/50 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50 p-8 md:p-12">
+            <div className="h-full w-full bg-neutral-200/50 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50 p-6 md:p-12">
                 {/* Top border accent */}
                 <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start h-full">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-8 items-start h-full">
                     {/* Number + Title */}
                     <div className="lg:col-span-5">
                         {/* Mobile header */}
-                        <div className="lg:hidden mb-4">
+                        <div className="lg:hidden mb-3">
                             <div className="flex items-center justify-between">
                                 <div className="flex items-center gap-3">
                                     <span className="text-2xl font-light text-foreground/20 tabular-nums">
@@ -456,10 +456,6 @@ function SlotCard({
                                         <span className="text-sm font-medium text-foreground/60">€</span>
                                     </div>
                                 </div>
-                            </div>
-                            {/* Mobile illustration */}
-                            <div className="mt-4 flex justify-center">
-                                <Illustration isHovered={isActive} />
                             </div>
                         </div>
 
@@ -495,10 +491,10 @@ function SlotCard({
 
                     {/* Deliverables */}
                     <div className="lg:col-span-4">
-                        <p className="text-xs text-foreground/40 uppercase tracking-wider mb-4">
+                        <p className="text-xs text-foreground/40 uppercase tracking-wider mb-2">
                             {solution.target}
                         </p>
-                        <ul className="space-y-3">
+                        <ul className="space-y-2">
                             {solution.deliverables.map((item, i) => (
                                 <motion.li
                                     key={i}
@@ -530,7 +526,7 @@ function SlotCard({
 
                         {/* Simple explanation */}
                         <motion.p
-                            className="mt-4 text-xs text-foreground/40 leading-relaxed border-t border-foreground/5 pt-4"
+                            className="mt-3 text-xs text-foreground/40 leading-relaxed border-t border-foreground/5 pt-3"
                             initial={{ opacity: 0.5 }}
                             animate={{ opacity: isActive ? 0.7 : 0.5 }}
                             transition={{ duration: 0.3 }}
@@ -543,7 +539,7 @@ function SlotCard({
                             href="https://calendly.com/lorenzooradu/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="lg:hidden mt-6 text-sm font-medium px-5 py-2.5 rounded-full border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
+                            className="lg:hidden mt-4 text-sm font-medium px-5 py-2 rounded-full border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
                         >
                             {solution.cta}
                             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
@@ -630,13 +626,13 @@ export default function Solutions() {
             <div className="sticky top-0 h-screen overflow-hidden">
                 <div className="absolute inset-0 dot-pattern opacity-40" />
 
-                <div className="h-full flex flex-col justify-center max-w-5xl mx-auto px-6 relative z-10">
+                <div className="h-full flex flex-col justify-start pt-32 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
                     {/* Header */}
                     <motion.div
                         style={{ opacity: headerOpacity, y: headerY }}
-                        className="mb-8 md:mb-12"
+                        className="mb-4 md:mb-12"
                     >
-                        <div className="flex items-center gap-4 mb-6">
+                        <div className="flex items-center gap-4 mb-3 md:mb-6">
                             <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
                             <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">Services</span>
                             <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
@@ -686,13 +682,13 @@ export default function Solutions() {
                         ))}
                     </div>
 
-                    {/* Custom CTA - appears at the end */}
+                    {/* Custom CTA - appears at the end, desktop only */}
                     <motion.div
                         style={{ opacity: ctaOpacity }}
-                        className="absolute md:bottom-8 xl:bottom-20 bottom-8 left-0 right-0"
+                        className="absolute bottom-32 md:bottom-8 xl:bottom-20 left-0 right-0"
                     >
-                        <div className="flex flex-row items-center justify-center gap-4 sm:gap-6 py-6">
-                            <p className="text-foreground/50 text-center sm:text-left text-sm">
+                        <div className="flex flex-row items-center justify-center gap-6 py-6">
+                            <p className="text-foreground/50 text-sm">
                                 Got a different project in mind?
                             </p>
 
