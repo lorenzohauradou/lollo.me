@@ -295,6 +295,7 @@ const solutions = [
             "Conversion-optimized copy",
             "Accessibility + SEO + 100/100 Performance",
         ],
+        description: "A single-page website designed to convert visitors into customers. Includes contact forms, analytics tracking, mobile-first design, hosting setup...",
         timeline: "7 days",
         price: "1,500",
         cta: "Ready to launch?",
@@ -309,6 +310,7 @@ const solutions = [
             "Custom workflow automation",
             "Team training included",
         ],
+        description: "Automate emails, data entry, reports, and notifications. Connect your existing tools (CRM, sheets, email, whatsapp) and let AI handle the boring stuff.",
         timeline: "2-3 weeks",
         price: "2,000",
         suffix: "+ maintenance",
@@ -324,6 +326,7 @@ const solutions = [
             "Stripe payment integration",
             "User dashboard + Launch support",
         ],
+        description: "Complete web app with user authentication, database, payment processing, admin panel, and your core business logic. Ready to accept paying customers",
         timeline: "3-4 weeks",
         price: "4,000",
         cta: "Build your MVP",
@@ -524,6 +527,16 @@ function SlotCard({
                                 </motion.li>
                             ))}
                         </ul>
+
+                        {/* Simple explanation */}
+                        <motion.p
+                            className="mt-4 text-xs text-foreground/40 leading-relaxed border-t border-foreground/5 pt-4"
+                            initial={{ opacity: 0.5 }}
+                            animate={{ opacity: isActive ? 0.7 : 0.5 }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            {solution.description}
+                        </motion.p>
 
                         {/* CTA Button - mobile */}
                         <a
