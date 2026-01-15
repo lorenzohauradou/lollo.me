@@ -666,7 +666,7 @@ export default function Solutions() {
                     </div>
 
                     {/* Progress indicators */}
-                    <div className="absolute md:bottom-24 bottom-32 left-0 right-0 flex justify-center gap-2">
+                    <div className="absolute top-36 md:top-16 xl:top-36 left-0 right-0 flex justify-center gap-2">
                         {solutions.map((_, index) => (
                             <motion.div
                                 key={index}
@@ -689,9 +689,9 @@ export default function Solutions() {
                     {/* Custom CTA - appears at the end */}
                     <motion.div
                         style={{ opacity: ctaOpacity }}
-                        className="absolute bottom-8 left-0 right-0"
+                        className="absolute md:bottom-8 xl:bottom-20 bottom-8 left-0 right-0"
                     >
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 py-6">
+                        <div className="flex flex-row items-center justify-center gap-4 sm:gap-6 py-6">
                             <p className="text-foreground/50 text-center sm:text-left text-sm">
                                 Got a different project in mind?
                             </p>
