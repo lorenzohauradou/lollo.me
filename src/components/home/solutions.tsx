@@ -293,7 +293,7 @@ const solutions = [
         deliverables: [
             "Full custom design - Next.js",
             "Conversion-optimized copy",
-            "Accessibility + SEO + 100/100 Performance",
+            "Accessibility + SEO + 100% Performance",
         ],
         description: "A single-page website designed to convert visitors into customers. Includes contact forms, analytics tracking, mobile-first design, hosting setup...",
         timeline: "7 days",
