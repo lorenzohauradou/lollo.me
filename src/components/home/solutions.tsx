@@ -685,7 +685,7 @@ export default function Solutions() {
                     {/* Custom CTA - appears at the end, desktop only */}
                     <motion.div
                         style={{ opacity: ctaOpacity }}
-                        className="absolute bottom-20 md:bottom-8 xl:bottom-20 left-0 right-0"
+                        className="absolute bottom-16 md:bottom-8 xl:bottom-20 left-0 right-0"
                     >
                         <div className="flex flex-row items-center justify-center gap-6 py-6">
                             <p className="text-foreground/50 text-sm">
