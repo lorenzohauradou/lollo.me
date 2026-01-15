@@ -6,7 +6,7 @@ import Link from "next/link"
 
 function LandingPageIllustration({ isHovered }: { isHovered: boolean }) {
     return (
-        <svg viewBox="0 0 80 48" className="w-32 h-25" fill="none">
+        <svg viewBox="0 0 80 48" className="w-32 h-25 mt-4" fill="none">
             {/* Browser frame */}
             <motion.rect
                 x="4" y="4" width="72" height="40" rx="3"
@@ -65,7 +65,7 @@ function AIAutomationIllustration({ isHovered }: { isHovered: boolean }) {
     return (
         <div className="relative w-44 h-16 flex items-center justify-center">
             {/* SVG nodes and connections */}
-            <svg viewBox="0 0 176 64" className="absolute inset-0 w-full h-full" fill="none">
+            <svg viewBox="0 0 176 64" className="absolute inset-0 w-full h-full mt-4" fill="none">
                 {/* Left node - input */}
                 <motion.rect
                     x="4" y="20" width="24" height="24" rx="6"
