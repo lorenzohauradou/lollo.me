@@ -620,6 +620,9 @@ export default function Solutions() {
     // CTA opacity (appears after last card)
     const ctaOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1])
 
+    // Progress indicators opacity (visible only when animation is engaged)
+    const progressOpacity = useTransform(scrollYProgress, [0, 0.05, 0.9, 1], [0, 1, 1, 0])
+
     return (
         <section
             id="solutions"
@@ -666,7 +669,10 @@ export default function Solutions() {
                     </div>
 
                     {/* Progress indicators */}
-                    <div className="hidden absolute top-36 md:top-16 xl:top-36 left-0 right-0 md:flex justify-center gap-2">
+                    <motion.div
+                        style={{ opacity: progressOpacity }}
+                        className="absolute top-36 md:top-16 xl:top-36 left-0 right-0 hidden md:flex justify-center gap-2"
+                    >
                         {solutions.map((_, index) => (
                             <motion.div
                                 key={index}
@@ -684,7 +690,7 @@ export default function Solutions() {
                                 />
                             </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
 
                     {/* Custom CTA - appears at the end, desktop only */}
                     <motion.div
