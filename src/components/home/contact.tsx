@@ -93,9 +93,9 @@ export default function Contact() {
 
   return (
     <section id="contact" className="py-24 relative overflow-hidden" ref={ref}>
-      <div className="absolute inset-0 bg-gradient-to-tl from-amber-50/40 via-transparent to-sky-50/30 dark:from-transparent dark:to-transparent" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-orange-100/30 to-rose-100/20 rounded-full blur-3xl dark:opacity-0" />
-      <div className="absolute top-20 left-0 w-64 h-64 bg-gradient-to-br from-indigo-100/20 to-cyan-100/20 rounded-full blur-3xl dark:opacity-0" />
+      <div className="absolute inset-0 bg-gradient-to-tl from-amber-50/50 via-stone-50/30 to-slate-50/30 dark:from-transparent dark:via-transparent dark:to-transparent" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-gradient-to-tl from-amber-200/20 via-yellow-100/15 to-transparent rounded-full blur-3xl dark:opacity-0" />
+      <div className="absolute top-10 -left-20 w-[350px] h-[350px] bg-gradient-to-br from-stone-200/20 via-slate-100/15 to-transparent rounded-full blur-3xl dark:opacity-0" />
 
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
@@ -162,7 +162,7 @@ export default function Contact() {
                     name="name"
                     placeholder="Your name"
                     required
-                    className="bg-zinc-100 dark:bg-card/50 border-border/50 focus-visible:border-foreground/20"
+                    className="bg-amber-50/50 dark:bg-card/50 border-amber-900/10 dark:border-border/50 focus-visible:border-amber-800/25 dark:focus-visible:border-foreground/20"
                   />
                 </div>
                 <div className="space-y-2">
@@ -173,7 +173,7 @@ export default function Contact() {
                     type="email"
                     placeholder="your@email.com"
                     required
-                    className="bg-zinc-100 dark:bg-card/50 border-border/50 focus-visible:border-foreground/20"
+                    className="bg-amber-50/50 dark:bg-card/50 border-amber-900/10 dark:border-border/50 focus-visible:border-amber-800/25 dark:focus-visible:border-foreground/20"
                   />
                 </div>
               </div>
@@ -186,7 +186,7 @@ export default function Contact() {
                   placeholder="Tell me about your project..."
                   rows={5}
                   required
-                  className="bg-zinc-100 dark:bg-card/50 border-border/50 focus-visible:border-foreground/20 resize-none"
+                  className="bg-amber-50/50 dark:bg-card/50 border-amber-900/10 dark:border-border/50 focus-visible:border-amber-800/25 dark:focus-visible:border-foreground/20 resize-none"
                 />
               </div>
 

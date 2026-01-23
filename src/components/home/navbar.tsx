@@ -50,9 +50,9 @@ export default function Navbar() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${visible ? "translate-y-0" : "-translate-y-full"
-        } bg-background/80 backdrop-blur-lg`}
+        } bg-gradient-to-r from-background/90 via-amber-100/20 to-background/90 dark:from-background/80 dark:via-background/80 dark:to-background/80 backdrop-blur-lg border-b border-amber-900/10 dark:border-border/50`}
     >
-      <div className="absolute inset-0 grid-pattern opacity-40" />
+      <div className="absolute inset-0 grid-pattern opacity-30 dark:opacity-40" />
 
       <div className="max-w-5xl mx-auto px-6 py-4 relative z-10">
         <div className="flex items-center justify-between">
@@ -75,7 +75,7 @@ export default function Navbar() {
               {mounted && (
                 <button
                   onClick={toggleTheme}
-                  className="p-2.5 rounded-full hover:bg-muted/80 transition-all duration-200 active:scale-95"
+                  className="p-2.5 rounded-full hover:bg-amber-100/50 dark:hover:bg-muted/80 transition-all duration-200 active:scale-95"
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (
@@ -91,7 +91,7 @@ export default function Navbar() {
               {mounted && (
                 <button
                   onClick={toggleTheme}
-                  className="p-2.5 rounded-full hover:bg-muted/80 transition-all duration-200 active:scale-95"
+                  className="p-2.5 rounded-full hover:bg-amber-100/50 dark:hover:bg-muted/80 transition-all duration-200 active:scale-95"
                   aria-label="Toggle theme"
                 >
                   {theme === "dark" ? (

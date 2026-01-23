@@ -422,7 +422,7 @@ function SlotCard({
             onMouseEnter={onHover}
             onMouseLeave={onLeave}
         >
-            <div className="h-full w-full bg-neutral-200/50 dark:bg-background/80 backdrop-blur-sm rounded-2xl border border-border/50 p-6 md:p-12">
+            <div className="h-full w-full bg-gradient-to-br from-amber-50/60 via-stone-50/40 to-amber-50/50 dark:from-background/80 dark:via-background/80 dark:to-background/80 backdrop-blur-sm rounded-2xl border border-amber-900/10 dark:border-border/50 shadow-lg shadow-amber-900/5 dark:shadow-none p-6 md:p-12">
                 {/* Top border accent */}
                 <div className="absolute top-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
 
@@ -543,7 +543,7 @@ function SlotCard({
                             href="https://calendly.com/lorenzooradu/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="lg:hidden mt-4 text-sm font-medium px-5 py-2 rounded-full border border-foreground/20 hover:border-foreground/40 hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
+                            className="lg:hidden mt-4 text-sm font-medium px-5 py-2 rounded-full border border-amber-800/20 dark:border-foreground/20 hover:border-amber-800/35 dark:hover:border-foreground/40 hover:bg-amber-50/50 dark:hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
                         >
                             {solution.cta}
                             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
@@ -580,7 +580,7 @@ function SlotCard({
                             href="https://calendly.com/lorenzooradu/30min"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-sm font-medium px-5 py-2.5 rounded-full border border-foreground/15 hover:border-foreground/30 hover:bg-foreground/5 transition-all duration-300 text-foreground/70 hover:text-foreground inline-block text-center"
+                            className="text-sm font-medium px-5 py-2.5 rounded-full border border-amber-800/20 dark:border-foreground/15 hover:border-amber-800/35 dark:hover:border-foreground/30 hover:bg-amber-50/50 dark:hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-block text-center"
                         >
                             {solution.cta}
                         </a>
@@ -631,7 +631,11 @@ export default function Solutions() {
             style={{ height: "300vh" }}
         >
             <div className="sticky top-0 h-screen overflow-hidden">
-                <div className="absolute inset-0 dot-pattern opacity-40" />
+                {/* Vintage paper gradient background */}
+                <div className="absolute inset-0 bg-gradient-to-b from-amber-50/40 via-stone-50/20 to-amber-50/30 dark:from-transparent dark:via-transparent dark:to-transparent" />
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-amber-200/15 via-yellow-100/10 to-transparent rounded-full blur-3xl dark:opacity-0" />
+                <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-stone-200/15 via-slate-100/10 to-transparent rounded-full blur-3xl dark:opacity-0" />
+                <div className="absolute inset-0 dot-pattern opacity-50 dark:opacity-40" />
 
                 <div className="h-full flex flex-col justify-start pt-16 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
                     {/* Header */}

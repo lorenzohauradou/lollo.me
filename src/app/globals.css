@@ -4,25 +4,25 @@
 
 @layer base {
   :root {
-    --background: 40 20% 98%;
-    --foreground: 0 0% 8%;
-    --card: 40 15% 99%;
-    --card-foreground: 0 0% 8%;
-    --popover: 40 15% 99%;
-    --popover-foreground: 0 0% 8%;
-    --primary: 0 0% 8%;
-    --primary-foreground: 40 20% 98%;
-    --secondary: 40 10% 94%;
-    --secondary-foreground: 0 0% 8%;
-    --muted: 40 10% 94%;
-    --muted-foreground: 0 0% 38%;
-    --accent: 40 10% 94%;
-    --accent-foreground: 0 0% 8%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 40 10% 88%;
-    --input: 40 10% 88%;
-    --ring: 0 0% 8%;
+    --background: 40 30% 96%;
+    --foreground: 25 25% 18%;
+    --card: 42 35% 97%;
+    --card-foreground: 25 25% 18%;
+    --popover: 42 35% 97%;
+    --popover-foreground: 25 25% 18%;
+    --primary: 25 25% 18%;
+    --primary-foreground: 40 30% 96%;
+    --secondary: 38 25% 90%;
+    --secondary-foreground: 25 25% 18%;
+    --muted: 36 20% 91%;
+    --muted-foreground: 25 15% 42%;
+    --accent: 24 45% 52%;
+    --accent-foreground: 40 30% 96%;
+    --destructive: 0 65% 50%;
+    --destructive-foreground: 40 30% 96%;
+    --border: 35 20% 82%;
+    --input: 35 20% 82%;
+    --ring: 24 45% 52%;
     --radius: 0.625rem;
   }
 
@@ -77,8 +77,8 @@ body {
 .grid-pattern {
   background-size: 48px 48px;
   background-image: 
-    linear-gradient(to right, hsl(var(--foreground) / 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, hsl(var(--foreground) / 0.04) 1px, transparent 1px);
+    linear-gradient(to right, hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
 }
 
 .dark .grid-pattern {
@@ -89,7 +89,7 @@ body {
 
 /* Dot pattern */
 .dot-pattern {
-  background-image: radial-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+  background-image: radial-gradient(hsl(30 30% 60% / 0.15) 1px, transparent 1px);
   background-size: 20px 20px;
 }
 
@@ -124,11 +124,13 @@ body {
 
 .project-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px -12px hsl(var(--foreground) / 0.12);
+  box-shadow: 0 20px 50px -12px hsl(30 30% 40% / 0.12), 0 8px 24px -8px hsl(var(--foreground) / 0.06);
+  border-color: hsl(30 25% 70%);
 }
 
 .dark .project-card:hover {
   box-shadow: 0 16px 48px -12px hsl(0 0% 0% / 0.4);
+  border-color: hsl(var(--border));
 }
 
 /* Video container */

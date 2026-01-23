@@ -17,8 +17,9 @@ export default function About() {
   ]
 
   return (
-    <section id="about" className="py-24 bg-muted/40 dark:bg-muted/20 section-fade-top relative" ref={ref}>
-      <div className="absolute inset-0 dot-pattern opacity-50" />
+    <section id="about" className="py-24 bg-gradient-to-br from-amber-50/50 via-stone-50/30 to-amber-50/40 dark:from-muted/20 dark:via-muted/20 dark:to-muted/20 section-fade-top relative" ref={ref}>
+      <div className="absolute inset-0 dot-pattern opacity-60 dark:opacity-50" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-amber-200/10 to-stone-200/10 rounded-full blur-3xl dark:opacity-0" />
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <motion.div

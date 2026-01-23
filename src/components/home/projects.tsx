@@ -74,6 +74,9 @@ export default function Projects() {
     <section id="projects" className="py-24 section-fade-top relative overflow-hidden" ref={ref}>
       <div className="absolute inset-0 grid-pattern" />
 
+      <div className="absolute -top-40 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-amber-200/15 via-yellow-100/10 to-transparent rounded-full blur-3xl dark:opacity-0" />
+      <div className="absolute bottom-0 -left-40 w-[500px] h-[500px] bg-gradient-to-tr from-stone-200/15 via-slate-100/10 to-transparent rounded-full blur-3xl dark:opacity-0" />
+
       <div className="relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -109,7 +112,7 @@ export default function Projects() {
                   rel="noopener noreferrer"
                   className="group block h-full"
                 >
-                  <article className="project-card bg-zinc-100 dark:bg-card border border-border rounded-xl overflow-hidden h-full">
+                  <article className="project-card bg-gradient-to-br from-amber-50/70 via-stone-50/40 to-amber-50/50 dark:from-card dark:via-card dark:to-card border border-amber-900/8 dark:border-border rounded-xl overflow-hidden h-full shadow-sm shadow-amber-900/5">
                     <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                       {project.media.type === "video" ? (
                         <video
