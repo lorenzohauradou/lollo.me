@@ -212,7 +212,7 @@ export default function Vision() {
                                     </h4>
                                     <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
                                         Every module, every utility that works gets carried into the
-                                        next project. Reusable code, leveraging AI, refined processes — what took
+                                        next project. Reusable code, leveraging AI — what took
                                         weeks now takes days
                                     </p>
                                 </div>
