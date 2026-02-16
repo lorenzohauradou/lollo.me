@@ -68,6 +68,13 @@ body {
   letter-spacing: -0.02em;
 }
 
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

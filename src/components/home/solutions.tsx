@@ -1,8 +1,9 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionValueEvent, useInView } from "framer-motion"
 import Link from "next/link"
+import { useMobile } from "@/src/hooks/use-mobile"
 
 function LandingPageIllustration({ isHovered }: { isHovered: boolean }) {
     return (
@@ -591,7 +592,149 @@ function SlotCard({
     )
 }
 
-export default function Solutions() {
+// Mobile card that slides in from left or right
+function MobileSlideCard({
+    solution,
+    index,
+}: {
+    solution: typeof solutions[0]
+    index: number
+}) {
+    const ref = useRef<HTMLDivElement>(null)
+    const isInView = useInView(ref, { once: true, margin: "-50px" })
+    const [isActive, setIsActive] = useState(false)
+    const fromLeft = index % 2 === 0
+    const Illustration = illustrations[index]
+
+    return (
+        <motion.div
+            ref={ref}
+            initial={{ opacity: 0, x: fromLeft ? -80 : 80 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: fromLeft ? -80 : 80 }}
+            transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] }}
+            onTouchStart={() => setIsActive(true)}
+            onTouchEnd={() => setIsActive(false)}
+            className="bg-gradient-to-br from-amber-50/60 via-stone-50/40 to-amber-50/50 dark:from-background/80 dark:via-background/80 dark:to-background/80 rounded-2xl border border-amber-900/10 dark:border-border/50 shadow-lg shadow-amber-900/5 dark:shadow-none p-5 relative"
+        >
+            <div className="absolute top-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-foreground/20 to-transparent" />
+
+            <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-3">
+                    <span className="text-2xl font-light text-foreground/20 tabular-nums">
+                        {solution.number}
+                    </span>
+                    <div>
+                        <h3 className="text-lg font-medium tracking-tight">
+                            {solution.title}
+                        </h3>
+                        <span className="text-xs text-foreground/50 font-mono">
+                            {solution.accent}
+                        </span>
+                    </div>
+                </div>
+                <div className="text-right">
+                    <span className="text-xs text-foreground/40 uppercase tracking-wider block">
+                        {solution.timeline}
+                    </span>
+                    <div className="flex items-baseline gap-0.5 justify-end">
+                        <span className="text-xl font-semibold tracking-tight">
+                            {solution.price}
+                        </span>
+                        <span className="text-sm font-medium text-foreground/60">€</span>
+                    </div>
+                </div>
+            </div>
+
+            <div className="flex justify-center scale-[0.55] origin-center -my-4">
+                <Illustration isHovered={isActive} />
+            </div>
+
+            <p className="text-xs text-foreground/40 uppercase tracking-wider mb-2 mt-2">
+                {solution.target}
+            </p>
+            <ul className="space-y-1.5 mb-3">
+                {solution.deliverables.map((item, i) => (
+                    <li key={i} className="text-sm text-foreground/70 flex items-start gap-2">
+                        <svg className="w-3.5 h-3.5 mt-0.5 flex-shrink-0 text-foreground/30" viewBox="0 0 16 16" fill="none">
+                            <path d="M2 8h12M10 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                        {item}
+                    </li>
+                ))}
+            </ul>
+
+            <p className="text-xs text-foreground/40 leading-relaxed border-t border-foreground/5 pt-3 mb-4">
+                {solution.description}
+            </p>
+
+            <a
+                href="https://calendly.com/lorenzooradu/30min"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium px-5 py-2 rounded-full border border-amber-800/20 dark:border-foreground/20 hover:border-amber-800/35 dark:hover:border-foreground/40 hover:bg-amber-50/50 dark:hover:bg-foreground/5 transition-all duration-300 text-foreground/80 hover:text-foreground inline-flex items-center justify-center gap-2 w-full"
+            >
+                {solution.cta}
+                <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+            </a>
+        </motion.div>
+    )
+}
+
+function MobileSolutions() {
+    return (
+        <section id="solutions" className="relative py-16">
+            <div className="absolute inset-0 bg-gradient-to-b from-amber-50/40 via-stone-50/20 to-amber-50/30 dark:from-transparent dark:via-transparent dark:to-transparent" />
+            <div className="absolute inset-0 dot-pattern opacity-50 dark:opacity-40" />
+
+            <div className="max-w-5xl mx-auto px-6 relative z-10">
+                <div className="mb-10">
+                    <div className="flex items-center gap-4 mb-3">
+                        <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
+                        <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">Services</span>
+                        <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
+                    </div>
+                    <h2 className="text-3xl font-semibold tracking-tight text-center">
+                        How we can work together
+                    </h2>
+                </div>
+
+                <div className="flex flex-col gap-6">
+                    {solutions.map((solution, index) => (
+                        <MobileSlideCard
+                            key={solution.number}
+                            solution={solution}
+                            index={index}
+                        />
+                    ))}
+                </div>
+
+                <div className="flex flex-row items-center justify-center gap-4 pt-10">
+                    <p className="text-foreground/50 text-sm">
+                        Got a different project in mind?
+                    </p>
+                    <Link
+                        href="https://calendly.com/lorenzooradu/30min"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group relative inline-flex items-center gap-2 text-sm font-medium"
+                    >
+                        <span className="relative">
+                            Let&apos;s talk
+                            <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-foreground" />
+                        </span>
+                        <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none">
+                            <path d="M1 8h14M11 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                    </Link>
+                </div>
+            </div>
+        </section>
+    )
+}
+
+function DesktopSolutions() {
     const containerRef = useRef<HTMLDivElement>(null)
     const [activeIndex, setActiveIndex] = useState(0)
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -601,7 +744,6 @@ export default function Solutions() {
         offset: ["start start", "end end"]
     })
 
-    // Track which card is currently active based on scroll
     useMotionValueEvent(scrollYProgress, "change", (latest) => {
         const segmentSize = 1 / solutions.length
         const newIndex = Math.min(
@@ -613,14 +755,9 @@ export default function Solutions() {
         }
     })
 
-    // Header animation
     const headerOpacity = useTransform(scrollYProgress, [0, 0.05], [1, 1])
     const headerY = useTransform(scrollYProgress, [0, 0.1], [0, -20])
-
-    // CTA opacity (appears after last card)
     const ctaOpacity = useTransform(scrollYProgress, [0.85, 0.95], [0, 1])
-
-    // Progress indicators opacity (visible only when animation is engaged)
     const progressOpacity = useTransform(scrollYProgress, [0, 0.05, 0.9, 1], [0, 1, 1, 0])
 
     return (
@@ -631,19 +768,17 @@ export default function Solutions() {
             style={{ height: "300vh" }}
         >
             <div className="sticky top-0 h-screen overflow-hidden">
-                {/* Vintage paper gradient background */}
                 <div className="absolute inset-0 bg-gradient-to-b from-amber-50/40 via-stone-50/20 to-amber-50/30 dark:from-transparent dark:via-transparent dark:to-transparent" />
                 <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-to-bl from-amber-200/15 via-yellow-100/10 to-transparent rounded-full blur-3xl dark:opacity-0" />
                 <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-to-tr from-stone-200/15 via-slate-100/10 to-transparent rounded-full blur-3xl dark:opacity-0" />
                 <div className="absolute inset-0 dot-pattern opacity-50 dark:opacity-40" />
 
-                <div className="h-full flex flex-col justify-start pt-16 md:justify-center md:pt-0 max-w-5xl mx-auto px-6 relative z-10">
-                    {/* Header */}
+                <div className="h-full flex flex-col justify-center max-w-5xl mx-auto px-6 relative z-10">
                     <motion.div
                         style={{ opacity: headerOpacity, y: headerY }}
-                        className="mb-4 md:mb-12"
+                        className="mb-12"
                     >
-                        <div className="flex items-center gap-4 mb-3 md:mb-6">
+                        <div className="flex items-center gap-4 mb-6">
                             <div className="h-px flex-1 bg-gradient-to-r from-border to-transparent" />
                             <span className="text-xs tracking-[0.3em] text-foreground/40 uppercase">Services</span>
                             <div className="h-px flex-1 bg-gradient-to-l from-border to-transparent" />
@@ -654,9 +789,8 @@ export default function Solutions() {
                         </h2>
                     </motion.div>
 
-                    {/* Slot machine container */}
                     <div
-                        className="relative flex-1 max-h-[420px] md:max-h-[380px]"
+                        className="relative flex-1 max-h-[380px]"
                         style={{ perspective: "1200px" }}
                     >
                         {solutions.map((solution, index) => (
@@ -672,10 +806,9 @@ export default function Solutions() {
                         ))}
                     </div>
 
-                    {/* Progress indicators */}
                     <motion.div
                         style={{ opacity: progressOpacity }}
-                        className="absolute top-36 md:top-16 xl:top-36 left-0 right-0 hidden md:flex justify-center gap-2"
+                        className="absolute top-16 xl:top-36 left-0 right-0 flex justify-center gap-2"
                     >
                         {solutions.map((_, index) => (
                             <motion.div
@@ -696,10 +829,9 @@ export default function Solutions() {
                         ))}
                     </motion.div>
 
-                    {/* Custom CTA - appears at the end, desktop only */}
                     <motion.div
                         style={{ opacity: ctaOpacity }}
-                        className="absolute bottom-16 md:bottom-8 xl:bottom-20 left-0 right-0"
+                        className="absolute bottom-8 xl:bottom-20 left-0 right-0"
                     >
                         <div className="flex flex-row items-center justify-center gap-6 py-6">
                             <p className="text-foreground/50 text-sm">
@@ -744,4 +876,14 @@ export default function Solutions() {
             </div>
         </section>
     )
+}
+
+export default function Solutions() {
+    const isMobile = useMobile()
+
+    if (isMobile) {
+        return <MobileSolutions />
+    }
+
+    return <DesktopSolutions />
 }

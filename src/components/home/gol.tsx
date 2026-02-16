@@ -252,7 +252,7 @@ export default function Vision() {
             >
               <div className="flex flex-col items-center justify-center p-7 md:p-8 h-full text-center">
                 <span className="text-5xl md:text-6xl font-semibold tracking-tighter block mb-2">
-                  4w
+                  4 weeks
                 </span>
                 <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-[0.2em] mb-3">
                   One cycle. One product.
