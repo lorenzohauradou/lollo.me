@@ -85,9 +85,9 @@ export default function Vision() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-20"
+          className="mb-56 md:pb-16"
         >
-          <h3 className="text-xs font-medium text-muted-foreground mb-6 uppercase tracking-widest">
+          <h3 className="text-xs font-medium text-muted-foreground mb-6 mt-28 uppercase tracking-widest">
             The Cycle
           </h3>
 
