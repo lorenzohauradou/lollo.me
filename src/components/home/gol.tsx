@@ -6,6 +6,7 @@ import { AnimTarget } from "@/src/components/ui/anim-target"
 import { AnimSpeed } from "@/src/components/ui/anim-speed"
 import { AnimCompound } from "@/src/components/ui/anim-compound"
 import { AnimFreedom } from "@/src/components/ui/anim-freedom"
+import { CodeEditor } from "@/src/components/ui/code-editor"
 
 const cycle = [
   { step: "01", name: "Identify", desc: "Spot a real problem from everyday work" },
@@ -54,7 +55,7 @@ export default function Vision() {
   const [hovered, setHovered] = useState<number | null>(null)
 
   return (
-    <section className="py-24 relative section-fade-top" ref={ref}>
+    <section className="py-24 relative section-fade-top overflow-x-hidden" ref={ref}>
       <div className="absolute inset-0 bg-gradient-to-b from-background via-amber-50/20 to-background dark:from-background dark:via-muted/10 dark:to-background" />
       <div className="absolute inset-0 grid-pattern opacity-40 dark:opacity-30" />
 
@@ -186,24 +187,34 @@ export default function Vision() {
               onHover={() => setHovered(2)}
               onLeave={() => setHovered(null)}
             >
-              <div className="flex flex-col md:flex-row items-center">
-                <div className="flex-1 p-7">
-                  <h4 className="text-lg font-medium mb-3 tracking-tight">
+              <div className="flex flex-col">
+                {/* Title + description */}
+                <div className="p-6 pb-3 md:p-7 md:pb-4">
+                  <h4 className="text-lg font-medium mb-2 tracking-tight">
                     Compound Everything
                   </h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                    Reusable codebase, refined processes, accumulated knowledge.
-                    Each cycle makes the next one exponentially better. What took
-                    weeks now takes days
-                  </p>
-                  <p className="text-xs text-muted-foreground/60 leading-relaxed">
-                    Every effective solution is reused in new projects. Every
-                    ineffective one is eliminated. Short iterations, exponential
-                    results
+                  <p className="text-sm text-muted-foreground leading-relaxed max-w-xl">
+                    Every module, every utility that works gets carried into the
+                    next project. Reusable code, refined processes — what took
+                    weeks now takes days.
                   </p>
                 </div>
-                <div className="w-full md:w-[45%] h-44 md:h-52 shrink-0 p-6 md:pr-8 flex items-center justify-center">
-                  <AnimCompound isHovered={hovered === 2} />
+
+                {/* Code editor + Chart side by side */}
+                <div className="flex flex-col md:flex-row gap-4 md:gap-0 p-4 pt-2 md:p-7 md:pt-3">
+                  {/* Code editor (left, narrower) */}
+                  <div className="md:w-[52%] min-w-0 shrink-0">
+                    <CodeEditor />
+                  </div>
+                  {/* Chart (right, bigger) */}
+                  <div className="flex-1 flex flex-col items-center justify-center px-4 md:pl-8 md:pr-2">
+                    <div className="w-full max-w-[280px] md:max-w-none h-48 md:h-56">
+                      <AnimCompound isHovered={hovered === 2} />
+                    </div>
+                    <p className="text-[10px] text-muted-foreground/40 mt-2 text-center tracking-wider uppercase">
+                      Standard vs Compounding growth
+                    </p>
+                  </div>
                 </div>
               </div>
             </BentoCard>
