@@ -190,7 +190,7 @@ export default function Vision() {
                                     </h4>
                                     <p className="text-sm text-muted-foreground leading-relaxed">
                                         A working product in 4 weeks beats a perfect business plan that never
-                                        ships. Validate with real users - if the first versions doesn't work properly and you get complains, it's the best thing to happen
+                                        ships. Validate with real users - if the first version doesn't work properly and you get complains, it's the best thing to happen
                                     </p>
                                 </div>
                             </div>
