@@ -22,7 +22,7 @@ export default function Home() {
     <>
       <Navbar />
       <TechMarquee />
-      <main className="min-h-screen pt-8">
+      <main className="min-h-screen pt-8 overflow-x-hidden">
         <Header />
         <Projects />
         <About />

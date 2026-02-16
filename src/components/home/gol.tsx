@@ -219,48 +219,47 @@ export default function Vision() {
               </div>
             </BentoCard>
 
-            {/* Row 3: Freedom (5) + 4w Callout (7) */}
+            {/* Row 3: Freedom (7) + 4w Callout (5) */}
             <BentoCard
-              className="md:col-span-5"
+              className="md:col-span-7"
               index={3}
               isInView={isInView}
               onHover={() => setHovered(3)}
               onLeave={() => setHovered(null)}
             >
-              <div className="flex flex-col items-center p-7">
-                <div className="w-full h-28 mb-4 flex items-center justify-center">
-                  <AnimFreedom isHovered={hovered === 3} />
-                </div>
-                <div className="text-center">
+              <div className="flex flex-col">
+                <div className="p-6 pb-3 md:p-7 md:pb-3">
                   <h4 className="text-base font-medium mb-2 tracking-tight">
                     Freedom by Design
                   </h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    No meetings, no clients dictating timelines. Minimal
-                    investment, maximum learning. Building towards total
-                    independence
+                    No meetings, no clients dictating timelines, no investors
+                    pressuring. Full control over time and work.
                   </p>
+                </div>
+                <div className="w-full h-48 sm:h-56 px-4 pb-5 md:px-6 md:pb-6 flex items-center justify-center">
+                  <AnimFreedom isHovered={hovered === 3} />
                 </div>
               </div>
             </BentoCard>
 
             <BentoCard
-              className="md:col-span-7"
+              className="md:col-span-5"
               index={4}
               isInView={isInView}
               onHover={() => setHovered(4)}
               onLeave={() => setHovered(null)}
             >
-              <div className="flex flex-col items-center justify-center p-8 md:p-10 h-full text-center">
-                <span className="text-6xl md:text-7xl font-semibold tracking-tighter block mb-3">
+              <div className="flex flex-col items-center justify-center p-7 md:p-8 h-full text-center">
+                <span className="text-5xl md:text-6xl font-semibold tracking-tighter block mb-2">
                   4w
                 </span>
-                <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-[0.25em] mb-4">
-                  One cycle. One product. Idea to revenue.
+                <p className="text-[10px] font-medium text-muted-foreground uppercase tracking-[0.2em] mb-3">
+                  One cycle. One product.
                 </p>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-sm">
+                <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
                   Every cycle feeds the next — better tools, cleaner code, faster
-                  execution. The results don&apos;t add up linearly, they{" "}
+                  execution. The results don&apos;t add up, they{" "}
                   <em className="text-foreground font-medium not-italic">
                     compound
                   </em>
