@@ -75,8 +75,7 @@ export default function Vision() {
               4-week development cycles
             </span>
             . Every project starts from a real problem, ships fast, and compounds
-            into the next one. No random freelance gigs — just focused, iterative
-            product building
+            into the next one
           </p>
         </motion.div>
 
