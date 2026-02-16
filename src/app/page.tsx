@@ -4,6 +4,7 @@ import TechMarquee from "@/src/components/home/tech-marquee"
 import Header from "@/src/components/home/header"
 import About from "@/src/components/home/about"
 import Projects from "@/src/components/home/projects"
+import Vision from "@/src/components/home/gol"
 import Solutions from "@/src/components/home/solutions"
 import Contact from "@/src/components/home/contact"
 import Footer from "@/src/components/home/footer"
@@ -25,6 +26,7 @@ export default function Home() {
         <Header />
         <Projects />
         <About />
+        <Vision />
         <Solutions />
         <Contact />
       </main>
