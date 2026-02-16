@@ -189,9 +189,8 @@ export default function Vision() {
                                         Speed Beats Perfection
                                     </h4>
                                     <p className="text-sm text-muted-foreground leading-relaxed">
-                                        A working product in 4 weeks beats a perfect plan that never
-                                        ships. Validate with real users, learn from real data, iterate
-                                        fast
+                                        A working product in 4 weeks beats a perfect business plan that never
+                                        ships. Validate with real users - if the first versions doesn't work properly and you get complains, it's the best thing to happen
                                     </p>
                                 </div>
                             </div>
