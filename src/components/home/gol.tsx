@@ -164,7 +164,7 @@ export default function Vision() {
                                     <p className="text-sm text-muted-foreground leading-relaxed">
                                         I build what I&apos;d use myself. Every project starts from a
                                         genuine need — not trends, not speculation. If the problem
-                                        isn&apos;t real, the product won&apos;t survive
+                                        isn&apos;t real, the product won&apos;t bootstrap
                                     </p>
                                 </div>
                                 <div className="w-full h-32 px-6 pt-10 flex items-center justify-center">
