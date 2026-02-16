@@ -601,7 +601,7 @@ function MobileSlideCard({
     index: number
 }) {
     const ref = useRef<HTMLDivElement>(null)
-    const isInView = useInView(ref, { once: true, margin: "-50px" })
+    const isInView = useInView(ref, { margin: "-50px" })
     const [isActive, setIsActive] = useState(false)
     const fromLeft = index % 2 === 0
     const Illustration = illustrations[index]

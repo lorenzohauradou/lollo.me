@@ -156,8 +156,8 @@ export default function Vision() {
                             onHover={() => setHovered(0)}
                             onLeave={() => setHovered(null)}
                         >
-                            <div className="flex flex-col sm:flex-row items-start">
-                                <div className="flex-1 p-7 pb-4 sm:pb-7">
+                            <div className="flex flex-col">
+                                <div className="p-7 pb-3">
                                     <h4 className="text-base font-medium mb-3 tracking-tight">
                                         Real Problems Only
                                     </h4>
@@ -167,7 +167,7 @@ export default function Vision() {
                                         isn&apos;t real, the product won&apos;t survive
                                     </p>
                                 </div>
-                                <div className="w-full sm:w-44 h-32 sm:h-auto sm:self-stretch shrink-0 p-4 sm:p-0 sm:pr-4 flex items-center justify-center">
+                                <div className="w-full h-32 px-6 pt-10 flex items-center justify-center">
                                     <AnimTarget isHovered={isActive(0)} />
                                 </div>
                             </div>
