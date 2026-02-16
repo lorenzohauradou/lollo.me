@@ -227,7 +227,7 @@ export default function Vision() {
               onHover={() => setHovered(3)}
               onLeave={() => setHovered(null)}
             >
-              <div className="flex flex-col">
+              <div className="hidden flex-col">
                 <div className="p-6 pb-3 md:p-7 md:pb-3">
                   <h4 className="text-base font-medium mb-2 tracking-tight">
                     Freedom by Design
