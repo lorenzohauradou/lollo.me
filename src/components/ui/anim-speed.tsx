@@ -1,5 +1,6 @@
 "use client"
 
+import { useRef } from "react"
 import { motion } from "framer-motion"
 
 const cx = 60
@@ -57,9 +58,25 @@ const logoY = cy + 35
 export function AnimSpeed({ isHovered }: { isHovered: boolean }) {
     const idle = speedAngle(15)
     const active = speedAngle(340)
+    const playedRef = useRef(false)
+
+    const playSound = () => {
+        if (playedRef.current) return
+        playedRef.current = true
+        const audio = new Audio("/audio/car-engine.mp3")
+        audio.volume = 0
+        audio.play().catch(() => { playedRef.current = false })
+        let vol = 0
+        const fadeIn = setInterval(() => {
+            vol = Math.min(vol + 0.05, 0.3)
+            audio.volume = vol
+            if (vol >= 0.3) clearInterval(fadeIn)
+        }, 50)
+        audio.onended = () => { playedRef.current = false }
+    }
 
     return (
-        <svg viewBox="0 0 120 108" className="w-full h-full" fill="none">
+        <svg viewBox="0 0 120 108" className="w-full h-full cursor-pointer" fill="none" onClick={playSound}>
             <defs>
                 <radialGradient id="tacho-glow" cx="50%" cy="42%" r="50%">
                     <stop offset="0%" stopColor="#ff2800" stopOpacity="0.1" />
