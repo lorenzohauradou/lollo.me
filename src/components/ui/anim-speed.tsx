@@ -64,14 +64,8 @@ export function AnimSpeed({ isHovered }: { isHovered: boolean }) {
         if (playedRef.current) return
         playedRef.current = true
         const audio = new Audio("/audio/car-engine.mp3")
-        audio.volume = 0
+        audio.volume = 1
         audio.play().catch(() => { playedRef.current = false })
-        let vol = 0
-        const fadeIn = setInterval(() => {
-            vol = Math.min(vol + 0.05, 0.3)
-            audio.volume = vol
-            if (vol >= 0.3) clearInterval(fadeIn)
-        }, 50)
         audio.onended = () => { playedRef.current = false }
     }
 
