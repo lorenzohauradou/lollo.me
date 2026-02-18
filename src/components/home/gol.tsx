@@ -14,7 +14,7 @@ const cycle = [
     { step: "03", name: "Expand", desc: "Integrations and advanced features" },
     { step: "04", name: "Grow", desc: "Organic marketing, SEO, community" },
     { step: "05", name: "Refine", desc: "User feedback, optimize, iterate" },
-    { step: "06", name: "Decide", desc: "Keep, sell, or kill — no emotions" },
+    { step: "06", name: "Decide", desc: "Keep, sell, or kill — no personal bias" },
 ]
 
 const cardBase =
