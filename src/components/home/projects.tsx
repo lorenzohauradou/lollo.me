@@ -45,7 +45,7 @@ export default function Projects() {
       description: "Landing page for Dott. Berra",
       media: { type: "image" as const, src: "/logo_dott_berra.webp", objectFit: "contain" as const },
       tags: ["Next.js", "Tailwind"],
-      link: "https://balnea.it",
+      link: "https://colonna.vercel.app",
       status: "Shipped",
       statusEmoji: "🚀",
     },
@@ -54,7 +54,7 @@ export default function Projects() {
       description: "Web site for Balnæa, a sport center in Italy",
       media: { type: "image" as const, src: "/balnea_logo.png", objectFit: "contain" as const },
       tags: ["Next.js", "Tailwind"],
-      link: "https://balnea.it",
+      link: "https://balnea.vercel.app",
       status: "Shipped",
       statusEmoji: "🚀",
     },
@@ -123,101 +123,101 @@ export default function Projects() {
                 project.media.objectFit === "contain"
 
               return (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, x: 40 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                className="flex-shrink-0 w-[320px] md:w-[380px] snap-start"
-              >
-                <Link
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group block h-full"
+                <motion.div
+                  key={project.title}
+                  initial={{ opacity: 0, x: 40 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: index * 0.08 }}
+                  className="flex-shrink-0 w-[320px] md:w-[380px] snap-start"
                 >
-                  <article className="project-card bg-gradient-to-br from-amber-50/70 via-stone-50/40 to-amber-50/50 dark:from-card dark:via-card dark:to-card border border-amber-900/8 dark:border-border rounded-xl overflow-hidden h-full shadow-sm shadow-amber-900/5">
-                    <div
-                      className={`relative aspect-[16/10] overflow-hidden bg-muted${imageContain ? " p-6 md:p-8" : ""}`}
-                    >
-                      {project.media.type === "video" ? (
-                        <video
-                          src={project.media.src}
-                          autoPlay
-                          loop
-                          muted
-                          playsInline
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        />
-                      ) : (
-                        <Image
-                          src={project.media.src}
-                          alt={project.title}
-                          fill
-                          className={`${imageContain ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
-                        />
-                      )}
-                    </div>
-
-                    <div className="p-5">
-                      <div className="flex items-start justify-between gap-4 mb-2">
-                        <h3 className="font-medium group-hover:text-muted-foreground transition-colors">
-                          {project.title}
-                        </h3>
-                        <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-muted-foreground opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
+                  <Link
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block h-full"
+                  >
+                    <article className="project-card bg-gradient-to-br from-amber-50/70 via-stone-50/40 to-amber-50/50 dark:from-card dark:via-card dark:to-card border border-amber-900/8 dark:border-border rounded-xl overflow-hidden h-full shadow-sm shadow-amber-900/5">
+                      <div
+                        className={`relative aspect-[16/10] overflow-hidden bg-muted${imageContain ? " p-6 md:p-8" : ""}`}
+                      >
+                        {project.media.type === "video" ? (
+                          <video
+                            src={project.media.src}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                          />
+                        ) : (
+                          <Image
+                            src={project.media.src}
+                            alt={project.title}
+                            fill
+                            className={`${imageContain ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
+                          />
+                        )}
                       </div>
 
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        {project.description}
-                      </p>
-
-                      <div className="flex items-center justify-between">
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.tags.slice(0, 3).map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-xs text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-md"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {project.tags.length > 3 && (
-                            <span className="text-xs text-muted-foreground">
-                              +{project.tags.length - 3}
-                            </span>
-                          )}
+                      <div className="p-5">
+                        <div className="flex items-start justify-between gap-4 mb-2">
+                          <h3 className="font-medium group-hover:text-muted-foreground transition-colors">
+                            {project.title}
+                          </h3>
+                          <ArrowUpRight className="h-4 w-4 flex-shrink-0 text-muted-foreground opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
                         </div>
 
-                        <div className="flex items-center gap-2">
-                          {project.github && (
-                            <button
-                              onClick={(e) => {
-                                e.preventDefault()
-                                e.stopPropagation()
-                                window.open(project.github, "_blank")
-                              }}
-                              className="p-1.5 rounded-full hover:bg-muted transition-colors"
-                              aria-label="View source code"
-                            >
-                              <Github className="h-4 w-4 text-muted-foreground" />
-                            </button>
-                          )}
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                          {project.description}
+                        </p>
 
-                          <span className={`text-xs font-medium px-2 py-0.5 rounded-md flex items-center gap-1 ${project.status === "Running"
-                            ? "bg-green-500/10 text-green-700 dark:text-green-400"
-                            : project.status === "Free"
-                              ? "bg-blue-500/10 text-blue-700 dark:text-blue-400"
-                              : "bg-muted text-muted-foreground"
-                            }`}>
-                            {project.statusEmoji && <span>{project.status} </span>}
-                            {project.statusEmoji}
-                          </span>
+                        <div className="flex items-center justify-between">
+                          <div className="flex flex-wrap gap-1.5">
+                            {project.tags.slice(0, 3).map((tag) => (
+                              <span
+                                key={tag}
+                                className="text-xs text-muted-foreground bg-muted/80 px-2 py-0.5 rounded-md"
+                              >
+                                {tag}
+                              </span>
+                            ))}
+                            {project.tags.length > 3 && (
+                              <span className="text-xs text-muted-foreground">
+                                +{project.tags.length - 3}
+                              </span>
+                            )}
+                          </div>
+
+                          <div className="flex items-center gap-2">
+                            {project.github && (
+                              <button
+                                onClick={(e) => {
+                                  e.preventDefault()
+                                  e.stopPropagation()
+                                  window.open(project.github, "_blank")
+                                }}
+                                className="p-1.5 rounded-full hover:bg-muted transition-colors"
+                                aria-label="View source code"
+                              >
+                                <Github className="h-4 w-4 text-muted-foreground" />
+                              </button>
+                            )}
+
+                            <span className={`text-xs font-medium px-2 py-0.5 rounded-md flex items-center gap-1 ${project.status === "Running"
+                              ? "bg-green-500/10 text-green-700 dark:text-green-400"
+                              : project.status === "Free"
+                                ? "bg-blue-500/10 text-blue-700 dark:text-blue-400"
+                                : "bg-muted text-muted-foreground"
+                              }`}>
+                              {project.statusEmoji && <span>{project.status} </span>}
+                              {project.statusEmoji}
+                            </span>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </article>
-                </Link>
-              </motion.div>
+                    </article>
+                  </Link>
+                </motion.div>
               )
             })}
           </div>
