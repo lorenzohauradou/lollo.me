@@ -41,9 +41,18 @@ export default function Projects() {
       statusEmoji: "🚀",
     },
     {
+      title: "Dott. Berra",
+      description: "Landing page for Dott. Berra",
+      media: { type: "image" as const, src: "/logo_dott_berra.webp", objectFit: "contain" as const },
+      tags: ["Next.js", "Tailwind"],
+      link: "https://balnea.it",
+      status: "Shipped",
+      statusEmoji: "🚀",
+    },
+    {
       title: "Balnæa",
       description: "Web site for Balnæa, a sport center in Italy",
-      media: { type: "image" as const, src: "/balnea_logo.png" },
+      media: { type: "image" as const, src: "/balnea_logo.png", objectFit: "contain" as const },
       tags: ["Next.js", "Tailwind"],
       link: "https://balnea.it",
       status: "Shipped",
@@ -107,7 +116,13 @@ export default function Projects() {
             className="flex gap-5 overflow-x-auto pb-4 px-6 md:px-16 scrollbar-hide scroll-smooth snap-x snap-mandatory"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {projects.map((project, index) => (
+            {projects.map((project, index) => {
+              const imageContain =
+                project.media.type === "image" &&
+                "objectFit" in project.media &&
+                project.media.objectFit === "contain"
+
+              return (
               <motion.div
                 key={project.title}
                 initial={{ opacity: 0, x: 40 }}
@@ -122,7 +137,9 @@ export default function Projects() {
                   className="group block h-full"
                 >
                   <article className="project-card bg-gradient-to-br from-amber-50/70 via-stone-50/40 to-amber-50/50 dark:from-card dark:via-card dark:to-card border border-amber-900/8 dark:border-border rounded-xl overflow-hidden h-full shadow-sm shadow-amber-900/5">
-                    <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+                    <div
+                      className={`relative aspect-[16/10] overflow-hidden bg-muted${imageContain ? " p-6 md:p-8" : ""}`}
+                    >
                       {project.media.type === "video" ? (
                         <video
                           src={project.media.src}
@@ -137,7 +154,7 @@ export default function Projects() {
                           src={project.media.src}
                           alt={project.title}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          className={`${imageContain ? "object-contain" : "object-cover"} transition-transform duration-500 group-hover:scale-105`}
                         />
                       )}
                     </div>
@@ -201,7 +218,8 @@ export default function Projects() {
                   </article>
                 </Link>
               </motion.div>
-            ))}
+              )
+            })}
           </div>
         </div>
 
